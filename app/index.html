@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>CollectiveApp</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+		<link rel="stylesheet" type="text/css" href="assets/stylesheets/lib/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="assets/stylesheets/lib/bootstrap-theme.css">
+		<link rel="stylesheet" type="text/css" href="assets/stylesheets/lib/imagelightbox.css">
+		<link rel="stylesheet" type="text/css" href="assets/stylesheets/lib/font-awesome.css">
+		<link rel="stylesheet" href="assets/stylesheets/index.css"/>
+		<link rel="stylesheet" href="assets/stylesheets/sidebar.css"/>
+	</head>
+	<body ng-app="CollectiveApp">
+		<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+			<div class="container">
+				<div class="navbar-header" style="margin: 0 auto;">
+					<a href="../" class="navbar-brand">CollectiveApp</a>
+					<a href="chrome://apps/" class="google-apps">
+						<img src="assets/images/google-apps.svg" alt="google-apps">
+					</a>
+				</div>
+
+			</div>
+		</header>
+
+
+		<div class="container-fluid">
+			<div class="col-xs-2">
+				<nav class="dr-menu" style="display: none;">
+					<div class="dr-trigger"><i class="fa fa-bars"></i><a class="dr-label">Account</a></div>
+					<ul>
+						<li><i class="fa fa-user"></i><a href="#">Rahul Chandra</a></li>
+						<li><i class="fa fa-camera"></i><a href="#">Videos</a></li>
+						<li><i class="fa fa-heart"></i><a href="#">Favorites</a></li>
+						<li><i class="fa fa-bullhorn"></i><a href="#">Subscriptions</a></li>
+						<li><i class="fa fa-download"></i><a href="#">Downloads</a></li>
+						<li><i class="fa fa-cog"></i><a href="#">Settings</a></li>
+						<li><i class="fa fa-power-off"></i><a href="#">Logout</a></li>
+					</ul>
+				</nav>
+				<ul class="hyperlink-nav" style="position: fixed;left: 72px;">
+					<li><a>All</a></li>
+					<li><a>Popular</a></li>
+					<li><a>Fresh</a></li>
+					<li><a>Upcoming</a></li>
+				</ul>
+			</div>
+			<div class="col-xs-10">
+				<!--div ng-controller="dribbleController" class="row hidden">
+					<div ng-repeat="shot in shots" class="col-xs-3 grid">
+						<div class="shot effect-zoe">
+							<a class="user" href="{{shot.player.url}}">
+								<div class="avatar"><img src="{{shot.player.avatar_url}}" alt="{{shot.player.name}}"/></div>
+								<div class="name">{{shot.player.name}}</div>
+							</a>
+							<div>
+								<img src="{{shot.image_url}}" alt="{{shot.title}}"/>
+								<figcaption>
+									<h2 class="title">{{shot.title}}</h2>
+									<span class="glyphicon glyphicon-comment">{{shot.comments_count}}</span>
+									<span class="glyphicon glyphicon-eye-open">{{shot.views_count}}</span>
+									<span class="glyphicon glyphicon-heart-empty">{{shot.likes_count}}</span>
+								</figcaption>
+							</div>
+
+						</div>
+					</div>
+				</div-->
+
+				<div ng-controller="500pxController" class="row">
+					<div id="grids" class="move-up" infinite-scroll="fhpx.nextPage()" infinite-scroll-distance="0">
+						<div ng-repeat="photo in fhpx.photos" class="col-xs-3 col-sm-3 col-md-3 grid" ng-repeat-end>
+							<div class="shot effect-zoe" style="background-image: url('{{photo.image_url[0]}}');">
+								<a class="user">
+									<div class="avatar"><img src="{{photo.user.userpic_url}}" alt="{{photo.user.username}}" /></div>
+									<div class="name">{{photo.user.username}}</div>
+								</a>
+
+								<div>
+									<a class="lightbox" href="{{photo.image_url[1]}}" style="display: block;">
+										<!-- img src="{{photo.image_url[0]}}" alt="{{photo.name}}" class="img-responsive"/ -->
+									</a>
+									<figcaption>
+										<h2 class="title">{{photo.name}}</h2>
+										<span class="glyphicon glyphicon-comment">{{photo.comments_count}}</span>
+										<!--<span class="glyphicon glyphicon-eye-open">{{photo.votes_count}}</span>-->
+										<span class="glyphicon glyphicon-heart-empty">{{photo.favorites_count}}</span>
+									</figcaption>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<script type="text/javascript" src="assets/javascripts/jquery.min.js"></script>
+		<script type="text/javascript" src="assets/javascripts/angular.min.js"></script>
+		<script type="text/javascript" src="assets/javascripts/ng-infinite-scroll.min.js"></script>
+		<script type="text/javascript" src="assets/javascripts/ui-bootstrap-0.11.0.min.js"></script>
+		<script type="text/javascript" src="assets/javascripts/imagelightbox.js"></script>
+		<script type="text/javascript" src="assets/javascripts/classie.js"></script>
+		<script type="text/javascript" src="assets/javascripts/animation-on-scroll.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+		<script type="text/javascript" src="services/dribble_service.js"></script>
+		<script type="text/javascript" src="services/500px_service.js"></script>
+		<script type="text/javascript" src="directives/500px_directive.js"></script>
+		<script type="text/javascript" src="controllers/dribble_controller.js"></script>
+		<script type="text/javascript" src="controllers/500px_controller.js"></script>
+	</body>
+</html>

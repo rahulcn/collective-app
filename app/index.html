@@ -76,7 +76,7 @@
 				<div ng-controller="500pxController" class="row">
 					<div id="grids" class="move-up" infinite-scroll="fhpx.nextPage()" infinite-scroll-distance="0">
 						<div ng-repeat="photo in fhpx.photos" class="col-xs-3 col-sm-3 col-md-3 grid" ng-repeat-end>
-							<div class="shot effect-zoe" style="background-image: url('{{photo.image_url[0]}}');">
+							<div class="shot effect-zoe">
 								<a class="user">
 									<div class="avatar"><img src="{{photo.user.userpic_url}}" alt="{{photo.user.username}}" /></div>
 									<div class="name">{{photo.user.username}}</div>
@@ -84,7 +84,7 @@
 
 								<div>
 									<a class="lightbox" href="{{photo.image_url[1]}}" style="display: block;">
-										<!-- img src="{{photo.image_url[0]}}" alt="{{photo.name}}" class="img-responsive"/ -->
+										<img src="{{photo.image_url[0]}}" alt="{{photo.name}}" class="img-responsive"/>
 									</a>
 									<figcaption>
 										<h2 class="title">{{photo.name}}</h2>

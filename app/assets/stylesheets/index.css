@@ -59,9 +59,9 @@ header {
     margin-bottom: 20px;
     position: relative;
     width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 241px;
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+    /*height: 241px;*/
 }
 
 .shot:hover .user {

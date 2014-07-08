@@ -9,4 +9,20 @@ angular.module('CollectiveApp.directives', []).directive('ngRepeatEnd', function
         });
     }
   };
+}).directive('whenScrolled', function ($timeout) {
+  return {
+    restrict: 'A',
+    link: function (scope, element, attr) {
+      $timeout(function () {
+        var raw;
+        raw = element[0];
+        return $(window).bind('scroll', function () {
+          if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
+            scope.$apply(attr.whenScrolled);
+            return;
+          }
+        });
+      });
+    }
+  };
 });

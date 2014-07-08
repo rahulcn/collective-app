@@ -44,11 +44,14 @@
 						<li><i class="fa fa-power-off"></i><a href="#">Logout</a></li>
 					</ul>
 				</nav>
-				<ul class="hyperlink-nav" style="position: fixed;left: 72px;">
+				<ul class="hyperlink-nav col-xs-2" style="position: fixed;left: 0;padding: 0px 5px 0px 30px;">
 					<li><a>All</a></li>
 					<li><a>Popular</a></li>
 					<li><a>Fresh</a></li>
 					<li><a>Upcoming</a></li>
+					<li><a>Facebook</a></li>
+					<li><a>Twitter</a></li>
+					<li><a>Dribble</a></li>
 				</ul>
 			</div>
 			<div class="col-xs-10">
@@ -73,9 +76,10 @@
 					</div>
 				</div-->
 
-				<div ng-controller="500pxController" class="row">
-					<div id="grids" class="move-up" infinite-scroll="fhpx.nextPage()" infinite-scroll-distance="0">
+				<div ng-controller="500pxController" class="row" when-scrolled="fhpx.nextPage()">
+					<div id="grids" class="flip-down">
 						<div ng-repeat="photo in fhpx.photos" class="col-xs-3 col-sm-3 col-md-3 grid" ng-repeat-end>
+
 							<div class="shot effect-zoe">
 								<a class="user">
 									<div class="avatar"><img src="{{photo.user.userpic_url}}" alt="{{photo.user.username}}" /></div>
@@ -86,12 +90,14 @@
 									<a class="lightbox" href="{{photo.image_url[1]}}" style="display: block;">
 										<img src="{{photo.image_url[0]}}" alt="{{photo.name}}" class="img-responsive"/>
 									</a>
-									<figcaption>
-										<h2 class="title">{{photo.name}}</h2>
-										<span class="glyphicon glyphicon-comment">{{photo.comments_count}}</span>
-										<!--<span class="glyphicon glyphicon-eye-open">{{photo.votes_count}}</span>-->
-										<span class="glyphicon glyphicon-heart-empty">{{photo.favorites_count}}</span>
-									</figcaption>
+									<div style="position: relative;">
+										<figcaption>
+											<h2 class="title">{{photo.name}}</h2>
+											<span class="glyphicon glyphicon-comment">{{photo.comments_count}}</span>
+											<!--<span class="glyphicon glyphicon-eye-open">{{photo.votes_count}}</span>-->
+											<span class="glyphicon glyphicon-heart-empty">{{photo.favorites_count}}</span>
+										</figcaption>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -103,7 +109,7 @@
 
 		<script type="text/javascript" src="assets/javascripts/jquery.min.js"></script>
 		<script type="text/javascript" src="assets/javascripts/angular.min.js"></script>
-		<script type="text/javascript" src="assets/javascripts/ng-infinite-scroll.min.js"></script>
+		<script type="text/javascript" src="assets/javascripts/ng-infinite-scroll.js"></script>
 		<script type="text/javascript" src="assets/javascripts/ui-bootstrap-0.11.0.min.js"></script>
 		<script type="text/javascript" src="assets/javascripts/imagelightbox.js"></script>
 		<script type="text/javascript" src="assets/javascripts/classie.js"></script>

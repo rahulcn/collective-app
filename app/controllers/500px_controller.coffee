@@ -1,9 +1,7 @@
-angular.module('CollectiveApp.controllers', []).controller(
+angular.module('CollectiveApp.controllers', ['CollectiveApp.directives']).controller(
 	"500pxController", ($scope, $timeout, fhpxAPI) ->
 		$scope.fhpx = new fhpxAPI()
-
-#		fhpxAPI.getPhotos().success (response) ->
-#			$scope.photos = response.photos
+		$scope.fhpx.nextPage()
 
 		$scope.$on "show", (event) ->
 			new AnimOnScroll(document.getElementById("grids"),{

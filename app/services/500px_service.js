@@ -16,17 +16,11 @@ angular.module('CollectiveApp.services', []).factory('fhpxAPI', function ($http)
     url = 'https://api.500px.com/v1/photos?feature=editors&page=' + this.page + '&image_size[]=3&image_size[]=4&consumer_key=' + KEY.fhpx;
     $http.get(url).success(function (this$) {
       return function (data) {
-        var i, photos;
-        photos = data.photos;
-        i = 0;
-        while (i < photos.length) {
-          this$.photos.push(photos[i]);
-          i++;
-        }
+        this$.photos = this$.photos.concat(data.photos);
         this$.page = this$.page + 1;
         this$.busy = false;
       };
-    }(this).bind(this));
+    }(this));
   };
   return fhpxAPI;
 });

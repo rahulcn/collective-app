@@ -289,7 +289,7 @@
             targets = targets.add( $( this ) );
         });
 
-        console.log(this);
+        //console.log(this);
 
         this.switchImageLightbox = function( index )
         {

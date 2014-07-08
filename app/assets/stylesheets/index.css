@@ -50,14 +50,19 @@ header {
 .hyperlink-nav li:hover { background-color: #C0C0C0; }
 .hyperlink-nav li a { text-decoration: none; }
 
-.grid { padding: 0px 10px; }
+.grid {
+    padding: 0px 10px;
+    position: relative;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
 .shot {
     border-radius: 3px;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
     overflow: hidden;
     max-height: 250px;
-    margin-bottom: 20px;
-    position: relative;
+    margin-bottom: 2px;
+    /*position: relative;*/
     width: 100%;
     /*background-repeat: no-repeat;*/
     /*background-size: cover;*/
@@ -85,7 +90,7 @@ header {
 }
 
 .shot .user:hover {
-    width: 96%;
+    width: 88%;
     background: #FFF;
 }
 
@@ -180,7 +185,7 @@ header {
 
 .shot.effect-zoe figcaption > span {
     float: right;
-    margin-right: 7px;
+    margin-right: 5px;
     font-size: 14px;
     padding: 2px;
 }

@@ -1,0 +1,35 @@
+<div class="row view-head">
+	<ul class="nav">
+		<li ng-class="popularActive"><a href="#/500px/popular">Popular</a></li>
+		<li ng-class="upcomingActive"><a href="#/500px/upcoming">Upcoming</a></li>
+		<li ng-class="editorsActive"><a href="#/500px/editors">Editors</a></li>
+		<li ng-class="freshActive"><a href="#/500px/fresh_today">Fresh Today</a></li>
+	</ul>
+</div>
+<div class="row" when-scrolled="service.nextPage()">
+	<div id="grids" class="flip-down">
+		<div ng-repeat="photo in service.photos" class="col-xs-3 col-sm-3 col-md-3 grid" ng-repeat-end>
+
+			<div class="shot effect-zoe">
+				<a class="user">
+					<div class="avatar"><img src="{{photo.user.userpic_url}}" alt="{{photo.user.username}}" /></div>
+					<div class="name">{{photo.user.username}}</div>
+				</a>
+
+				<div>
+					<a class="lightbox" href="{{photo.image_url[1]}}" style="display: block;">
+						<img src="{{photo.image_url[0]}}" alt="{{photo.name}}" class="img-responsive" style="max-height: 243px;"/>
+					</a>
+					<div style="position: relative;">
+						<figcaption>
+							<h2 class="title">{{photo.name}}</h2>
+							<span class="glyphicon glyphicon-comment">{{photo.comments_count}}</span>
+							<!--<span class="glyphicon glyphicon-eye-open">{{photo.votes_count}}</span>-->
+							<span class="glyphicon glyphicon-heart-empty">{{photo.favorites_count}}</span>
+						</figcaption>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

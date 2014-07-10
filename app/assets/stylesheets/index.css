@@ -24,16 +24,18 @@ header {
 
 .navbar > .container .navbar-brand {
     margin: 0 auto;
-    width: 120px;
     float: none;
     display: block;
+    padding: 10px 15px;
+    height: 100%;
+    width: 157px;
 }
 .navbar .google-apps {
     width: 49px;
     position: absolute;
     right: 0;
     top: 0;
-    padding: 14px;
+    padding: 9px 14px;
 }
 .navbar .google-apps img { width: 100%; }
 
@@ -42,13 +44,18 @@ header {
     border-right: 3px solid #60A773;
     list-style: none;
     text-align: right;
-    padding: 6px 10px;
     margin-bottom: 5px;
     cursor: pointer;
 }
 
 .hyperlink-nav li:hover { background-color: #C0C0C0; }
-.hyperlink-nav li a { text-decoration: none; }
+.hyperlink-nav li a {
+    text-decoration: none;
+    display: block;
+    padding: 6px 10px;
+}
+.btn-active { background-color: #C0C0C0; }
+.btn-active a { color: #FFF; }
 
 .grid {
     padding: 0px 10px;
@@ -60,7 +67,7 @@ header {
     border-radius: 3px;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
     overflow: hidden;
-    max-height: 250px;
+    max-height: 243px;
     margin-bottom: 2px;
     /*position: relative;*/
     width: 100%;
@@ -133,6 +140,10 @@ header {
 
 
 
+/*grid title bar animate*/
+
+
+
 
 .grid .shot figcaption {
     -webkit-backface-visibility: hidden;
@@ -170,6 +181,8 @@ header {
     word-spacing: -0.15em;
     font-weight: 300;
 }
+
+
 
 .shot.effect-zoe h2, .shot.effect-zoe figcaption > span {
     -webkit-transition: -webkit-transform 0.35s;
@@ -218,6 +231,7 @@ header {
 
 
 
+/*grid title bar animate*/
 
 
 /*Grid animation starts*/
@@ -276,3 +290,38 @@ header {
 /*flipDown*/
 
 /*Grid animation ends*/
+
+.view-head {
+    padding: 0px 10px 10px;
+}
+.view-head .search {
+
+}
+.view-head .nav {
+    margin: 0;
+    vertical-align: middle;
+    float: right;
+    margin-right: 100px;
+}
+.inline-block { display: inline-block; }
+.view-head li {
+    list-style: none;
+    float: left;
+}
+.view-head .nav li a { color: #AAA; }
+.view-head .nav li.btn-active { background: transparent; }
+.view-head .nav li.btn-active a { color: #428BCA; }
+
+
+footer {
+    border-top: 2px solid #D3D3D3;
+    float: right;
+    padding: 10px;
+}
+footer li {
+    list-style: none;
+    float: left;
+    font-weight: 100;
+    font-family: sans-serif;
+    margin-right: 20px;
+}

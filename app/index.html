@@ -17,7 +17,7 @@
 		<link rel="stylesheet" href="assets/stylesheets/sidebar.css"/>
 	</head>
 	<body ng-app="CollectiveApp">
-		<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+		<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner" style="min-height: 40px;height: 40px;">
 			<div class="container">
 				<div class="navbar-header" style="margin: 0 auto;">
 					<a href="../" class="navbar-brand">CollectiveApp</a>
@@ -25,100 +25,66 @@
 						<img src="assets/images/google-apps.svg" alt="google-apps">
 					</a>
 				</div>
-
 			</div>
 		</header>
 
 
-		<div class="container-fluid">
-			<div class="col-xs-2">
-				<nav class="dr-menu" style="display: none;">
-					<div class="dr-trigger"><i class="fa fa-bars"></i><a class="dr-label">Account</a></div>
-					<ul>
-						<li><i class="fa fa-user"></i><a href="#">Rahul Chandra</a></li>
-						<li><i class="fa fa-camera"></i><a href="#">Videos</a></li>
-						<li><i class="fa fa-heart"></i><a href="#">Favorites</a></li>
-						<li><i class="fa fa-bullhorn"></i><a href="#">Subscriptions</a></li>
-						<li><i class="fa fa-download"></i><a href="#">Downloads</a></li>
-						<li><i class="fa fa-cog"></i><a href="#">Settings</a></li>
-						<li><i class="fa fa-power-off"></i><a href="#">Logout</a></li>
+		<div class="container-fluid" ng-controller="ApplicationController">
+			<div class="row">
+				<div class="col-xs-2">
+					<nav class="dr-menu" style="display: none;">
+						<div class="dr-trigger"><i class="fa fa-bars"></i><a class="dr-label">Account</a></div>
+						<ul>
+							<li><i class="fa fa-user"></i><a href="#">Rahul Chandra</a></li>
+							<li><i class="fa fa-camera"></i><a href="#">Videos</a></li>
+							<li><i class="fa fa-heart"></i><a href="#">Favorites</a></li>
+							<li><i class="fa fa-bullhorn"></i><a href="#">Subscriptions</a></li>
+							<li><i class="fa fa-download"></i><a href="#">Downloads</a></li>
+							<li><i class="fa fa-cog"></i><a href="#">Settings</a></li>
+							<li><i class="fa fa-power-off"></i><a href="#">Logout</a></li>
+						</ul>
+					</nav>
+					<ul class="hyperlink-nav col-xs-2" style="position: fixed;left: 0;padding: 0px 5px 0px 30px;">
+						<li ng-class="fhpxActive"><a href="#/500px/popular">500px</a></li>
+						<!--<li><a>Facebook</a></li>-->
+						<!--<li><a>Twitter</a></li>-->
+						<li ng-class="dribbleActive"><a href="#/dribble/popular">Dribble</a></li>
 					</ul>
-				</nav>
-				<ul class="hyperlink-nav col-xs-2" style="position: fixed;left: 0;padding: 0px 5px 0px 30px;">
-					<li><a>All</a></li>
-					<li><a>Popular</a></li>
-					<li><a>Fresh</a></li>
-					<li><a>Upcoming</a></li>
-					<li><a>Facebook</a></li>
-					<li><a>Twitter</a></li>
-					<li><a>Dribble</a></li>
-				</ul>
-			</div>
-			<div class="col-xs-10">
-				<!--div ng-controller="dribbleController" class="row hidden">
-					<div ng-repeat="shot in shots" class="col-xs-3 grid">
-						<div class="shot effect-zoe">
-							<a class="user" href="{{shot.player.url}}">
-								<div class="avatar"><img src="{{shot.player.avatar_url}}" alt="{{shot.player.name}}"/></div>
-								<div class="name">{{shot.player.name}}</div>
-							</a>
-							<div>
-								<img src="{{shot.image_url}}" alt="{{shot.title}}"/>
-								<figcaption>
-									<h2 class="title">{{shot.title}}</h2>
-									<span class="glyphicon glyphicon-comment">{{shot.comments_count}}</span>
-									<span class="glyphicon glyphicon-eye-open">{{shot.views_count}}</span>
-									<span class="glyphicon glyphicon-heart-empty">{{shot.likes_count}}</span>
-								</figcaption>
-							</div>
-
-						</div>
-					</div>
-				</div-->
-
-				<div ng-controller="500pxController" class="row" when-scrolled="fhpx.nextPage()">
-					<div id="grids" class="flip-down">
-						<div ng-repeat="photo in fhpx.photos" class="col-xs-3 col-sm-3 col-md-3 grid" ng-repeat-end>
-
-							<div class="shot effect-zoe">
-								<a class="user">
-									<div class="avatar"><img src="{{photo.user.userpic_url}}" alt="{{photo.user.username}}" /></div>
-									<div class="name">{{photo.user.username}}</div>
-								</a>
-
-								<div>
-									<a class="lightbox" href="{{photo.image_url[1]}}" style="display: block;">
-										<img src="{{photo.image_url[0]}}" alt="{{photo.name}}" class="img-responsive"/>
-									</a>
-									<div style="position: relative;">
-										<figcaption>
-											<h2 class="title">{{photo.name}}</h2>
-											<span class="glyphicon glyphicon-comment">{{photo.comments_count}}</span>
-											<!--<span class="glyphicon glyphicon-eye-open">{{photo.votes_count}}</span>-->
-											<span class="glyphicon glyphicon-heart-empty">{{photo.favorites_count}}</span>
-										</figcaption>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
+				<div class="col-xs-10" ng-view>
+				</div>
+			</div>
+			<div class="row">
+				<footer class="col-xs-10" style="float: right;margin-top: -10px;">
+					<ul>
+						<li><a>&copy; 2014 | Rahul Chandra</a></li>
+						<li><a href="http://rahulchandra.com" target="_blank">Contact</a></li>
+					</ul>
+				</footer>
 			</div>
 		</div>
 
 
 		<script type="text/javascript" src="assets/javascripts/jquery.min.js"></script>
 		<script type="text/javascript" src="assets/javascripts/angular.min.js"></script>
-		<script type="text/javascript" src="assets/javascripts/ng-infinite-scroll.js"></script>
+		<script type="text/javascript" src="assets/javascripts/angular-route.min.js"></script>
 		<script type="text/javascript" src="assets/javascripts/ui-bootstrap-0.11.0.min.js"></script>
 		<script type="text/javascript" src="assets/javascripts/imagelightbox.js"></script>
 		<script type="text/javascript" src="assets/javascripts/classie.js"></script>
 		<script type="text/javascript" src="assets/javascripts/animation-on-scroll.js"></script>
-		<script type="text/javascript" src="app.js"></script>
+
+		<script type="text/javascript" src="config.js"></script>
+
 		<script type="text/javascript" src="services/dribble_service.js"></script>
 		<script type="text/javascript" src="services/500px_service.js"></script>
+
 		<script type="text/javascript" src="directives/500px_directive.js"></script>
+
 		<script type="text/javascript" src="controllers/dribble_controller.js"></script>
 		<script type="text/javascript" src="controllers/500px_controller.js"></script>
+
+		<script type="text/javascript" src="controllers/application_controller.js"></script>
+		<script type="text/javascript" src="app.js"></script>
 	</body>
+
 </html>

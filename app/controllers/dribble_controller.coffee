@@ -1,6 +1,6 @@
-angular.module('CollectiveApp.controllers', []).controller "dribbleController", ($scope, dribbleAPI) ->
-	$scope.shots = []
-
-	dribbleAPI.getShots().success (response) ->
-		$scope.shots = response.shots
+ApplicationController.controller "DribbleController", ($scope, dribbleAPI, $routeParams) ->
+	$scope.setActive(['dribble', $routeParams.category])
+	$scope.service = new dribbleAPI({category: $routeParams.category})
+	$scope.service.nextPage()
+	return
 

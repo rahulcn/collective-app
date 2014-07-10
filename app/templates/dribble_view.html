@@ -1,0 +1,37 @@
+<div class="row view-head">
+	<!--<div class="pull-left" style="margin: 7px 0px;">
+		<input class="search" type="text"/>
+	</div>-->
+	<ul class="nav">
+		<li ng-class="popularActive"><a href="#/dribble/popular">Popular</a></li>
+		<li ng-class="everyoneActive"><a href="#/dribble/everyone">Everyone</a></li>
+		<li ng-class="debutsActive"><a href="#/dribble/debuts">Debuts</a></li>
+	</ul>
+</div>
+<div class="row" when-scrolled="service.nextPage()">
+	<div id="grids" class="flip-down">
+		<div ng-repeat="shot in service.photos" class="col-xs-3 col-sm-3 col-md-3 grid" ng-repeat-end>
+
+			<div class="shot effect-zoe">
+				<a class="user">
+					<div class="avatar"><img src="{{shot.player.avatar_url}}" alt="{{shot.player.name}}" /></div>
+					<div class="name">{{shot.player.username}}</div>
+				</a>
+
+				<div>
+					<a class="lightbox" href="{{shot.image_url}}" style="display: block;">
+						<img src="{{shot.image_teaser_url}}" alt="{{shot.title}}" class="img-responsive"/>
+					</a>
+					<div style="position: relative;">
+						<figcaption>
+							<h2 class="title">{{shot.title}}</h2>
+							<span class="glyphicon glyphicon-comment">{{shot.comments_count}}</span>
+							<!--<span class="glyphicon glyphicon-eye-open">{{shot.votes_count}}</span>-->
+							<span class="glyphicon glyphicon-heart-empty">{{shot.likes_count}}</span>
+						</figcaption>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,9 +1,18 @@
-angular.module('CollectiveApp', [
-	'CollectiveApp.controllers',
-	'CollectiveApp.services',
-	'CollectiveApp.directives',
-	'infinite-scroll'
+Application.config([
+	"$routeProvider"
+	($routeProvider) ->
+		$routeProvider
+		.when("/500px/:category", {
+			templateUrl: "templates/fhpx_view.html"
+			controller: '500pxController'
+		})
+		.when('/dribble/:category', {
+			templateUrl: 'templates/dribble_view.html'
+			controller: 'DribbleController'
+		})
+		.otherwise(redirectTo: "/500px/popular")
 ])
+
 
 YTMenu = (->
 	init = ->

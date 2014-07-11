@@ -16,6 +16,7 @@ ApplicationController.controller('ApplicationController', function ($scope) {
   };
   $scope.$on('show', function (event) {
     var currentScope;
+    $('.loading').remove();
     new AnimOnScroll(document.getElementById('grids'), {
       minDuration: .4,
       maxDuration: .7,

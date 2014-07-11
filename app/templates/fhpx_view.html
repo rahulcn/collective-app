@@ -6,7 +6,7 @@
 		<li ng-class="freshActive"><a href="#/500px/fresh_today">Fresh Today</a></li>
 	</ul>
 </div>
-<div class="row" when-scrolled="service.nextPage()">
+<div class="row" infi-scroll="service.nextPage()">
 	<div id="grids" class="flip-down">
 		<div ng-repeat="photo in service.photos" class="col-xs-3 col-sm-3 col-md-3 grid" ng-repeat-end>
 

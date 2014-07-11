@@ -25,7 +25,6 @@ ApplicationDirective.directive("whenScrolled", ($timeout) ->
 ApplicationDirective.directive("infiScroll", ($timeout) ->
 	restrict: "A"
 	link: (scope, elm, attr) ->
-		alert 'scrolled'
 		$timeout (->
 			callMore = true
 			newHeight = undefined
@@ -36,10 +35,10 @@ ApplicationDirective.directive("infiScroll", ($timeout) ->
 				elmHeight = $(elm).height()
 
 				#closure to compare elem height, which is changed when api loads feeds
-				(->
+				(=>
 					if docHeight <= (winHeight + scrolledHeight)
 						unless newHeight is elmHeight
-							scope.$eval attr.whenScrolled
+							scope.$eval attr.infiScroll
 							newHeight = elmHeight
 					return
 				)()
@@ -47,6 +46,8 @@ ApplicationDirective.directive("infiScroll", ($timeout) ->
 
 			$(document).on "scroll", handler
 			scope.$on "$destroy", ->
+				loading = $('<div class="col-xs-10 loading" style="display: block;height: 50px;">Loading ...</div>')
+				$(elm).append(loading)
 				$(document).off "scroll", handler #remove handler when scope is destroyed
 
 			return

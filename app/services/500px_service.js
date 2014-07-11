@@ -14,7 +14,7 @@ ApplicationService.factory('fhpxAPI', function ($http) {
     this.busy = true;
     if (!this.page)
       this.page = 1;
-    url = 'https://api.500px.com/v1/photos?feature=' + this.category + '&page=' + this.page + '&rpp=20&image_size[]=3&image_size[]=4&consumer_key=' + KEY.fhpx;
+    url = 'https://api.500px.com/v1/photos?feature=' + this.category + '&page=' + this.page + '&rpp=20&exclude=nude&image_size[]=3&image_size[]=4&consumer_key=' + KEY.fhpx;
     $http.get(url).success(function (this$) {
       return function (data) {
         this$.photos = this$.photos.concat(data.photos);

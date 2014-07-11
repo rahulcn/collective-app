@@ -31,7 +31,6 @@ ApplicationDirective.directive('infiScroll', function ($timeout) {
   return {
     restrict: 'A',
     link: function (scope, elm, attr) {
-      alert('scrolled');
       $timeout(function () {
         var callMore, handler, newHeight;
         callMore = true;
@@ -45,13 +44,16 @@ ApplicationDirective.directive('infiScroll', function ($timeout) {
           (function () {
             if (docHeight <= winHeight + scrolledHeight)
               if (!(newHeight === elmHeight)) {
-                scope.$eval(attr.whenScrolled);
+                scope.$eval(attr.infiScroll);
                 newHeight = elmHeight;
               }
           }());
         };
         $(document).on('scroll', handler);
         scope.$on('$destroy', function () {
+          var loading;
+          loading = $('<div class="col-xs-10 loading" style="display: block;height: 50px;">Loading ...</div>');
+          $(elm).append(loading);
           return $(document).off('scroll', handler);
         });
       }, 300);

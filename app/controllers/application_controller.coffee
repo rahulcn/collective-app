@@ -11,6 +11,7 @@ ApplicationController.controller "ApplicationController", ($scope) ->
 		)
 
 	$scope.$on "show", (event) ->
+		$('.loading').remove()
 		new AnimOnScroll(document.getElementById("grids"),{
 			minDuration: 0.4
 			maxDuration: 0.7

@@ -1,10 +1,3 @@
-#ApplicationService.factory "dribbleAPI", ($http) ->
-#	dribbleAPI = {}
-#	dribbleAPI.getShots = ->
-#		$http.get('../assets/data/everyone.json')
-#
-#	dribbleAPI
-
 ApplicationService.factory "dribbleAPI", ($http) ->
 
 	API = (options) ->
@@ -15,13 +8,16 @@ ApplicationService.factory "dribbleAPI", ($http) ->
 
 	API::nextPage = ->
 		return  if @busy
+		loading = $('<div class="loading"><div></div><div></div><div></div><div></div></div>')
+		$('#grids').parent().append(loading)
 		@busy = true
 		@page = 1 unless @page
-		url = "http://api.dribbble.com/shots/#{@category}?page=#{@page}&per_page=20"
-		$http.get(url).success (data) =>
+		url = "https://api.dribbble.com/shots/#{@category}?page=#{@page}&per_page=20&callback=JSON_CALLBACK"
+		$http.jsonp(url).success (data) =>
 			@photos = @photos.concat(data.shots)
 			@page = @page + 1
 			@busy = false
+			$('.loading').remove()
 			return
 
 		return

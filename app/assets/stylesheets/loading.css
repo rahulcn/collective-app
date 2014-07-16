@@ -1,0 +1,35 @@
+.loading div {
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    background-color: #AAA;
+    bottom: 30px;
+    border-radius: 50%;
+}
+
+.loading div:nth-child(1) {
+    -webkit-animation: move 2.5s infinite cubic-bezier(.2,.64,.81,.23);
+    animation: move 2.5s infinite cubic-bezier(.2,.64,.81,.23);
+}
+.loading div:nth-child(2) {
+    -webkit-animation: move 2.5s 150ms infinite cubic-bezier(.2,.64,.81,.23);
+    animation: move 2.5s 150ms infinite cubic-bezier(.2,.64,.81,.23);
+}
+.loading div:nth-child(3) {
+    -webkit-animation: move 2.5s 300ms infinite cubic-bezier(.2,.64,.81,.23);
+    animation: move 2.5s 300ms infinite cubic-bezier(.2,.64,.81,.23);
+}
+.loading div:nth-child(4) {
+    -webkit-animation: move 2.5s 450ms infinite cubic-bezier(.2,.64,.81,.23);
+    animation: move 2.5s 450ms infinite cubic-bezier(.2,.64,.81,.23);
+}
+
+@keyframes move {
+    0% {left: 0%;}
+    100% {left: 100%;}
+}
+
+@-webkit-keyframes move {
+    0% {left: 0%;}
+    100% {left: 100%;}
+}

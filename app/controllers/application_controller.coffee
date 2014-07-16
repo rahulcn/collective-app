@@ -4,7 +4,7 @@ ApplicationController.controller "ApplicationController", ($scope) ->
 		$scope.popularActive = ''
 		$scope.upcomingActive = ''
 		$scope.editorsActive = ''
-		$scope.freshActive = ''
+		$scope.fresh_todayActive = ''
 		$scope.dribbleActive = ''
 		angular.forEach(options, (key, value) ->
 			$scope[key + 'Active'] = 'btn-active'
@@ -21,7 +21,7 @@ ApplicationController.controller "ApplicationController", ($scope) ->
 		currentScope = $scope.$$listeners.show[0].arguments[0].targetScope
 		if currentScope.service.photos.length <= 20
 			console.log 'lightbox loading...'
-			$(".grid a").imageLightbox
+			$(".grid a.lightbox").imageLightbox
 				onStart: ->
 					overlayOn()
 					#closeButtonOn this

@@ -3,14 +3,16 @@ void function () {
   var YTMenu;
   Application.config([
     '$routeProvider',
-    function ($routeProvider) {
+    '$compileProvider',
+    function ($routeProvider, $compileProvider) {
+      $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|chrome-extension):/);
       return $routeProvider.when('/500px/:category', {
         templateUrl: 'templates/fhpx_view.html',
         controller: '500pxController'
       }).when('/dribble/:category', {
         templateUrl: 'templates/dribble_view.html',
         controller: 'DribbleController'
-      }).otherwise({ redirectTo: '/500px/popular' });
+      }).otherwise({ redirectTo: '/dribble/popular' });
     }
   ]);
   YTMenu = function () {

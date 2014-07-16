@@ -8,18 +8,21 @@ ApplicationService.factory('fhpxAPI', function ($http) {
     this.category = options.category;
   };
   fhpxAPI.prototype.nextPage = function () {
-    var url;
+    var loading, url;
     if (this.busy)
       return;
+    loading = $('<div class="loading"><div></div><div></div><div></div><div></div></div>');
+    $('#grids').parent().append(loading);
     this.busy = true;
     if (!this.page)
       this.page = 1;
-    url = 'https://api.500px.com/v1/photos?feature=' + this.category + '&page=' + this.page + '&rpp=20&exclude=nude&image_size[]=3&image_size[]=4&consumer_key=' + KEY.fhpx;
+    url = 'https://api.500px.com/v1/photos?feature=' + this.category + '&page=' + this.page + '&rpp=12&exclude=nude&image_size[]=3&image_size[]=4&consumer_key=' + KEY.fhpx;
     $http.get(url).success(function (this$) {
       return function (data) {
         this$.photos = this$.photos.concat(data.photos);
         this$.page = this$.page + 1;
         this$.busy = false;
+        $('.loading').remove();
       };
     }(this));
   };

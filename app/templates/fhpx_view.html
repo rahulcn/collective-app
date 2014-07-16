@@ -3,10 +3,10 @@
 		<li ng-class="popularActive"><a href="#/500px/popular">Popular</a></li>
 		<li ng-class="upcomingActive"><a href="#/500px/upcoming">Upcoming</a></li>
 		<li ng-class="editorsActive"><a href="#/500px/editors">Editors</a></li>
-		<li ng-class="freshActive"><a href="#/500px/fresh_today">Fresh Today</a></li>
+		<li ng-class="fresh_todayActive"><a href="#/500px/fresh_today">Fresh Today</a></li>
 	</ul>
 </div>
-<div class="row" infi-scroll="service.nextPage()">
+<div class="row" infi-scroll="service.nextPage()" style="margin-bottom: 50px;">
 	<div id="grids" class="flip-down">
 		<div ng-repeat="photo in service.photos" class="col-xs-3 col-sm-3 col-md-3 grid" ng-repeat-end>
 
@@ -22,7 +22,7 @@
 					</a>
 					<div style="position: relative;">
 						<figcaption>
-							<h2 class="title">{{photo.name}}</h2>
+							<a href="{{photo.image_url[1]}}" target="_"><h2 class="title">{{photo.name}}</h2></a>
 							<span class="glyphicon glyphicon-comment">{{photo.comments_count}}</span>
 							<!--<span class="glyphicon glyphicon-eye-open">{{photo.votes_count}}</span>-->
 							<span class="glyphicon glyphicon-heart-empty">{{photo.favorites_count}}</span>

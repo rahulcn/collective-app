@@ -7,18 +7,21 @@ ApplicationService.factory('dribbleAPI', function ($http) {
     this.category = options.category;
   };
   API.prototype.nextPage = function () {
-    var url;
+    var loading, url;
     if (this.busy)
       return;
+    loading = $('<div class="loading"><div></div><div></div><div></div><div></div></div>');
+    $('#grids').parent().append(loading);
     this.busy = true;
     if (!this.page)
       this.page = 1;
-    url = 'http://api.dribbble.com/shots/' + this.category + '?page=' + this.page + '&per_page=20';
-    $http.get(url).success(function (this$) {
+    url = 'https://api.dribbble.com/shots/' + this.category + '?page=' + this.page + '&per_page=20&callback=JSON_CALLBACK';
+    $http.jsonp(url).success(function (this$) {
       return function (data) {
         this$.photos = this$.photos.concat(data.shots);
         this$.page = this$.page + 1;
         this$.busy = false;
+        $('.loading').remove();
       };
     }(this));
   };

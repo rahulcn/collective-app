@@ -1,0 +1,31 @@
+{
+    "manifest_version": 2,
+
+    "name": "CollectiveApp",
+    "description": "Gathering best pictures from the web.",
+    "version": "0.1",
+//    "options_page": "options.html",
+    "background": {
+        "scripts": ["background.js"]
+    },
+
+    "permissions": [
+        "https://api.500px.com/*; https://*/*",
+        "http://api.dribbble.com/*; https://*/*",
+        "<all_urls>",
+        "chrome://favicon/",
+        "bookmarks",
+        "tabs"
+    ],
+    "chrome_url_overrides" : {
+        "newtab": "index.html"
+    },
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "minimum_chrome_version": "9",
+//    "default_locale": "en",
+    "omnibox": {
+        "keyword" : "*"
+    }
+
+
+}

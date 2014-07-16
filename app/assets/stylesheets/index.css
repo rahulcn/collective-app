@@ -309,6 +309,7 @@ header {
     float: left;
 }
 .view-head .nav li a { color: #AAA; }
+.view-head .nav li a:hover { background-color: transparent; }
 .view-head .nav li.btn-active { background: transparent; }
 .view-head .nav li.btn-active a { color: #428BCA; }
 

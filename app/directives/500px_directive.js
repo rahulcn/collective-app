@@ -51,9 +51,6 @@ ApplicationDirective.directive('infiScroll', function ($timeout) {
         };
         $(document).on('scroll', handler);
         scope.$on('$destroy', function () {
-          var loading;
-          loading = $('<div class="col-xs-10 loading" style="display: block;height: 50px;">Loading ...</div>');
-          $(elm).append(loading);
           return $(document).off('scroll', handler);
         });
       }, 300);

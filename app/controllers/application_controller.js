@@ -8,7 +8,7 @@ ApplicationController.controller('ApplicationController', function ($scope) {
     $scope.popularActive = '';
     $scope.upcomingActive = '';
     $scope.editorsActive = '';
-    $scope.freshActive = '';
+    $scope.fresh_todayActive = '';
     $scope.dribbleActive = '';
     return angular.forEach(options, function (key, value) {
       return $scope[key + 'Active'] = 'btn-active';
@@ -25,7 +25,7 @@ ApplicationController.controller('ApplicationController', function ($scope) {
     currentScope = $scope.$$listeners.show[0]['arguments'][0].targetScope;
     if (currentScope.service.photos.length <= 20) {
       console.log('lightbox loading...');
-      $('.grid a').imageLightbox({
+      $('.grid a.lightbox').imageLightbox({
         onStart: function () {
           overlayOn();
         },

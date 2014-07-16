@@ -46,8 +46,6 @@ ApplicationDirective.directive("infiScroll", ($timeout) ->
 
 			$(document).on "scroll", handler
 			scope.$on "$destroy", ->
-				loading = $('<div class="col-xs-10 loading" style="display: block;height: 50px;">Loading ...</div>')
-				$(elm).append(loading)
 				$(document).off "scroll", handler #remove handler when scope is destroyed
 
 			return

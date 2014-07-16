@@ -1,6 +1,8 @@
 Application.config([
 	"$routeProvider"
-	($routeProvider) ->
+	"$compileProvider"
+	($routeProvider, $compileProvider) ->
+		$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|chrome-extension):/)
 		$routeProvider
 		.when("/500px/:category", {
 			templateUrl: "templates/fhpx_view.html"
@@ -10,7 +12,7 @@ Application.config([
 			templateUrl: 'templates/dribble_view.html'
 			controller: 'DribbleController'
 		})
-		.otherwise(redirectTo: "/500px/popular")
+		.otherwise({redirectTo: "/dribble/popular"})
 ])
 
 

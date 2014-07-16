@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-csp>
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,6 +15,8 @@
 		<link rel="stylesheet" type="text/css" href="assets/stylesheets/lib/font-awesome.css">
 		<link rel="stylesheet" href="assets/stylesheets/index.css"/>
 		<link rel="stylesheet" href="assets/stylesheets/sidebar.css"/>
+		<link rel="stylesheet" href="assets/stylesheets/loading.css"/>
+		<link rel="stylesheet" href="assets/stylesheets/neat.css"/>
 	</head>
 	<body ng-app="CollectiveApp">
 		<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner" style="min-height: 40px;height: 40px;">
@@ -31,7 +33,7 @@
 
 		<div class="container-fluid" ng-controller="ApplicationController">
 			<div class="row">
-				<div class="col-xs-2">
+				<!-- div class="col-xs-2">
 					<nav class="dr-menu" style="display: none;">
 						<div class="dr-trigger"><i class="fa fa-bars"></i><a class="dr-label">Account</a></div>
 						<ul>
@@ -46,13 +48,93 @@
 					</nav>
 					<ul class="hyperlink-nav col-xs-2" style="position: fixed;left: 0;padding: 0px 5px 0px 30px;">
 						<li ng-class="fhpxActive"><a href="#/500px/popular">500px</a></li>
-						<!--<li><a>Facebook</a></li>-->
-						<!--<li><a>Twitter</a></li>-->
+						<li><a>Facebook</a></li>
+						<li><a>Twitter</a></li>
 						<li ng-class="dribbleActive"><a href="#/dribble/popular">Dribble</a></li>
 					</ul>
+				</div -->
+
+
+
+				<div class="col-xs-2">
+
+
+
+
+
+
+
+					<div id="container">
+						<div id="search" role="search"><input id="search-input" type="search" results="0" autofocus></div>
+						<div id="tree" tabindex="-1"></div>
+						<div id="results" tabindex="-1" style="display: none"></div>
+					</div>
+
+
+
+					<div id="drop-overlay"></div>
+					<div id="bookmark-clone"></div>
+
+					<menu id="bookmark-context-menu" type="context" tabindex="-1">
+						<command id="bookmark-new-tab" tabindex="-1">
+						<command id="bookmark-new-window" tabindex="-1">
+						<command id="bookmark-new-incognito-window" tabindex="-1">
+						<hr>
+						<command id="bookmark-edit" tabindex="-1">
+						<command id="bookmark-delete" tabindex="-1">
+					</menu>
+					<menu id="folder-context-menu" type="context" tabindex="-1">
+						<command id="folder-window" tabindex="-1">
+						<command id="folder-new-window" tabindex="-1">
+						<command id="folder-new-incognito-window" tabindex="-1">
+						<hr>
+						<command id="folder-edit" tabindex="-1">
+						<command id="folder-delete" tabindex="-1">
+					</menu>
+
+
+
+
+					<div id="resizer"></div>
+					<div id="cover"></div>
+					<div id="alert-dialog" class="dialog" role="dialog">
+						<p id="alert-dialog-text" class="dialog-text"></p>
+					</div>
+
+
+
+					<div id="confirm-dialog" class="dialog" role="dialog">
+						<p id="confirm-dialog-text" class="dialog-text"></p>
+						<div class="buttons">
+							<button id="confirm-dialog-button-1"></button>
+							<button id="confirm-dialog-button-2"></button>
+						</div>
+					</div>
+
+
+					<div id="edit-dialog" class="dialog" role="dialog">
+						<form>
+							<p id="edit-dialog-text" class="dialog-text"></p>
+							<input id="edit-dialog-name">
+							<input type="url" id="edit-dialog-url" aria-required="true" required>
+							<div class="buttons">
+								<button id="edit-dialog-button" type="submit"></button>
+							</div>
+						</form>
+					</div>
+
+
+
+
+
+
+
+
+
+
 				</div>
-				<div class="col-xs-10" ng-view>
-				</div>
+
+				<div class="col-xs-10" ng-view=""></div>
 			</div>
 			<div class="row">
 				<footer class="col-xs-10" style="float: right;margin-top: -10px;">
@@ -68,10 +150,12 @@
 		<script type="text/javascript" src="assets/javascripts/jquery.min.js"></script>
 		<script type="text/javascript" src="assets/javascripts/angular.min.js"></script>
 		<script type="text/javascript" src="assets/javascripts/angular-route.min.js"></script>
-		<script type="text/javascript" src="assets/javascripts/ui-bootstrap-0.11.0.min.js"></script>
 		<script type="text/javascript" src="assets/javascripts/imagelightbox.js"></script>
 		<script type="text/javascript" src="assets/javascripts/classie.js"></script>
 		<script type="text/javascript" src="assets/javascripts/animation-on-scroll.js"></script>
+
+		<script type="text/javascript" src="neat_tools.js"></script>
+		<script type="text/javascript" src="neat.js"></script>
 
 		<script type="text/javascript" src="config.js"></script>
 

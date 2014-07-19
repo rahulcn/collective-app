@@ -18,7 +18,7 @@ function init() {
     var AlertDialog = {
         open: function(dialog) {
             if (!dialog) return;
-            $('alert-dialog-text').innerHTML = dialog;
+            getElemById('alert-dialog-text').innerHTML = dialog;
             body.addClass('needAlert');
         },
         close: function() {
@@ -47,9 +47,9 @@ function init() {
     })();
 
     // Some i18n
-    $('search-input').placeholder = _m('searchBookmarks');
-    $('edit-dialog-name').placeholder = _m('name');
-    $('edit-dialog-url').placeholder = _m('url');
+    getElemById('search-input').placeholder = _m('searchBookmarks');
+    getElemById('edit-dialog-name').placeholder = _m('name');
+    getElemById('edit-dialog-url').placeholder = _m('url');
     $each({
         'bookmark-new-tab': 'openNewTab',
         'bookmark-new-window': 'openNewWindow',
@@ -63,7 +63,7 @@ function init() {
         'folder-delete': 'deleteEllipsis',
         'edit-dialog-button': 'save'
     }, function(msg, id) {
-        var el = $(id),
+        var el = getElemById(id),
             m = _m(msg);
         if (el.tagName == 'COMMAND') el.label = m;
         el.textContent = m;
@@ -136,7 +136,7 @@ function init() {
                     isOpen = opens.contains(id);
                     if (isOpen) open = ' open';
                 }
-                html += '<li class="parent' + open + '"' + idHTML + ' role="treeitem" aria-expanded="' + isOpen + '" data-parentid="' + parentID + '">' + '<span tabindex="0" style="-webkit-padding-start: ' + paddingStart + 'px"><b class="twisty"></b>' + '<img src="folder.png" width="16" height="16" alt=""><i>' + (title || _m('noTitle')) + '</i>' + '</span>';
+                html += '<li class="parent' + open + '"' + idHTML + ' role="treeitem" aria-expanded="' + isOpen + '" data-parentid="' + parentID + '">' + '<span tabindex="0" style="-webkit-padding-start: ' + paddingStart + 'px"><b class="twisty"></b>' + '<img src="/assets/images/folder.png" width="16" height="16" alt=""><i>' + (title || _m('noTitle')) + '</i>' + '</span>';
                 if (isOpen) {
                     if (children) {
                         html += generateHTML(children, level + 1);
@@ -147,7 +147,7 @@ function init() {
                                 var div = document.createElement('div');
                                 div.innerHTML = html;
                                 var ul = div.querySelector('ul');
-                                ul.inject($('neat-tree-item-' + _id));
+                                ul.inject(getElemById('neat-tree-item-' + _id));
                                 div.destroy();
                             });
                         })(id);
@@ -162,7 +162,7 @@ function init() {
         return html;
     };
 
-    var $tree = $('tree');
+    var $tree = getElemById('tree');
     chrome.bookmarks.getTree(function(tree) {
         var html = generateHTML(tree[0].children);
         $tree.innerHTML = html;
@@ -172,7 +172,7 @@ function init() {
 
         var focusID = localStorage.focusID;
         if (typeof focusID != 'undefined' && focusID != null) {
-            var focusEl = $('neat-tree-item-' + focusID);
+            var focusEl = getElemById('neat-tree-item-' + focusID);
             if (focusEl) {
                 var oriOverflow = $tree.style.overflow;
                 $tree.style.overflow = 'hidden';
@@ -257,9 +257,9 @@ function init() {
     });
 
     // Search
-    var $results = $('results');
+    var $results = getElemById('results');
     var searchMode = false;
-    var searchInput = $('search-input');
+    var searchInput = getElemById('search-input');
     var prevValue = '';
 
     var search = function() {
@@ -345,7 +345,7 @@ function init() {
             }, 30);
         } else if (key == 9 && !searchMode) { // tab
             if (typeof focusID != 'undefined' && focusID != null) {
-                var focusEl = $('neat-tree-item-' + focusID);
+                var focusEl = getElemById('neat-tree-item-' + focusID);
                 if (focusEl) {
                     e.preventDefault();
                     focusEl.firstElementChild.focus();
@@ -402,12 +402,12 @@ function init() {
     $tree.addEventListener('keyup', resetHeight);
 
     // Confirm dialog event listeners
-    $('confirm-dialog-button-1').addEventListener('click', function() {
+    getElemById('confirm-dialog-button-1').addEventListener('click', function() {
         ConfirmDialog.fn1();
         ConfirmDialog.close();
     }, false);
 
-    $('confirm-dialog-button-2').addEventListener('click', function() {
+    getElemById('confirm-dialog-button-2').addEventListener('click', function() {
         ConfirmDialog.fn2();
         ConfirmDialog.close();
     }, false);
@@ -416,12 +416,12 @@ function init() {
     var ConfirmDialog = {
         open: function(opts) {
             if (!opts) return;
-            $('confirm-dialog-text').innerHTML = opts.dialog.widont();
-            $('confirm-dialog-button-1').innerHTML = opts.button1;
-            $('confirm-dialog-button-2').innerHTML = opts.button2;
+            getElemById('confirm-dialog-text').innerHTML = opts.dialog.widont();
+            getElemById('confirm-dialog-button-1').innerHTML = opts.button1;
+            getElemById('confirm-dialog-button-2').innerHTML = opts.button2;
             if (opts.fn1) ConfirmDialog.fn1 = opts.fn1;
             if (opts.fn2) ConfirmDialog.fn2 = opts.fn2;
-            $('confirm-dialog-button-' + (opts.focusButton || 1)).focus();
+            getElemById('confirm-dialog-button-' + (opts.focusButton || 1)).focus();
             document.body.addClass('needConfirm');
         },
         close: function() {
@@ -432,7 +432,7 @@ function init() {
     };
 
     // Edit dialog event listener
-    $('edit-dialog').addEventListener('submit', function() {
+    getElemById('edit-dialog').addEventListener('submit', function() {
         EditDialog.close();
         return false;
     }, false);
@@ -441,15 +441,15 @@ function init() {
     var EditDialog = window.EditDialog = {
         open: function(opts) {
             if (!opts) return;
-            $('edit-dialog-text').innerHTML = opts.dialog.widont();
+            getElemById('edit-dialog-text').innerHTML = opts.dialog.widont();
             if (opts.fn) EditDialog.fn = opts.fn;
             var type = opts.type || 'bookmark';
-            var name = $('edit-dialog-name');
+            var name = getElemById('edit-dialog-name');
             name.value = opts.name;
             name.focus();
             name.select();
             name.scrollLeft = 0; // very delicate, show first few words instead of last
-            var url = $('edit-dialog-url');
+            var url = getElemById('edit-dialog-url');
             if (type == 'bookmark') {
                 url.style.display = '';
                 url.disabled = false;
@@ -462,14 +462,14 @@ function init() {
             body.addClass('needEdit');
         },
         close: function() {
-            var urlInput = $('edit-dialog-url');
+            var urlInput = getElemById('edit-dialog-url');
             var url = urlInput.value;
             if (!urlInput.validity.valid) {
                 urlInput.value = 'http://' + url;
                 if (!urlInput.validity.valid) url = ''; // if still invalid, forget it.
                 url = 'http://' + url;
             }
-            EditDialog.fn($('edit-dialog-name').value, url);
+            EditDialog.fn(getElemById('edit-dialog-name').value, url);
             body.removeClass('needEdit');
         },
         fn: function() {}
@@ -591,7 +591,7 @@ function init() {
                         }, function(n) {
                             var title = n.title;
                             var url = n.url;
-                            var li = $('neat-tree-item-' + id);
+                            var li = getElemById('neat-tree-item-' + id);
                             if (li) {
                                 if (isBookmark) {
                                     var css = li.querySelector('a').style.cssText;
@@ -603,7 +603,7 @@ function init() {
                                 }
                             }
                             if (searchMode) {
-                                li = $('results-item-' + id);
+                                li = getElemById('results-item-' + id);
                                 li.innerHTML = generateBookmarkHTML(title, url);
                             }
                             li.firstElementChild.focus();
@@ -614,8 +614,8 @@ function init() {
         },
 
         deleteBookmark: function(id) {
-            var li1 = $('neat-tree-item-' + id);
-            var li2 = $('results-item-' + id);
+            var li1 = getElemById('neat-tree-item-' + id);
+            var li2 = getElemById('results-item-' + id);
             chrome.bookmarks.remove(id, function() {
                 if (li1) {
                     var nearLi1 = li1.nextElementSibling || li1.previousElementSibling;
@@ -631,7 +631,7 @@ function init() {
         },
 
         deleteBookmarks: function(id, bookmarkCount, folderCount) {
-            var li = $('neat-tree-item-' + id);
+            var li = getElemById('neat-tree-item-' + id);
             var item = li.querySelector('span');
             if (bookmarkCount || folderCount) {
                 var dialog = '';
@@ -726,8 +726,8 @@ function init() {
     });
 
     // Context menu
-    var $bookmarkContextMenu = $('bookmark-context-menu');
-    var $folderContextMenu = $('folder-context-menu');
+    var $bookmarkContextMenu = getElemById('bookmark-context-menu');
+    var $folderContextMenu = getElemById('folder-context-menu');
 
     var clearMenu = function(e) {
         currentContext = null;
@@ -777,7 +777,8 @@ function init() {
             if (pageY > boundY) pageY -= bookmarkMenuHeight;
             if (pageY < 0) pageY = boundY;
             pageY = Math.max(0, pageY);
-            $bookmarkContextMenu.style.left = pageX + 'px';
+            //$bookmarkContextMenu.style.left = pageX + 'px';
+            $bookmarkContextMenu.style.left = '0px';
             $bookmarkContextMenu.style.top = pageY + 'px';
             $bookmarkContextMenu.style.opacity = 1;
             $bookmarkContextMenu.focus();
@@ -798,7 +799,8 @@ function init() {
             var boundY = window.innerHeight - folderMenuHeight;
             if (pageY > boundY) pageY -= folderMenuHeight;
             if (pageY < 0) pageY = boundY;
-            $folderContextMenu.style.left = pageX + 'px';
+            //$folderContextMenu.style.left = pageX + 'px';
+            $folderContextMenu.style.left = '0px';
             $folderContextMenu.style.top = pageY + 'px';
             $folderContextMenu.style.opacity = 1;
             $folderContextMenu.focus();
@@ -959,7 +961,7 @@ function init() {
                 } else if (rtl) {
                     var parentID = li.dataset.parentid;
                     if (parentID == '0') return;
-                    $('neat-tree-item-' + parentID).querySelector('span').focus();
+                    getElemById('neat-tree-item-' + parentID).querySelector('span').focus();
                 }
                 break;
             case 37:
@@ -972,7 +974,7 @@ function init() {
                 } else if (!rtl) {
                     var parentID = li.dataset.parentid;
                     if (parentID == '0') return;
-                    $('neat-tree-item-' + parentID).querySelector('span').focus();
+                    getElemById('neat-tree-item-' + parentID).querySelector('span').focus();
                 }
                 break;
             case 32:
@@ -1208,8 +1210,8 @@ function init() {
     var draggedOut = false;
     var canDrop = false;
     var zoomLevel = 1;
-    var bookmarkClone = $('bookmark-clone');
-    var dropOverlay = $('drop-overlay');
+    var bookmarkClone = getElemById('bookmark-clone');
+    var dropOverlay = getElemById('drop-overlay');
     $tree.addEventListener('mousedown', function(e) {
         if (e.button != 0) return;
         var el = e.target;
@@ -1426,7 +1428,7 @@ function init() {
     });
 
     // Resizer
-    var $resizer = $('resizer');
+    var $resizer = getElemById('resizer');
     var resizerDown = false;
     var bodyWidth, screenX;
     $resizer.addEventListener('mousedown', function(e) {
@@ -1469,7 +1471,7 @@ function init() {
             searchInput.select();
         }
     });
-    $('cover').addEventListener('click', closeDialogs);
+    getElemById('cover').addEventListener('click', closeDialogs);
 
     // Make webkit transitions work only after elements are settled down
     setTimeout(function() {

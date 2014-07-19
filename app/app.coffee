@@ -12,7 +12,7 @@ Application.config([
 			templateUrl: 'templates/dribble_view.html'
 			controller: 'DribbleController'
 		})
-		.otherwise({redirectTo: "/dribble/popular"})
+		.otherwise({redirectTo: "/500px/popular"})
 ])
 
 

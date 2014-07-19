@@ -12,7 +12,7 @@ void function () {
       }).when('/dribble/:category', {
         templateUrl: 'templates/dribble_view.html',
         controller: 'DribbleController'
-      }).otherwise({ redirectTo: '/dribble/popular' });
+      }).otherwise({ redirectTo: '/500px/popular' });
     }
   ]);
   YTMenu = function () {

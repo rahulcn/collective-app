@@ -4,7 +4,7 @@
  Works for Chrome 8 and above.
  */
 
-var $ = function(id) {
+var getElemById = function(id) {
     return document.getElementById(id);
 };
 

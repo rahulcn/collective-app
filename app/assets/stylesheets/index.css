@@ -1,8 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
 
 body {
-    font-family: 'Montserrat';
-    font-weight: 400;
+    font-family: 'lato';
+    /*font-weight: 400;*/
     background: #ECF0F1;
 }
 
@@ -291,9 +291,6 @@ header {
 
 /*Grid animation ends*/
 
-.view-head {
-    padding: 0px 10px 10px;
-}
 .view-head .search {
 
 }

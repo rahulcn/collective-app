@@ -41,4 +41,18 @@ void function () {
     };
     init();
   }();
+  $(function () {
+    return $('.sidebar-trigger').on('click', function () {
+      var sidebar, view;
+      $(this).toggleClass('sidebar-trigger-close');
+      sidebar = $("div[data-col='sidebar']");
+      view = $("div[data-col='view']");
+      sidebar.toggleClass('sidebar-close');
+      $('#menu', sidebar).toggle();
+      $('#bookmark', sidebar).toggle();
+      return setTimeout(function () {
+        return sidebar.toggleClass('bookmark-bg sidebar-close');
+      }, 500);
+    });
+  });
 }.call(this);

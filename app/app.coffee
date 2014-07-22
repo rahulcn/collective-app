@@ -42,3 +42,18 @@ YTMenu = (->
 	return
 )()
 
+$ ->
+	$('.sidebar-trigger').on('click', ->
+		$(this).toggleClass('sidebar-trigger-close')
+		sidebar = $("div[data-col='sidebar']")
+		view = $("div[data-col='view']")
+		sidebar.toggleClass('sidebar-close')
+		$('#menu', sidebar).toggle()
+		$('#bookmark', sidebar).toggle()
+		setTimeout (->
+			sidebar.toggleClass('bookmark-bg sidebar-close')
+		), 500
+	)
+
+
+

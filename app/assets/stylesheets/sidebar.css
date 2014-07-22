@@ -88,6 +88,7 @@
     opacity: 1;
     z-index: 200;
     pointer-events: auto;
+    text-align: right;
     -webkit-transition: opacity 0s linear 0s;
     -moz-transition: opacity 0s linear 0s;
     transition: opacity 0s linear 0s;
@@ -175,9 +176,19 @@
         display: block;
         overflow-x: hidden;
         overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+        font-family: 'lato';
+        -webkit-transition: left 0.3s linear 0s;
+        -moz-transition: left 0.3s linear 0s;
+        transition: left 0.3s linear 0s;
+    }
+    .bookmark-bg {
         background-color: #fff;
         border-right: 1px solid #eee;
     }
+}
+
+.sidebar-close {
+    left: -25%;
 }
 
 /* Sidebar navigation */
@@ -195,6 +206,19 @@
 .nav-sidebar > .active > a:focus {
     color: #fff;
     background-color: #428bca;
+}
+
+.sidebar-trigger {
+    font-size: 180%;
+    position: absolute;
+    margin-top: 3px;
+    margin-left: 14%;
+    -webkit-transition: margin-left 0.3s linear 0s;
+    -moz-transition: margin-left 0.3s linear 0s;
+    transition: margin-left 0.3s linear 0s;
+}
+.sidebar-trigger-close {
+    margin-left: -5%;
 }
 
 

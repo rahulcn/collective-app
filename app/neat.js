@@ -754,7 +754,7 @@ function init() {
 
     var currentContext = null;
     var macCloseContextMenu = false;
-    body.addEventListener('contextmenu', function(e) {
+    getElemById('bookmark-container').addEventListener('contextmenu', function(e) {
         e.preventDefault();
         clearMenu();
         if (os == 'mac') {

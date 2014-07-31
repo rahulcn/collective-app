@@ -7,6 +7,16 @@ ApplicationService.factory('fhpxAPI', function ($http) {
     this.busy = false;
     this.category = options.category;
   };
+  fhpxAPI.prototype.firstPage = function () {
+    var url;
+    url = 'https://api.500px.com/v1/photos?feature=' + this.category + '&page=' + this.page + '&rpp=40&exclude=nude&image_size[]=3&image_size[]=4&consumer_key=' + KEY.fhpx;
+    $http.get(url).success(function (this$) {
+      return function (data) {
+        this$.photos = this$.photos.concat(data.photos);
+        window.localStorage.setItem('ca_photos', JSON.stringify(this$.photos));
+      };
+    }(this));
+  };
   fhpxAPI.prototype.nextPage = function () {
     var loading, url;
     if (this.busy)
@@ -16,7 +26,7 @@ ApplicationService.factory('fhpxAPI', function ($http) {
     this.busy = true;
     if (!this.page)
       this.page = 1;
-    url = 'https://api.500px.com/v1/photos?feature=' + this.category + '&page=' + this.page + '&rpp=12&exclude=nude&image_size[]=3&image_size[]=4&consumer_key=' + KEY.fhpx;
+    url = 'https://api.500px.com/v1/photos?feature=' + this.category + '&page=' + this.page + '&rpp=40&exclude=nude&image_size[]=3&image_size[]=4&consumer_key=' + KEY.fhpx;
     $http.get(url).success(function (this$) {
       return function (data) {
         this$.photos = this$.photos.concat(data.photos);

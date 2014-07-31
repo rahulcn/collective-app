@@ -29,13 +29,14 @@ ApplicationDirective.directive("infiScroll", ($timeout) ->
 			callMore = true
 			newHeight = undefined
 			handler = ->
-				docHeight = $(document).height() - 100
-				winHeight = $(window).height()
+				docHeight = $(document).height()
+				winHeight = $(window).height() + 1000
 				scrolledHeight = $(document).scrollTop()
 				elmHeight = $(elm).height()
 
 				#closure to compare elem height, which is changed when api loads feeds
 				(=>
+					console.log docHeight, "asddd", (winHeight + scrolledHeight)
 					if docHeight <= (winHeight + scrolledHeight)
 						unless newHeight is elmHeight
 							scope.$eval attr.infiScroll

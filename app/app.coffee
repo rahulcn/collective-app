@@ -47,7 +47,7 @@ $ ->
 		$(this).toggleClass('sidebar-trigger-close')
 		sidebar = $("div[data-col='sidebar']")
 		view = $("div[data-col='view']")
-		sidebar.toggleClass('sidebar-close')
+		sidebar.toggleClass('sidebar-close sidebar-top')
 		$('#menu', sidebar).toggle()
 		$('#bookmark', sidebar).toggle()
 		setTimeout (->

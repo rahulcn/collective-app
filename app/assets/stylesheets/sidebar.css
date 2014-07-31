@@ -213,12 +213,16 @@
     position: absolute;
     margin-top: 3px;
     margin-left: 14%;
-    -webkit-transition: margin-left 0.3s linear 0s;
-    -moz-transition: margin-left 0.3s linear 0s;
-    transition: margin-left 0.3s linear 0s;
+    cursor: pointer;
+    -webkit-transition: margin-left 0.2s linear 1s;
+    -moz-transition: margin-left 0.2s linear 1s;
+    transition: margin-left 0.2s linear 1s;
 }
 .sidebar-trigger-close {
     margin-left: -5%;
+}
+.sidebar-top {
+    top: 40px;
 }
 
 

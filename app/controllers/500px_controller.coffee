@@ -2,5 +2,8 @@ ApplicationController.controller "500pxController", ($scope, $location, fhpxAPI,
 	path = $location.path().split('/')[2]
 	$scope.setActive(['fhpx', path])
 	$scope.service = new fhpxAPI({category: path})
-	$scope.service.nextPage()
+	unless window.localStorage.getItem('ca_photos')
+		$scope.service.firstPage()
+	else
+		$scope.service.photos = JSON.parse(window.localStorage.getItem('ca_photos'))
 	return

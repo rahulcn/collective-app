@@ -7,5 +7,9 @@ ApplicationController.controller('500pxController', function ($scope, $location,
     path
   ]);
   $scope.service = new fhpxAPI({ category: path });
-  $scope.service.nextPage();
+  if (!window.localStorage.getItem('ca_photos')) {
+    $scope.service.firstPage();
+  } else {
+    $scope.service.photos = JSON.parse(window.localStorage.getItem('ca_photos'));
+  }
 });

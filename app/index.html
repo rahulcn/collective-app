@@ -21,9 +21,9 @@
 	</head>
 	<body ng-app="CollectiveApp">
 		<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner" style="min-height: 40px;height: 40px;margin: 0;">
-			<div class="container">
+			<div class="container-fluid">
 				<div class="navbar-header" style="margin: 0 auto;">
-					<a class="sidebar-trigger col-lg-offset-3"><i class="fa fa-bars"></i></a>
+					<a class="sidebar-trigger sidebar-trigger-close col-lg-offset-3"><i class="fa fa-bars"></i></a>
 					<a href="../" class="navbar-brand">CollectiveApp</a>
 					<a href="chrome://apps/" class="google-apps">
 						<img src="assets/images/google-apps.svg" alt="google-apps">
@@ -38,13 +38,20 @@
 
 		<div class="container-fluid" ng-controller="ApplicationController">
 			<div class="row">
-				<div class="col-lg-2 col-md-2 sidebar bookmark-bg" data-col="sidebar">
-					<div id="menu" style="display: none;margin-top: 40px;">
-						<ul class="hyperlink-nav" style="left: 0;padding: 0px 5px 0px 30px;">
-							<li ng-class="fhpxActive"><a href="#/500px/popular">500px</a></li>
+				<div class="col-lg-2 col-md-2 sidebar sidebar-top" data-col="sidebar"> <!-- bookmark-bg -->
+					<div id="menu" style="margin-top: 40px;">
+						<ul class="hyperlink-nav" style="left: 0;padding: 0px 5px 0px 20px;">
+							<li ng-controller="500pxController">
+								<a ng-class="fhpxActive" href="#/500px/popular/" data-main="popular">500px</a>
+								<ul class="categories">
+									<li ng-repeat="category in categories">
+										<a ng-click="selectCategory($event);" data-category="{{category}}">{{category}}</a>
+									</li>
+								</ul>
+							</li>
 							<li ng-class="dribbleActive"><a href="#/dribble/popular">Dribble</a></li>
 						</ul>
-						<nav class="dr-menu">
+						<!--<nav class="dr-menu">
 							<div class="dr-trigger"><i class="fa fa-bars" style="padding-right: 0;"></i><a class="dr-label">Account</a></div>
 							<ul>
 								<li><a href="#">Rahul Chandra</a><i class="fa fa-user"></i></li>
@@ -55,10 +62,10 @@
 								<li><a href="#">Settings</a><i class="fa fa-cog"></i></li>
 								<li><a href="#">Logout</a><i class="fa fa-power-off"></i></li>
 							</ul>
-						</nav>
+						</nav>-->
 					</div>
-
-					<div id="bookmark">
+					<div id="bookmark" style="display: none;">
+						<!--<div ng-include src="'templates/bookmark_view.html'"></div>-->
 						<div id="bookmark-container">
 							<div id="search" role="search"><input id="search-input" type="search" results="0" autofocus></div>
 							<div id="tree" tabindex="-1"></div>
@@ -71,19 +78,19 @@
 
 						<menu id="bookmark-context-menu" type="context" tabindex="-1">
 							<command id="bookmark-new-tab" tabindex="-1">
-							<command id="bookmark-new-window" tabindex="-1">
-							<command id="bookmark-new-incognito-window" tabindex="-1">
-							<hr>
-							<command id="bookmark-edit" tabindex="-1">
-							<command id="bookmark-delete" tabindex="-1">
+								<command id="bookmark-new-window" tabindex="-1">
+									<command id="bookmark-new-incognito-window" tabindex="-1">
+										<hr>
+										<command id="bookmark-edit" tabindex="-1">
+											<command id="bookmark-delete" tabindex="-1">
 						</menu>
 						<menu id="folder-context-menu" type="context" tabindex="-1">
 							<command id="folder-window" tabindex="-1">
-							<command id="folder-new-window" tabindex="-1">
-							<command id="folder-new-incognito-window" tabindex="-1">
-							<hr>
-							<command id="folder-edit" tabindex="-1">
-							<command id="folder-delete" tabindex="-1">
+								<command id="folder-new-window" tabindex="-1">
+									<command id="folder-new-incognito-window" tabindex="-1">
+										<hr>
+										<command id="folder-edit" tabindex="-1">
+											<command id="folder-delete" tabindex="-1">
 						</menu>
 
 
@@ -113,12 +120,10 @@
 								</div>
 							</form>
 						</div>
+
 					</div>
-
-
 				</div>
-
-				<div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2" ng-view="" data-col="view"></div>
+				<div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2" ng-view data-col="view"></div>
 			</div>
 			<div class="row">
 				<footer class="col-lg-10 col-lg-offset-2" style="margin-top: -10px;">
@@ -132,6 +137,7 @@
 
 
 		<script type="text/javascript" src="assets/javascripts/jquery.min.js"></script>
+		<script type="text/javascript" src="assets/javascripts/underscore-min.js"></script>
 		<script type="text/javascript" src="assets/javascripts/angular.min.js"></script>
 		<script type="text/javascript" src="assets/javascripts/angular-route.min.js"></script>
 		<script type="text/javascript" src="assets/javascripts/imagelightbox.js"></script>
@@ -147,6 +153,7 @@
 		<script type="text/javascript" src="services/500px_service.js"></script>
 
 		<script type="text/javascript" src="directives/500px_directive.js"></script>
+		<script type="text/javascript" src="directives/lazyload_directive.js"></script>
 
 		<script type="text/javascript" src="controllers/dribble_controller.js"></script>
 		<script type="text/javascript" src="controllers/500px_controller.js"></script>

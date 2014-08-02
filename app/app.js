@@ -9,6 +9,9 @@ void function () {
       return $routeProvider.when('/500px/:category', {
         templateUrl: 'templates/fhpx_view.html',
         controller: '500pxController'
+      }).when('/500px/:category/:only', {
+        templateUrl: 'templates/fhpx_view.html',
+        controller: '500pxController'
       }).when('/dribble/:category', {
         templateUrl: 'templates/dribble_view.html',
         controller: 'DribbleController'
@@ -42,17 +45,24 @@ void function () {
     init();
   }();
   $(function () {
-    return $('.sidebar-trigger').on('click', function () {
+    $('.sidebar-trigger').on('click', function () {
       var sidebar, view;
       $(this).toggleClass('sidebar-trigger-close');
       sidebar = $("div[data-col='sidebar']");
       view = $("div[data-col='view']");
-      sidebar.toggleClass('sidebar-close sidebar-top');
-      $('#menu', sidebar).toggle();
-      $('#bookmark', sidebar).toggle();
+      sidebar.toggleClass('sidebar-close');
+      setTimeout(function () {
+        $('#menu', sidebar).toggle();
+        $('#bookmark', sidebar).toggle();
+        return sidebar.toggleClass('sidebar-top');
+      }, 200);
       return setTimeout(function () {
         return sidebar.toggleClass('bookmark-bg sidebar-close');
       }, 500);
+    });
+    return $('.google-apps').on('click', function (event) {
+      event.preventDefault();
+      return chrome.tabs.update({ url: 'chrome://apps' });
     });
   });
 }.call(this);

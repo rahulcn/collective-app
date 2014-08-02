@@ -3,25 +3,29 @@ ApplicationService.factory "fhpxAPI", ($http) ->
 
 	fhpxAPI = (options) ->
 		@photos = []
+		@loading = $('<div class="loading"><div></div><div></div><div></div><div></div></div>')
 		@busy = false
 		@category = options.category
+		@only = options.only
+		@show_nude = if options.only == 'Nude' then '1' else '0'
 		return
 
 	fhpxAPI::firstPage = ->
-		url = "https://api.500px.com/v1/photos?feature=#{@category}&page=#{@page}&rpp=40&exclude=nude&image_size[]=3&image_size[]=4&consumer_key=#{KEY['fhpx']}"
+		$('#grids').parent().append(@loading)
+		url = "https://api.500px.com/v1/photos?feature=#{@category}&page=#{@page}&only=#{encodeURIComponent(@only)}&rpp=40&show_nude=#{@show_nude}&image_size[]=3&image_size[]=4&consumer_key=#{KEY['fhpx']}"
 		$http.get(url).success (data) =>
 			@photos = @photos.concat(data.photos)
 			window.localStorage.setItem('ca_photos', JSON.stringify(@photos))
+			$('.loading').remove()
 			return
 		return
 
 	fhpxAPI::nextPage = ->
 		return  if @busy
-		loading = $('<div class="loading"><div></div><div></div><div></div><div></div></div>')
-		$('#grids').parent().append(loading)
+		$('#grids').parent().append(@loading)
 		@busy = true
-		@page = 1 unless @page
-		url = "https://api.500px.com/v1/photos?feature=#{@category}&page=#{@page}&rpp=40&exclude=nude&image_size[]=3&image_size[]=4&consumer_key=#{KEY['fhpx']}"
+		@page = 2 unless @page
+		url = "https://api.500px.com/v1/photos?feature=#{@category}&page=#{@page}&only=#{encodeURIComponent(@only)}&rpp=40&show_nude=#{@show_nude}&image_size[]=3&image_size[]=4&consumer_key=#{KEY['fhpx']}"
 		$http.get(url).success (data) =>
 			@photos = @photos.concat(data.photos)
 			@page = @page + 1

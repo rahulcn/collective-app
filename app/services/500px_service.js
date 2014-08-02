@@ -4,29 +4,33 @@ ApplicationService.factory('fhpxAPI', function ($http) {
   KEY = { fhpx: 'pcVeKhKdsQoORanPjZGnGz9Li0XGiihd2X7XnBJj' };
   fhpxAPI = function (options) {
     this.photos = [];
+    this.loading = $('<div class="loading"><div></div><div></div><div></div><div></div></div>');
     this.busy = false;
     this.category = options.category;
+    this.only = options.only;
+    this.show_nude = options.only === 'Nude' ? '1' : '0';
   };
   fhpxAPI.prototype.firstPage = function () {
     var url;
-    url = 'https://api.500px.com/v1/photos?feature=' + this.category + '&page=' + this.page + '&rpp=40&exclude=nude&image_size[]=3&image_size[]=4&consumer_key=' + KEY.fhpx;
+    $('#grids').parent().append(this.loading);
+    url = 'https://api.500px.com/v1/photos?feature=' + this.category + '&page=' + this.page + '&only=' + encodeURIComponent(this.only) + '&rpp=40&show_nude=' + this.show_nude + '&image_size[]=3&image_size[]=4&consumer_key=' + KEY.fhpx;
     $http.get(url).success(function (this$) {
       return function (data) {
         this$.photos = this$.photos.concat(data.photos);
         window.localStorage.setItem('ca_photos', JSON.stringify(this$.photos));
+        $('.loading').remove();
       };
     }(this));
   };
   fhpxAPI.prototype.nextPage = function () {
-    var loading, url;
+    var url;
     if (this.busy)
       return;
-    loading = $('<div class="loading"><div></div><div></div><div></div><div></div></div>');
-    $('#grids').parent().append(loading);
+    $('#grids').parent().append(this.loading);
     this.busy = true;
     if (!this.page)
-      this.page = 1;
-    url = 'https://api.500px.com/v1/photos?feature=' + this.category + '&page=' + this.page + '&rpp=40&exclude=nude&image_size[]=3&image_size[]=4&consumer_key=' + KEY.fhpx;
+      this.page = 2;
+    url = 'https://api.500px.com/v1/photos?feature=' + this.category + '&page=' + this.page + '&only=' + encodeURIComponent(this.only) + '&rpp=40&show_nude=' + this.show_nude + '&image_size[]=3&image_size[]=4&consumer_key=' + KEY.fhpx;
     $http.get(url).success(function (this$) {
       return function (data) {
         this$.photos = this$.photos.concat(data.photos);

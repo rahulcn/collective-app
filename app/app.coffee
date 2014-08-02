@@ -8,6 +8,10 @@ Application.config([
 			templateUrl: "templates/fhpx_view.html"
 			controller: '500pxController'
 		})
+		.when("/500px/:category/:only", {
+			templateUrl: "templates/fhpx_view.html"
+			controller: '500pxController'
+		})
 		.when('/dribble/:category', {
 			templateUrl: 'templates/dribble_view.html'
 			controller: 'DribbleController'
@@ -47,12 +51,21 @@ $ ->
 		$(this).toggleClass('sidebar-trigger-close')
 		sidebar = $("div[data-col='sidebar']")
 		view = $("div[data-col='view']")
-		sidebar.toggleClass('sidebar-close sidebar-top')
-		$('#menu', sidebar).toggle()
-		$('#bookmark', sidebar).toggle()
+		sidebar.toggleClass('sidebar-close')
+		setTimeout (->
+			$('#menu', sidebar).toggle()
+			$('#bookmark', sidebar).toggle()
+			sidebar.toggleClass('sidebar-top')
+		), 200
+
 		setTimeout (->
 			sidebar.toggleClass('bookmark-bg sidebar-close')
 		), 500
+	)
+
+	$(".google-apps").on('click', (event) ->
+		event.preventDefault()
+		chrome.tabs.update({url: "chrome://apps"})
 	)
 
 

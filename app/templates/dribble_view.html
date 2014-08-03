@@ -12,7 +12,8 @@
 	<div id="grids" class="flip-down">
 		<div ng-repeat="shot in service.photos" class="col-xs-3 col-sm-3 col-md-3 grid" ng-repeat-end>
 
-			<div class="shot effect-zoe">
+			<div class="shot shot-cam-loader effect-zoe">
+				<div class="spinner" id="590527609589137403_679256982-full-loadr" style="/* display: none; */"></div>
 				<a class="user">
 					<div class="avatar"><img src="{{shot.player.avatar_url}}" alt="{{shot.player.name}}" /></div>
 					<div class="name">{{shot.player.username}}</div>
@@ -20,7 +21,7 @@
 
 				<div>
 					<a class="lightbox" href="{{shot.image_url}}" target="_blank" style="display: block;">
-						<img bn-lazy-src="{{shot.image_teaser_url}}" alt="{{shot.title}}" class="img-responsive"/>
+						<img bn-lazy-src="{{shot.image_teaser_url}}" alt="{{shot.title}}" class="img-responsive" style="height: 182px;" on-load/>
 					</a>
 					<div style="position: relative;">
 						<figcaption>

@@ -5,6 +5,9 @@ ApplicationController.controller('500pxController', function ($scope, $location,
     $routeParams.category
   ]);
   $scope.service = new fhpxAPI($routeParams);
+  $scope.service.onload = function () {
+    return console.log('ctrl load');
+  };
   $('.hyperlink-nav li > a').data('main', $routeParams.category);
   $scope.categories = [
     'Abstract',

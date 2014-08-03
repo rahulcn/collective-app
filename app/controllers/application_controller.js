@@ -23,6 +23,7 @@ ApplicationController.controller('ApplicationController', function ($scope) {
       viewportFactor: .2
     });
     currentScope = $scope.$$listeners.show[0]['arguments'][0].targetScope;
+    console.log(currentScope.service.photos);
     if (currentScope.service.photos.length <= 20) {
       console.log('lightbox loading...');
       $('.grid a.lightbox').imageLightbox({

@@ -18,7 +18,10 @@ ApplicationController.controller "ApplicationController", ($scope) ->
 			viewportFactor: 0.2
 		})
 
+#		$(".classysocial").ClassySocial()
+
 		currentScope = $scope.$$listeners.show[0].arguments[0].targetScope
+		console.log currentScope.service.photos
 		if currentScope.service.photos.length <= 20
 			console.log 'lightbox loading...'
 			$(".grid a.lightbox").imageLightbox

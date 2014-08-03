@@ -36,7 +36,6 @@ ApplicationDirective.directive("infiScroll", ($timeout) ->
 
 				#closure to compare elem height, which is changed when api loads feeds
 				(=>
-					console.log docHeight, "asddd", (winHeight + scrolledHeight)
 					if docHeight <= (winHeight + scrolledHeight)
 						unless newHeight is elmHeight
 							scope.$eval attr.infiScroll

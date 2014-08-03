@@ -1,0 +1,332 @@
+/*!
+ * jQuery ClassySocial
+ * www.class.pm
+ *
+ * Written by Marius Stanciu - Sergiu <marius@class.pm>
+ * Licensed under the MIT license www.class.pm/LICENSE-MIT
+ * Version 2.2.0
+ *
+ */
+
+.classysocial {
+    display: block;
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    z-index: 1;
+    right: 16px;
+    top: 0px;
+    visibility: hidden;
+}
+
+.classysocial .scontainer {
+    width: auto;
+    mardin: 0;
+    padding: 0;
+}
+
+.classysocial .scontainer .sbutton {
+    width: 38px;
+    height: 38px;
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    z-index: 1;
+    cursor: pointer;
+    text-indent: -9999px;
+    display: none;
+    background: no-repeat;
+    background-color: #fff;
+    border-radius: 20px;
+    -o-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    box-shadow: 0 0 5px #bbb;
+    -o-box-shadow: 0 0 5px #bbb;
+    -ms-box-shadow: 0 0 5px #bbb;
+    -moz-box-shadow: 0 0 5px #bbb;
+    -webkit-box-shadow: 0 0 5px #bbb;
+    background-position: -3px -2px;
+}
+
+.classysocial .scontainer .sbutton:hover {
+    box-shadow: 0 0 5px #888;
+    -o-box-shadow: 0 0 5px #888;
+    -ms-box-shadow: 0 0 5px #888;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px #888;
+}
+
+/*
+
+
+.supersocialshare.bubble.sss-gradient .sb_main {
+    background-image: url(../images/gradient/bubble_share_core.png);
+}
+
+.supersocialshare.bubble.sss-gradient .sb_network_button.facebook {
+    background-image: url(../images/gradient/bubble_facebook_share_button.png);
+}
+
+.supersocialshare.bubble.sss-gradient .sb_network_button.linkedin {
+    background-image: url(../images/gradient/bubble_linkedin_share_button.png);
+}
+
+.supersocialshare.bubble.sss-gradient .sb_network_button.google {
+    background-image: url(../images/gradient/bubble_googleplus_share_button.png);
+}
+
+.supersocialshare.bubble.sss-gradient .sb_network_button.twitter {
+    background-image: url(../images/gradient/bubble_twitter_share_button.png);
+}
+
+.supersocialshare.bubble.sss-gradient .sb_network_button.pinterest {
+    background-image: url(../images/gradient/bubble_pinterest_share_button.png);
+}
+
+.supersocialshare.bubble.sss-gradient .sb_network_button.email {
+    background-image: url(../images/gradient/bubble_email_share_button.png);
+}
+
+.supersocialshare.bubble.sss-flat .sb_main {
+    background-image: url(../images/flat/bubble_share_core.png);
+}
+
+.supersocialshare.bubble.sss-flat .sb_network_button.facebook {
+    background-image: url(../images/flat/bubble_facebook_share_button.png);
+}
+
+.supersocialshare.bubble.sss-flat .sb_network_button.linkedin {
+    background-image: url(../images/flat/bubble_linkedin_share_button.png);
+}
+
+.supersocialshare.bubble.sss-flat .sb_network_button.google {
+    background-image: url(../images/flat/bubble_googleplus_share_button.png);
+}
+
+.supersocialshare.bubble.sss-flat .sb_network_button.twitter {
+    background-image: url(../images/flat/bubble_twitter_share_button.png);
+}
+
+.supersocialshare.bubble.sss-flat .sb_network_button.pinterest {
+    background-image: url(../images/flat/bubble_pinterest_share_button.png);
+}
+
+.supersocialshare.bubble.sss-flat .sb_network_button.email {
+    background-image: url(../images/flat/bubble_email_share_button.png);
+}
+
+@media only screen and (min-device-pixel-ratio:2),only screen and (min-resolution:192dpi) {
+    .supersocialshare.bubble.sss-flat .sb_main {
+        background-image: url(../images/flat/2x/bubble_share_core.png);
+    }
+
+    .supersocialshare.bubble.sss-flat .sb_network_button.facebook {
+        background-image: url(../images/flat/2x/bubble_facebook_share_button.png);
+    }
+
+    .supersocialshare.bubble.sss-flat .sb_network_button.linkedin {
+        background-image: url(../images/flat/2x/bubble_linkedin_share_button.png);
+    }
+
+    .supersocialshare.bubble.sss-flat .sb_network_button.google {
+        background-image: url(../images/flat/2x/bubble_googleplus_share_button.png);
+    }
+
+    .supersocialshare.bubble.sss-flat .sb_network_button.twitter {
+        background-image: url(../images/flat/2x/bubble_twitter_share_button.png);
+    }
+
+    .supersocialshare.bubble.sss-flat .sb_network_button.pinterest {
+        background-image: url(../images/flat/2x/bubble_pinterest_share_button.png);
+    }
+
+    .supersocialshare.bubble.sss-flat .sb_network_button.email {
+        background-image: url(../images/flat/2x/bubble_email_share_button.png);
+    }
+}
+
+.supersocialshare.bubble.sss-light .sb_main {
+    background-image: url(../images/light/bubble_share_core.png);
+}
+
+.supersocialshare.bubble.sss-light .sb_network_button.facebook {
+    background-image: url(../images/light/bubble_facebook_share_button.png);
+}
+
+.supersocialshare.bubble.sss-light .sb_network_button.linkedin {
+    background-image: url(../images/light/bubble_linkedin_share_button.png);
+}
+
+.supersocialshare.bubble.sss-light .sb_network_button.google {
+    background-image: url(../images/light/bubble_googleplus_share_button.png);
+}
+
+.supersocialshare.bubble.sss-light .sb_network_button.twitter {
+    background-image: url(../images/light/bubble_twitter_share_button.png);
+}
+
+.supersocialshare.bubble.sss-light .sb_network_button.pinterest {
+    background-image: url(../images/light/bubble_pinterest_share_button.png);
+}
+
+.supersocialshare.bubble.sss-light .sb_network_button.email {
+    background-image: url(../images/light/bubble_email_share_button.png);
+}
+
+@media only screen and (min-device-pixel-ratio:2),only screen and (min-resolution:192dpi) {
+    .supersocialshare.bubble.sss-light .sb_main {
+        background-image: url(../images/light/2x/bubble_share_core.png);
+    }
+
+    .supersocialshare.bubble.sss-light .sb_network_button.facebook {
+        background-image: url(../images/light/2x/bubble_facebook_share_button.png);
+    }
+
+    .supersocialshare.bubble.sss-light .sb_network_button.linkedin {
+        background-image: url(../images/light/2x/bubble_linkedin_share_button.png);
+    }
+
+    .supersocialshare.bubble.sss-light .sb_network_button.google {
+        background-image: url(../images/light/2x/bubble_googleplus_share_button.png);
+    }
+
+    .supersocialshare.bubble.sss-light .sb_network_button.twitter {
+        background-image: url(../images/light/2x/bubble_twitter_share_button.png);
+    }
+
+    .supersocialshare.bubble.sss-light .sb_network_button.pinterest {
+        background-image: url(../images/light/2x/bubble_pinterest_share_button.png);
+    }
+
+    .supersocialshare.bubble.sss-light .sb_network_button.email {
+        background-image: url(../images/light/2x/bubble_email_share_button.png);
+    }
+}
+
+.supersocialshare.bubble.sss-dark .sb_main {
+    background-image: url(../images/dark/bubble_share_core.png);
+}
+
+.supersocialshare.bubble.sss-dark .sb_network_button.facebook {
+    background-image: url(../images/dark/bubble_facebook_share_button.png);
+}
+
+.supersocialshare.bubble.sss-dark .sb_network_button.linkedin {
+    background-image: url(../images/dark/bubble_linkedin_share_button.png);
+}
+
+.supersocialshare.bubble.sss-dark .sb_network_button.google {
+    background-image: url(../images/dark/bubble_googleplus_share_button.png);
+}
+
+.supersocialshare.bubble.sss-dark .sb_network_button.twitter {
+    background-image: url(../images/dark/bubble_twitter_share_button.png);
+}
+
+.supersocialshare.bubble.sss-dark .sb_network_button.pinterest {
+    background-image: url(../images/dark/bubble_pinterest_share_button.png);
+}
+
+.supersocialshare.bubble.sss-dark .sb_network_button.email {
+    background-image: url(../images/dark/bubble_email_share_button.png);
+}
+
+@media only screen and (min-device-pixel-ratio:2),only screen and (min-resolution:192dpi) {
+    .supersocialshare.bubble.sss-dark .sb_main {
+        background-image: url(../images/dark/2x/bubble_share_core.png);
+    }
+
+    .supersocialshare.bubble.sss-dark .sb_network_button.facebook {
+        background-image: url(../images/dark/2x/bubble_facebook_share_button.png);
+    }
+
+    .supersocialshare.bubble.sss-dark .sb_network_button.linkedin {
+        background-image: url(../images/dark/2x/bubble_linkedin_share_button.png);
+    }
+
+    .supersocialshare.bubble.sss-dark .sb_network_button.google {
+        background-image: url(../images/dark/2x/bubble_googleplus_share_button.png);
+    }
+
+    .supersocialshare.bubble.sss-dark .sb_network_button.twitter {
+        background-image: url(../images/dark/2x/bubble_twitter_share_button.png);
+    }
+
+    .supersocialshare.bubble.sss-dark .sb_network_button.pinterest {
+        background-image: url(../images/dark/2x/bubble_pinterest_share_button.png);
+    }
+
+    .supersocialshare.bubble.sss-dark .sb_network_button.email {
+        background-image: url(../images/dark/2x/bubble_email_share_button.png);
+    }
+}
+*/
+
+
+/* Default Theme */
+
+.classysocial .smain {
+    display: block;
+    width: 44px;
+    height: 44px;
+    /*background-position: 0 0;*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    cursor: pointer;
+    /*text-indent: -9999px;*/
+    /*background-size: 44px 88px;*/
+    /*background-image: url(../images/flat/bubble_share_core.png);*/
+
+    /*width: 0;*/
+    /*height: 0;*/
+    /*border-style: solid;*/
+    /*border-width: 0 50px 50px 0;*/
+    /*border-color: transparent #007bff transparent transparent;*/
+
+}
+.share-triangle {
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 50px 50px 0;
+    border-color: transparent #007bff transparent transparent;
+}
+.share-me {
+    font-size: 22px;
+    z-index: 9;
+    position: absolute;
+    right: 0;
+    top: 5px;
+    color: #FFF;
+}
+.classysocial .smain:hover {  background-position: 0 -44px; }
+
+.classysocial .scontainer.default .facebook { background-image: url(../images/flat/bubble_facebook_share_button.png); }
+.classysocial .scontainer.default .linkedin { background-image: url(../images/flat/bubble_linkedin_share_button.png); }
+.classysocial .scontainer.default .google { background-image: url(../images/flat/bubble_googleplus_share_button.png); }
+.classysocial .scontainer.default .twitter { background-image: url(../images/flat/bubble_twitter_share_button.png); }
+.classysocial .scontainer.default .pinterest { background-image: url(../images/flat/bubble_pinterest_share_button.png); }
+.classysocial .scontainer.default .email { background-image: url(../images/flat/bubble_email_share_button.png); }
+
+.classysocial .scontainer.default .instagram { background-image: url(../images/instagram.png);background-position: center; }
+
+/*
+.classysocial .default .dribbble { background-image: url(../images/flat/dribbble.png); }
+.classysocial .default .instagram { background-image: url(../images/flat/instagram.png); }
+.classysocial .default .youtube { background-image: url(../images/flat/youtube.png); }
+.classysocial .default .vimeo { background-image: url(../images/flat/vimeo.png); }
+.classysocial .default .socl { background-image: url(../images/flat/socl.png); }
+.classysocial .default .github { background-image: url(../images/flat/github.png); }
+.classysocial .default .blogger { background-image: url(../images/flat/blogger.png); }
+.classysocial .default .deviantart { background-image: url(../images/flat/deviantart.png); }
+.classysocial .default .flickr { background-image: url(../images/flat/flickr.png); }
+.classysocial .default .skype { background-image: url(../images/flat/skype.png); }
+.classysocial .default .steam { background-image: url(../images/flat/steam.png); }
+.classysocial .default .wordpress { background-image: url(../images/flat/wordpress.png); }
+.classysocial .default .yahoo { background-image: url(../images/flat/yahoo.png); }
+*/

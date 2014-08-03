@@ -94,7 +94,7 @@ a.link-active {
     /*height: 241px;*/
 }
 
-.shot:hover .user {
+.shot:hover .user, .shot:hover .classysocial {
     visibility: visible;
 }
 
@@ -138,9 +138,90 @@ a.link-active {
     overflow: hidden;
 }
 
-img[ bn-lazy-src ] {
-    background-image: url( "../images/checkered.png" );
+img[ bn-lazy-src ] { background-image: url( "../images/checkered.png" ); }
+.shot-cam-loader:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1048;
+    width: 132px;
+    height: 132px;
+    margin-top: -71px;
+    margin-left: -66px;
+    font-family: "FontAwesome";
+    font-size: 101.555px;
+    color: #999;
+    text-align: center;
+    text-shadow: 0 1px 1px #FFF;
+    content: "\f16d ";
+    opacity: .25;
 }
+
+.spinner:before {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-top: 5px solid rgba(0, 174, 239, 0.8);
+    border-right: 5px solid rgba(0, 0, 0, 0);
+    border-bottom: 5px solid rgba(0, 0, 0, 0);
+    border-left: 5px solid rgba(0, 0, 0, 0);
+    border-top-right-radius: 100%;
+    border-bottom-right-radius: 100%;
+    border-bottom-left-radius: 100%;
+    border-top-left-radius: 100%;
+    content: " ";
+}
+
+
+@-webkit-keyframes rotation {
+    from { -webkit-transform: rotate(359deg); }
+    to {  -webkit-transform: rotate(0deg);  }
+}
+
+@-moz-keyframes rotation {
+    from { -moz-transform: rotate(359deg); }
+    to { -moz-transform: rotate(0deg); }
+}
+
+@-ms-keyframes rotation {
+    from { -ms-transform: rotate(359deg); }
+    to { -ms-transform: rotate(0deg); }
+}
+
+@keyframes rotation {
+    from { transform: rotate(359deg); }
+    to { transform: rotate(0deg);}
+}
+
+
+.spinner {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1051;
+    width: 30px;
+    height: 30px;
+    margin: 45% auto;
+    border: 5px solid rgba(0, 174, 239, 0.15);
+    border-top-right-radius: 100%;
+    border-bottom-right-radius: 100%;
+    border-bottom-left-radius: 100%;
+    border-top-left-radius: 100%;
+    -webkit-animation: rotation .9s infinite linear;
+    animation: rotation .9s infinite linear;
+}
+
+.shot>.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -16px;
+    margin-left: -14px;
+}
+
 
 .shot img{
     width: 100%;

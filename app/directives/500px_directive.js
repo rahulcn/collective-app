@@ -42,7 +42,6 @@ ApplicationDirective.directive('infiScroll', function ($timeout) {
           scrolledHeight = $(document).scrollTop();
           elmHeight = $(elm).height();
           (function () {
-            console.log(docHeight, 'asddd', winHeight + scrolledHeight);
             if (docHeight <= winHeight + scrolledHeight)
               if (!(newHeight === elmHeight)) {
                 scope.$eval(attr.infiScroll);

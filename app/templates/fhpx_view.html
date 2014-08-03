@@ -10,15 +10,27 @@
 	<div id="grids" class="move-up">
 		<div ng-repeat="photo in service.photos" class="col-xs-4 col-md-3 grid" ng-repeat-end>
 
-			<div class="shot effect-zoe">
+			<div class="shot shot-cam-loader effect-zoe">
+				<div class="spinner" id="590527609589137403_679256982-full-loadr" style="/* display: none; */"></div>
 				<a class="user" href="http://500px.com/{{photo.user.username}}" target="_blank">
 					<div class="avatar"><img src="{{photo.user.userpic_url}}" alt="{{photo.user.username}}" /></div>
 					<!--<div class="name">{{photo.user.username}}</div>-->
 				</a>
 
+				<div class="classysocial"
+				     data-theme="default"
+				     data-arc-length="120"
+				     data-arc-start="75"
+				     data-picture="bubble_share_core"
+				     data-facebook-handle="bubble_share_core"
+				     data-twitter-handle="picozu_editor"
+				     data-email-handle="office@picozu.net"
+				     data-pinterest-handle="picozu"
+				     data-instagram-handle="picozu"
+				     data-networks="facebook,twitter,instagram"></div>
 				<div>
-					<a class="lightbox" href="{{photo.image_url[1]}}" style="display: block;">
-						<img bn-lazy-src="{{photo.image_url[0]}}" alt="{{photo.name}}" class="img-responsive" style="height: 243px;"/>
+					<a class="lightbox" href="{{photo.image_url[1]}}" target="_blank" style="display: block;">
+						<img bn-lazy-src="{{photo.image_url[0]}}" alt="{{photo.name}}" class="img-responsive" style="height: 243px;" on-load/>
 					</a>
 					<div style="position: relative;">
 						<figcaption>

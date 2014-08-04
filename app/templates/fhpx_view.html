@@ -8,10 +8,10 @@
 </div>
 <div class="row" infi-scroll="service.nextPage()" style="margin-bottom: 50px;">
 	<div id="grids" class="move-up">
-		<div ng-repeat="photo in service.photos" class="col-xs-4 col-md-3 grid" ng-repeat-end>
+		<div ng-repeat="photo in service.photos" ng-class="setGridRatio" class="grid" ng-repeat-end>
 
 			<div class="shot shot-cam-loader effect-zoe">
-				<div class="spinner" id="590527609589137403_679256982-full-loadr" style="/* display: none; */"></div>
+				<div class="spinner"></div>
 				<a class="user" href="http://500px.com/{{photo.user.username}}" target="_blank">
 					<div class="avatar"><img src="{{photo.user.userpic_url}}" alt="{{photo.user.username}}" /></div>
 					<!--<div class="name">{{photo.user.username}}</div>-->

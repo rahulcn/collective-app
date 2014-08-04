@@ -10,7 +10,7 @@
 </div>
 <div class="row" infi-scroll="service.nextPage()" style="margin-bottom: 50px;">
 	<div id="grids" class="flip-down">
-		<div ng-repeat="shot in service.photos" class="col-xs-3 col-sm-3 col-md-3 grid" ng-repeat-end>
+		<div ng-repeat="shot in service.photos" ng-class="setGridRatio" class="grid" ng-repeat-end>
 
 			<div class="shot shot-cam-loader effect-zoe">
 				<div class="spinner" id="590527609589137403_679256982-full-loadr" style="/* display: none; */"></div>

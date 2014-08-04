@@ -1,4 +1,11 @@
 ApplicationController.controller "ApplicationController", ($scope) ->
+	setGridRatio = (option) ->
+		$scope.setGridRatio = ''
+		if ($(window).width() > 1280)
+			$scope[option] = 'col-md-2 shown'
+		else
+			$scope[option] = 'col-md-3 shown'
+
 	$scope.setActive = (options = []) ->
 		$scope.fhpxActive = ''
 		$scope.popularActive = ''
@@ -11,7 +18,12 @@ ApplicationController.controller "ApplicationController", ($scope) ->
 		)
 
 	$scope.$on "show", (event) ->
+		console.log("Hey you! Bamboo seeker!")
+		console.log("I'd like to hear from you :)")
+		console.log("Talk to me @ richesrahul@gmail.com")
+
 		$('.loading').remove()
+		setGridRatio('setGridRatio')
 		new AnimOnScroll(document.getElementById("grids"),{
 			minDuration: 0.4
 			maxDuration: 0.7

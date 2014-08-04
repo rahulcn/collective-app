@@ -10,10 +10,10 @@
 </div>
 <div class="row" infi-scroll="service.nextPage()" style="margin-bottom: 50px;">
 	<div id="grids" class="flip-down">
-		<div ng-repeat="shot in service.photos" ng-class="setGridRatio" class="grid" ng-repeat-end>
+		<div ng-repeat="shot in service.photos" class="grid" ng-repeat-end>
 
 			<div class="shot shot-cam-loader effect-zoe">
-				<div class="spinner" id="590527609589137403_679256982-full-loadr" style="/* display: none; */"></div>
+				<div class="spinner"></div>
 				<a class="user">
 					<div class="avatar"><img src="{{shot.player.avatar_url}}" alt="{{shot.player.name}}" /></div>
 					<div class="name">{{shot.player.username}}</div>

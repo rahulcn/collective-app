@@ -15,7 +15,7 @@ ApplicationService.factory('dribbleAPI', function ($http) {
     this.busy = true;
     if (!this.page)
       this.page = 1;
-    url = 'https://api.dribbble.com/shots/' + this.category + '?page=' + this.page + '&per_page=20&callback=JSON_CALLBACK';
+    url = 'https://api.dribbble.com/shots/' + this.category + '?page=' + this.page + '&per_page=40&callback=JSON_CALLBACK';
     $http.jsonp(url).success(function (this$) {
       return function (data) {
         this$.photos = this$.photos.concat(data.shots);

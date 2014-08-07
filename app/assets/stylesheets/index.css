@@ -11,34 +11,6 @@ body {
     padding: 0px 10px;
 }
 
-header {
-    background: #fff;
-}
-.navbar { border: none; }
-.navbar-header {
-    margin: 0 auto;
-    float: none;
-    position: relative;
-    width: 100%;
-}
-
-.navbar > .container-fluid .navbar-brand {
-    margin: 0 auto;
-    float: none;
-    display: block;
-    padding: 10px 15px;
-    height: 100%;
-    width: 157px;
-}
-.navbar .google-apps {
-    width: 49px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 9px 0px 9px 30px;
-}
-.navbar .google-apps img { width: 100%; }
-
 
 .hyperlink-nav > li, .hyperlink-nav > li > .categories li {
     list-style: none;

@@ -60,9 +60,10 @@ void function () {
         return sidebar.toggleClass('bookmark-bg sidebar-close');
       }, 500);
     });
-    return $('.google-apps').on('click', function (event) {
+    $('.google-apps').on('click', function (event) {
       event.preventDefault();
       return chrome.tabs.update({ url: 'chrome://apps' });
     });
+    return $('#cd-dropdown').dropdown();
   });
 }.call(this);

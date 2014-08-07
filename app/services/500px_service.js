@@ -8,12 +8,12 @@ ApplicationService.factory('fhpxAPI', function ($http) {
     this.busy = false;
     this.category = options.category;
     this.only = options.only;
-    this.show_nude = options.only === 'Nude' ? '1' : '0';
+    this.exclude = 'Nude';
   };
   fhpxAPI.prototype.firstPage = function () {
     var url;
     $('#grids').parent().append(this.loading);
-    url = 'https://api.500px.com/v1/photos?feature=' + this.category + '&page=' + this.page + '&only=' + encodeURIComponent(this.only) + '&rpp=40&show_nude=' + this.show_nude + '&image_size[]=3&image_size[]=4&consumer_key=' + KEY.fhpx;
+    url = 'https://api.500px.com/v1/photos?feature=' + this.category + '&page=' + this.page + '&only=' + encodeURIComponent(this.only) + '&rpp=40&exclude=' + this.exclude + '&image_size[]=3&image_size[]=4&consumer_key=' + KEY.fhpx;
     $http.get(url).success(function (this$) {
       return function (data) {
         this$.photos = this$.photos.concat(data.photos);
@@ -30,7 +30,7 @@ ApplicationService.factory('fhpxAPI', function ($http) {
     this.busy = true;
     if (!this.page)
       this.page = 2;
-    url = 'https://api.500px.com/v1/photos?feature=' + this.category + '&page=' + this.page + '&only=' + encodeURIComponent(this.only) + '&rpp=40&show_nude=' + this.show_nude + '&image_size[]=3&image_size[]=4&consumer_key=' + KEY.fhpx;
+    url = 'https://api.500px.com/v1/photos?feature=' + this.category + '&page=' + this.page + '&only=' + encodeURIComponent(this.only) + '&rpp=40&exclude=' + this.exclude + '&image_size[]=3&image_size[]=4&consumer_key=' + KEY.fhpx;
     $http.get(url).success(function (this$) {
       return function (data) {
         this$.photos = this$.photos.concat(data.photos);

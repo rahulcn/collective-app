@@ -17,7 +17,7 @@ ApplicationController.controller('ApplicationController', function ($scope) {
   $scope.$on('show', function (event) {
     var currentScope;
     $('.loading').remove();
-    if ($(window).width() > 1280) {
+    if ($(window).width() > 1399) {
       $('.grid').addClass('col-md-2');
     } else {
       $('.grid').addClass('col-md-3');
@@ -28,7 +28,7 @@ ApplicationController.controller('ApplicationController', function ($scope) {
       viewportFactor: .2
     });
     currentScope = $scope.$$listeners.show[0]['arguments'][0].targetScope;
-    if (currentScope.service.photos.length <= 20) {
+    if (currentScope.service.photos.length <= 40) {
       console.log('lightbox loading...');
       $('.grid a.lightbox').imageLightbox({
         onStart: function () {

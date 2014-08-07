@@ -68,5 +68,7 @@ $ ->
 		chrome.tabs.update({url: "chrome://apps"})
 	)
 
+	$( '#cd-dropdown' ).dropdown()
+
 
 

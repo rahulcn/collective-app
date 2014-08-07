@@ -13,7 +13,7 @@ ApplicationController.controller "ApplicationController", ($scope) ->
 	$scope.$on "show", (event) ->
 		$('.loading').remove()
 
-		if ($(window).width() > 1280) then $('.grid').addClass('col-md-2') else $('.grid').addClass('col-md-3')
+		if ($(window).width() > 1399) then $('.grid').addClass('col-md-2') else $('.grid').addClass('col-md-3')
 
 		new AnimOnScroll(document.getElementById("grids"),{
 			minDuration: 0.4
@@ -24,8 +24,7 @@ ApplicationController.controller "ApplicationController", ($scope) ->
 #		$(".classysocial").ClassySocial()
 
 		currentScope = $scope.$$listeners.show[0].arguments[0].targetScope
-#		console.log currentScope.service.photos
-		if currentScope.service.photos.length <= 20
+		if currentScope.service.photos.length <= 40
 			console.log 'lightbox loading...'
 			$(".grid a.lightbox").imageLightbox
 				onStart: ->

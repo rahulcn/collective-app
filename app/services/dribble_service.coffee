@@ -12,7 +12,7 @@ ApplicationService.factory "dribbleAPI", ($http) ->
 		$('#grids').parent().append(loading)
 		@busy = true
 		@page = 1 unless @page
-		url = "https://api.dribbble.com/shots/#{@category}?page=#{@page}&per_page=20&callback=JSON_CALLBACK"
+		url = "https://api.dribbble.com/shots/#{@category}?page=#{@page}&per_page=40&callback=JSON_CALLBACK"
 		$http.jsonp(url).success (data) =>
 			@photos = @photos.concat(data.shots)
 			@page = @page + 1

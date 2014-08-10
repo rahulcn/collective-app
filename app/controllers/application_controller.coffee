@@ -13,7 +13,7 @@ ApplicationController.controller "ApplicationController", ($scope) ->
 	$scope.$on "show", (event) ->
 		$('.loading').remove()
 
-		if ($(window).width() > 1399) then $('.grid').addClass('col-md-2') else $('.grid').addClass('col-md-3')
+		if ($(window).width() > 1500) then $('.grid').addClass('col-md-2') else $('.grid').addClass('col-md-3')
 
 		new AnimOnScroll(document.getElementById("grids"),{
 			minDuration: 0.4

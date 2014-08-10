@@ -16,6 +16,10 @@ Application.config([
 			templateUrl: 'templates/dribble_view.html'
 			controller: 'DribbleController'
 		})
+		.when('/settings', {
+			templateUrl: 'templates/settings_view.html'
+			controller: 'SettingsController'
+		})
 		.otherwise({redirectTo: "/500px/popular"})
 ])
 
@@ -68,7 +72,6 @@ $ ->
 		chrome.tabs.update({url: "chrome://apps"})
 	)
 
-	$( '#cd-dropdown' ).dropdown()
 
 
 

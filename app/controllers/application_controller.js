@@ -17,7 +17,7 @@ ApplicationController.controller('ApplicationController', function ($scope) {
   $scope.$on('show', function (event) {
     var currentScope;
     $('.loading').remove();
-    if ($(window).width() > 1399) {
+    if ($(window).width() > 1500) {
       $('.grid').addClass('col-md-2');
     } else {
       $('.grid').addClass('col-md-3');

@@ -20,6 +20,7 @@
 		<link rel="stylesheet" href="assets/stylesheets/loading.css"/>
 		<link rel="stylesheet" href="assets/stylesheets/neat.css"/>
 		<link rel="stylesheet" href="assets/stylesheets/classy-social.css"/>
+		<link rel="stylesheet" href="assets/stylesheets/settings.css"/>
 	</head>
 	<body ng-app="CollectiveApp">
 		<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner" style="min-height: 40px;height: 40px;margin: 0;">
@@ -29,15 +30,8 @@
 					<a href="https://chrome.google.com/webstore/detail/collectiveapp/nfcimppfkbpdohcgpdifipajpbahncnc?utm_source=chrome-ntp-icon" target="_blank" class="navbar-brand">CollectiveApp</a>
 					<div class="nav-right">
 						<a href="#" class="google-apps"></a>
-						<select id="cd-dropdown" class="cd-select">
-							<option value="-1" selected></option>
-							<option value="1" class="icon-tux">Linux</option>
-							<option value="2" class="icon-finder">Mac</option>
-							<option value="3" class="icon-windows">Windows</option>
-							<option value="4" class="icon-android">Android</option>
-						</select>
+						<a href="#" class="fa fa-anchor"></a>
 					</div>
-
 				</div>
 			</div>
 		</header>
@@ -47,7 +41,7 @@
 
 
 		<div class="container-fluid" ng-controller="ApplicationController">
-			<div class="row">
+			<div class="row" style="">
 				<div class="col-lg-2 col-md-2 sidebar sidebar-top" data-col="sidebar"> <!-- bookmark-bg -->
 					<div id="menu" style="margin-top: 40px;">
 						<ul class="hyperlink-nav" style="left: 0;padding: 0px 5px 0px 20px;">
@@ -136,6 +130,11 @@
 				</div>
 				<div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2" ng-view data-col="view"></div>
 			</div>
+
+			<!--<div ng-controller="SettingsController" class="row">
+				<div ng-include src="'templates/settings_view.html'" class="settings"></div>
+			</div>-->
+
 			<div class="row">
 				<footer class="col-lg-10 col-lg-offset-2" style="margin-top: -10px;">
 					<ul>
@@ -154,7 +153,6 @@
 		<script type="text/javascript" src="assets/javascripts/imagelightbox.js"></script>
 		<script type="text/javascript" src="assets/javascripts/classie.js"></script>
 		<script type="text/javascript" src="assets/javascripts/animation-on-scroll.js"></script>
-		<script type="text/javascript" src="assets/javascripts/jquery.dropdown.js"></script>
 
 		<script type="text/javascript" src="neat_tools.js"></script>
 		<script type="text/javascript" src="neat.js"></script>
@@ -171,6 +169,7 @@
 
 		<script type="text/javascript" src="controllers/dribble_controller.js"></script>
 		<script type="text/javascript" src="controllers/500px_controller.js"></script>
+		<script type="text/javascript" src="controllers/settings_controller.js"></script>
 
 		<script type="text/javascript" src="controllers/application_controller.js"></script>
 		<script type="text/javascript" src="app.js"></script>

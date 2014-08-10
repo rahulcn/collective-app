@@ -15,6 +15,9 @@ void function () {
       }).when('/dribble/:category', {
         templateUrl: 'templates/dribble_view.html',
         controller: 'DribbleController'
+      }).when('/settings', {
+        templateUrl: 'templates/settings_view.html',
+        controller: 'SettingsController'
       }).otherwise({ redirectTo: '/500px/popular' });
     }
   ]);
@@ -60,10 +63,9 @@ void function () {
         return sidebar.toggleClass('bookmark-bg sidebar-close');
       }, 500);
     });
-    $('.google-apps').on('click', function (event) {
+    return $('.google-apps').on('click', function (event) {
       event.preventDefault();
       return chrome.tabs.update({ url: 'chrome://apps' });
     });
-    return $('#cd-dropdown').dropdown();
   });
 }.call(this);

@@ -1,0 +1,21 @@
+<h5 class="title-head">Settings</h5>
+<div class="tabbable tabs-left">
+	<ul class="nav nav-tabs col-lg-2">
+		<li class="active"><a ng-click="showTab($event)" data-pane="#pane-one">Tab 1</a></li>
+		<li><a ng-click="showTab($event)" data-pane="#pane-two">Tab 2</a></li>
+		<li><a ng-click="showTab($event)" data-pane="#pane-three">Tab 3</a></li>
+	</ul>
+	<div class="tab-content col-lg-9">
+		<div id="pane-one" class="tab-pane active">
+			<h4>The Markup</h4>
+			<pre>{{template}}</pre>
+		</div>
+		<div id="pane-two" class="tab-pane">
+			<h4>Pane 2 Content</h4>
+			<p> and so on ...</p>
+		</div>
+		<div id="pane-three" class="tab-pane">
+			<h4>Pane 3 Content</h4>
+		</div>
+	</div><!-- /.tab-content -->
+</div><!-- /.tabbable -->

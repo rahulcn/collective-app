@@ -24,7 +24,7 @@ header {
     position: absolute;
     right: 0;
     top: 0;
-    padding: 6px 0px;
+    padding: 10px 0;
 }
 .nav-right .google-apps {
     background-image: url("/assets/images/google-apps.svg");
@@ -34,17 +34,20 @@ header {
     height: 20px;
     display: inline-block;
     margin: 0 6px;
-
+    vertical-align: -4px;
 }
 .nav-right .google-apps img { width: 100%; }
-.nav-right .settings {
+.nav-right .toggle-settings {
     display: inline-block;
     width: 20px;
     height: 20px;
     font-size: 20px;
-    vertical-align: 3px;
+    vertical-align: -1px;
     margin: 0 0 0 6px;
+    text-decoration: none;
+    cursor: pointer;
 }
+
 
 
 

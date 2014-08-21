@@ -20,6 +20,10 @@ Application.config([
 			templateUrl: 'templates/settings_view.html'
 			controller: 'SettingsController'
 		})
+		.when('/instagram/:filter', {
+			templateUrl: 'templates/instagram_view.html'
+			controller: 'InstagramController'
+		})
 		.otherwise({redirectTo: "/500px/popular"})
 ])
 

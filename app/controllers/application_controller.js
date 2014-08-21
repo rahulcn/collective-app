@@ -14,19 +14,28 @@ ApplicationController.controller('ApplicationController', function ($scope) {
       return $scope[key + 'Active'] = 'btn-active';
     });
   };
+  $scope.toggleSettings = function () {
+    $('#settings').toggle();
+    return $('.container-fluid > .row:first-child').toggleClass('inactive');
+  };
   $scope.$on('show', function (event) {
     var currentScope;
+    $('.cd-timeline-block').each(function () {
+      if ($(this).offset().top > $(window).scrollTop() + $(window).height() * .75)
+        $(this).find('.cd-timeline-img, .cd-timeline-content').addClass('is-hidden');
+    });
     $('.loading').remove();
     if ($(window).width() > 1500) {
       $('.grid').addClass('col-md-2');
     } else {
       $('.grid').addClass('col-md-3');
     }
-    new AnimOnScroll(document.getElementById('grids'), {
-      minDuration: .4,
-      maxDuration: .7,
-      viewportFactor: .2
-    });
+    if ($('#grids').length > 0)
+      new AnimOnScroll(document.getElementById('grids'), {
+        minDuration: .4,
+        maxDuration: .7,
+        viewportFactor: .2
+      });
     currentScope = $scope.$$listeners.show[0]['arguments'][0].targetScope;
     if (currentScope.service.photos.length <= 40) {
       console.log('lightbox loading...');

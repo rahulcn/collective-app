@@ -21,8 +21,9 @@
 		<link rel="stylesheet" href="assets/stylesheets/neat.css"/>
 		<link rel="stylesheet" href="assets/stylesheets/classy-social.css"/>
 		<link rel="stylesheet" href="assets/stylesheets/settings.css"/>
+		<link rel="stylesheet" href="assets/stylesheets/instagram.css"/>
 	</head>
-	<body ng-app="CollectiveApp">
+	<body ng-app="CollectiveApp" ng-controller="ApplicationController">
 		<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner" style="min-height: 40px;height: 40px;margin: 0;">
 			<div class="container-fluid">
 				<div class="navbar-header" style="margin: 0 auto;">
@@ -30,22 +31,18 @@
 					<a href="https://chrome.google.com/webstore/detail/collectiveapp/nfcimppfkbpdohcgpdifipajpbahncnc?utm_source=chrome-ntp-icon" target="_blank" class="navbar-brand">CollectiveApp</a>
 					<div class="nav-right">
 						<a href="#" class="google-apps"></a>
-						<a href="#" class="fa fa-anchor"></a>
+						<a class="fa fa-anchor toggle-settings" ng-click="toggleSettings()"></a>
 					</div>
 				</div>
 			</div>
 		</header>
 
-
-
-
-
-		<div class="container-fluid" ng-controller="ApplicationController">
+		<div class="container-fluid" >
 			<div class="row" style="">
 				<div class="col-lg-2 col-md-2 sidebar sidebar-top" data-col="sidebar"> <!-- bookmark-bg -->
 					<div id="menu" style="margin-top: 40px;">
 						<ul class="hyperlink-nav" style="left: 0;padding: 0px 5px 0px 20px;">
-							<li ng-class="instagramActive"><a href="#/instagram">Instagram</a></li>
+							<li ng-class="instagramActive"><a href="#/instagram/feed">Instagram</a></li>
 							<li ng-class="dribbleActive"><a href="#/dribble/popular">Dribble</a></li>
 							<li ng-controller="500pxController">
 								<a ng-class="fhpxActive" href="#/500px/popular/" data-main="popular">500px</a>
@@ -131,9 +128,9 @@
 				<div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2" ng-view data-col="view"></div>
 			</div>
 
-			<!--<div ng-controller="SettingsController" class="row">
-				<div ng-include src="'templates/settings_view.html'" class="settings"></div>
-			</div>-->
+			<div ng-controller="SettingsController" class="row">
+				<div ng-include src="'templates/settings_view.html'" id="settings"></div>
+			</div>
 
 			<div class="row">
 				<footer class="col-lg-10 col-lg-offset-2" style="margin-top: -10px;">
@@ -153,6 +150,7 @@
 		<script type="text/javascript" src="assets/javascripts/imagelightbox.js"></script>
 		<script type="text/javascript" src="assets/javascripts/classie.js"></script>
 		<script type="text/javascript" src="assets/javascripts/animation-on-scroll.js"></script>
+		<script type="text/javascript" src="assets/javascripts/pongstagr.am.js"></script>
 
 		<script type="text/javascript" src="neat_tools.js"></script>
 		<script type="text/javascript" src="neat.js"></script>
@@ -162,6 +160,7 @@
 
 		<script type="text/javascript" src="services/dribble_service.js"></script>
 		<script type="text/javascript" src="services/500px_service.js"></script>
+		<script type="text/javascript" src="services/instagram_service.js"></script>
 
 		<script type="text/javascript" src="directives/500px_directive.js"></script>
 		<script type="text/javascript" src="directives/lazyload_directive.js"></script>
@@ -170,6 +169,7 @@
 		<script type="text/javascript" src="controllers/dribble_controller.js"></script>
 		<script type="text/javascript" src="controllers/500px_controller.js"></script>
 		<script type="text/javascript" src="controllers/settings_controller.js"></script>
+		<script type="text/javascript" src="controllers/instagram_controller.js"></script>
 
 		<script type="text/javascript" src="controllers/application_controller.js"></script>
 		<script type="text/javascript" src="app.js"></script>

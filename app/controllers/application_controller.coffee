@@ -10,16 +10,32 @@ ApplicationController.controller "ApplicationController", ($scope) ->
 			$scope[key + 'Active'] = 'btn-active'
 		)
 
+	$scope.toggleSettings = ->
+		$('#settings').toggle()
+		$('.container-fluid > .row:first-child').toggleClass('inactive')
+
 	$scope.$on "show", (event) ->
+
+		#hide timeline blocks which are outside the viewport
+		$(".cd-timeline-block").each ->
+			$(this).find(".cd-timeline-img, .cd-timeline-content").addClass "is-hidden"  if $(this).offset().top > $(window).scrollTop() + $(window).height() * 0.75
+			return
+
+
+
+
+
+
 		$('.loading').remove()
 
 		if ($(window).width() > 1500) then $('.grid').addClass('col-md-2') else $('.grid').addClass('col-md-3')
 
-		new AnimOnScroll(document.getElementById("grids"),{
-			minDuration: 0.4
-			maxDuration: 0.7
-			viewportFactor: 0.2
-		})
+		if $("#grids").length > 0
+			new AnimOnScroll(document.getElementById("grids"),{
+				minDuration: 0.4
+				maxDuration: 0.7
+				viewportFactor: 0.2
+			})
 
 #		$(".classysocial").ClassySocial()
 

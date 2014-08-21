@@ -50,6 +50,12 @@ ApplicationDirective.directive('infiScroll', function ($timeout) {
           }());
         };
         $(document).on('scroll', handler);
+        $(document).on('scroll', function () {
+          $('.cd-timeline-block').each(function () {
+            if ($(this).offset().top <= $(window).scrollTop() + $(window).height() * .75 && $(this).find('.cd-timeline-img').hasClass('is-hidden'))
+              $(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
+          });
+        });
         scope.$on('$destroy', function () {
           return $(document).off('scroll', handler);
         });

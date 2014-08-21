@@ -8,19 +8,14 @@
     "background": {
         "scripts": ["background.js"]
     },
-
-    "permissions": [
-        "https://api.500px.com/*; https://*/*",
-        "http://api.dribbble.com/*; https://*/*",
-        "<all_urls>",
-        "chrome://favicon/",
-        "bookmarks",
-        "tabs"
-    ],
+    "optional_permissions": [ "https://instagram.com/*" ],
+    "permissions": [ "idle", "contextMenus", "notifications", "<all_urls>", "chrome://favicon/", "bookmarks", "tabs", "https://api.instagram.com/*", "https://api.500px.com/*", "http://api.dribbble.com/*" ],
     "chrome_url_overrides" : {
         "newtab": "index.html"
     },
-    "content_security_policy": "script-src 'self' 'unsafe-eval' https://api.dribbble.com; object-src 'self'",
+//    "content_security_policy": "script-src 'self' 'unsafe-eval' https://api.instagram.com; object-src 'self'",
+    "content_security_policy": "script-src 'self' https://api.instagram.com https://ssl.google-analytics.com https://s3.amazonaws.com https://cdn.taboola.com https://web.localytics.com https://webanalytics.localytics.com; object-src 'self'",
+
     "minimum_chrome_version": "9",
     "default_locale": "en",
     "omnibox": {

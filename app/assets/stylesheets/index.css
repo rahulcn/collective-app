@@ -11,6 +11,7 @@ body {
     padding: 0px 10px;
 }
 
+.inactive { opacity: 0.2; }
 
 .hyperlink-nav > li, .hyperlink-nav > li > .categories li {
     list-style: none;

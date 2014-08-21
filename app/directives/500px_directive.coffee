@@ -45,6 +45,13 @@ ApplicationDirective.directive("infiScroll", ($timeout) ->
 				return
 
 			$(document).on "scroll", handler
+			#on scolling, show/animate timeline blocks when enter the viewport
+			$(document).on "scroll", ->
+				$(".cd-timeline-block").each ->
+					$(this).find(".cd-timeline-img, .cd-timeline-content").removeClass("is-hidden").addClass "bounce-in"  if $(this).offset().top <= $(window).scrollTop() + $(window).height() * 0.75 and $(this).find(".cd-timeline-img").hasClass("is-hidden")
+					return
+
+				return
 			scope.$on "$destroy", ->
 				$(document).off "scroll", handler #remove handler when scope is destroyed
 

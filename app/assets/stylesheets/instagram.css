@@ -1,4 +1,3 @@
-/*
 #instagram .profile {
     margin: 0 -5px;
     position: relative;
@@ -26,7 +25,7 @@
     border-radius: 4px;
     border: 4px solid #FFF;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
-}*/
+}
 
 
 /* --------------------------------
@@ -63,7 +62,7 @@ Main components
     /* this is the vertical line */
     content: '';
     position: absolute;
-    top: 0;
+    top: -41px;
     left: 18px;
     height: 100%;
     width: 4px;
@@ -219,7 +218,7 @@ Main components
     background: white;
     border-radius: 0.25em;
     padding: 1em;
-    box-shadow: 0 3px 0 #d7e4ed;
+    box-shadow: 0px 3px 0px 1px #D7E4ED;
 }
 .cd-timeline-content:after {
     content: "";
@@ -228,13 +227,6 @@ Main components
 }
 .cd-timeline-content h2 {
     color: #303e49;
-}
-.cd-timeline-content p, .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
-    font-size: 13px;
-    font-size: 0.8125rem;
-}
-.cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
-    display: inline-block;
 }
 .cd-timeline-content p {
     margin: 1em 0;
@@ -250,21 +242,6 @@ Main components
 .no-touch .cd-timeline-content .cd-read-more:hover {
     background-color: #bac4cb;
 }
-.cd-timeline-content .cd-date {
-    float: left;
-    padding: .8em 0;
-    opacity: .7;
-}
-.cd-timeline-content::before {
-    content: '';
-    position: absolute;
-    top: 16px;
-    right: 100%;
-    height: 0;
-    width: 0;
-    border: 7px solid transparent;
-    border-right: 7px solid white;
-}
 @media only screen and (min-width: 768px) {
     .cd-timeline-content h2 {
         font-size: 20px;
@@ -274,51 +251,22 @@ Main components
         font-size: 16px;
         font-size: 1rem;
     }
-    .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
-        font-size: 14px;
-        font-size: 0.875rem;
-    }
 }
 @media only screen and (min-width: 1170px) {
     .cd-timeline-content {
         margin-left: 0;
-        padding: 1.6em;
+        padding: 0;
+        border-radius: 6px;
         width: 45%;
-    }
-    .cd-timeline-content::before {
-        top: 24px;
-        left: 100%;
-        border-color: transparent;
-        border-left-color: white;
     }
     .cd-timeline-content .cd-read-more {
         float: left;
     }
-    .cd-timeline-content .cd-date {
-        position: absolute;
-        width: 100%;
-        left: 122%;
-        top: 6px;
-        font-size: 16px;
-        font-size: 1rem;
-    }
     .cd-timeline-block:nth-child(even) .cd-timeline-content {
         float: right;
     }
-    .cd-timeline-block:nth-child(even) .cd-timeline-content::before {
-        top: 24px;
-        left: auto;
-        right: 100%;
-        border-color: transparent;
-        border-right-color: white;
-    }
     .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-read-more {
         float: right;
-    }
-    .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-date {
-        left: auto;
-        right: 122%;
-        text-align: right;
     }
     .cssanimations .cd-timeline-content.is-hidden {
         visibility: hidden;
@@ -453,3 +401,63 @@ Main components
         transform: translateX(0);
     }
 }
+
+
+
+
+
+.timeline-img {
+    border-radius: 6px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    overflow: hidden;
+}
+
+figcaption.in-photo-details { color: #C7C7C7;padding: 10px;border-top: 1px solid #DBDBDB; }
+figcaption.in-photo-details span { margin-left: 30px;font-size: 20px;height: 28px; }
+figcaption.in-photo-details span:last-child { margin-left: 10px;}
+
+figcaption.in-photo-details > span:before {vertical-align: -4px;margin-right: 3px; }
+.in-user-profile-pic {
+    border-radius: 50%;
+    overflow: hidden;
+    display: inline-block;
+    width: 60px;
+    border: 2px solid #FFF;
+    box-shadow: 0 0px 5px 0 #000;
+    margin-top: -40px;
+    margin-left: 10px;
+}
+
+.timeline-details {
+    width: 100%;
+    position: absolute;
+    left: 122%;
+    top: 0;
+    background: #fff;
+    float: left;
+    /*max-height: 526px;*/
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0px 3px 0px 1px #D7E4ED;
+}
+
+.cd-timeline-block:nth-child(even) .cd-timeline-content .timeline-details {
+    left: auto;
+    right: 122%;
+    text-align: right;
+}
+
+.timeline-details .in-photo-status { padding: 10px;border-bottom: 1px solid #DBDBDB;background: #F8F8F8;}
+.timeline-details .in-photo-status div{ display: inline-block; }
+.timeline-details .timeline-comments { padding: 10px 10px 40px;overflow: auto;max-height: 417px; }
+.timeline-details .timeline-comments .comment { padding: 4px; }
+.timeline-details .timeline-comments .comment div { display: inline-block; }
+.timeline-details .timeline-user-pic { width: 50px;border-radius: 50%;overflow: hidden;border: 2px solid #C0C0C0; }
+.timeline-details .timeline-user-text { position: relative;text-align: left;vertical-align: top;padding: 4px;width: 88%; }
+.timeline-details .timeline-timestamp { color: #c0c0c0;font-style: italic;font-size: 11px;position: absolute;right: 20px;margin-top: -20px; }
+.timeline-details .in-new-comment {position: absolute;width: 100%;bottom: 0;}
+.timeline-details .in-new-comment .input-comment { width: 100%;line-height: 2.5;outline: none;font-size: 16px;border: none;border-top: 1px solid #DBDBDB;padding: 0 8px; }
+
+
+

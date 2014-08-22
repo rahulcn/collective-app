@@ -20,7 +20,7 @@ ApplicationService.factory('instagramAPI', function ($http) {
   };
   instagramAPI.prototype.firstPage = function () {
     var profile_url, url;
-    $('#grids').parent().append(this.loading);
+    $('#instagram').parent().append(this.loading);
     profile_url = 'https://api.instagram.com/v1/users/255614267?access_token=255614267.fadd55a.739ffff76085430bafd6ec58e9cfa063';
     url = 'https://api.instagram.com/v1/users/self/' + this.options;
     $http.get(profile_url).success(function (this$) {

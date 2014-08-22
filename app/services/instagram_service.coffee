@@ -16,7 +16,7 @@ ApplicationService.factory "instagramAPI", ($http) ->
 
 
 	instagramAPI::firstPage = ->
-		$('#grids').parent().append(@loading)
+		$('#instagram').parent().append(@loading)
 		profile_url = "https://api.instagram.com/v1/users/255614267?access_token=255614267.fadd55a.739ffff76085430bafd6ec58e9cfa063"
 		url = "https://api.instagram.com/v1/users/self/#{@options}"
 		$http.get(profile_url).success (data) =>

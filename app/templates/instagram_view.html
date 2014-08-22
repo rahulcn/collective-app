@@ -7,11 +7,11 @@
 			<li ng-class="recentActive"><a href="#/instagram/recent">Recent</a></li>
 		</ul>
 	</div>
-	<!--<div class="profile row">
+	<div class="profile row">
 		<div class="cover"></div>
 		<div class="insta-nav"></div>
 		<img class="pic" src="{{service.profile.profile_picture}}" alt="{{service.profile.username}}"/>
-	</div>-->
+	</div>
 
 	<section id="cd-timeline" class="cd-container">
 		<div class="row" infi-scroll="service.nextPage()" style="margin-bottom: 50px;">
@@ -21,10 +21,46 @@
 				</div> <!-- cd-timeline-img -->
 
 				<div class="cd-timeline-content">
-					<h2>Title of section 1</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
-					<a href="#0" class="cd-read-more">Read more</a>
-					<span class="cd-date">Jan 14</span>
+					<div class="timeline-img">
+						<img src="{{photo.images.standard_resolution.url}}" alt="{{photo.tags}}" class="img-responsive" style="" on-load/>
+					</div>
+					<figcaption class="in-photo-details">
+						<div class="in-user-profile-pic"><img src="{{photo.user.profile_picture}}" alt="{{photo.user.username}}" class="img-responsive"/></div>
+						<span class="glyphicon glyphicon-comment ng-binding">{{photo.comments.count}}</span>
+						<!--<span class="glyphicon glyphicon-eye-open">{{photo.votes_count}}</span>-->
+						<span class="glyphicon glyphicon-heart-empty ng-binding">{{photo.likes.count}}</span>
+					</figcaption>
+					<div class="timeline-details">
+						<div style="position:relative;max-height: 526px;">
+							<div class="in-photo-status">
+								<div class="timeline-user-pic"><img src="{{photo.caption.from.profile_picture}}" alt="{{photo.caption.from.username}}" class="img-responsive"/></div>
+								<div class="timeline-user-text">
+									<div>
+										<a href="http://instagram.com/{{photo.caption.from.username}}">{{photo.caption.from.full_name}}</a>
+										<span class="timeline-timestamp">{{photo.caption.created_time | fromNow}}</span>
+									</div><br>
+									<div>{{photo.caption.text}}</div>
+								</div>
+							</div>
+							<div class="timeline-comments">
+								<div class="comment" ng-repeat="comment in photo.comments.data">
+									<div class="timeline-user-pic"><img src="{{comment.from.profile_picture}}" alt="{{comment.from.username}}" class="img-responsive"/></div>
+									<div class="timeline-user-text">
+										<div>
+											<a href="http://instagram.com/{{comment.from.username}}">{{comment.from.full_name}}</a>
+											<span class="timeline-timestamp">{{comment.created_time | fromNow}}</span>
+										</div><br>
+										<div>{{comment.text}}</div>
+									</div>
+								</div>
+							</div>
+							<div class="in-new-comment">
+								<form action="">
+									<input type="text" class="input-comment" placeholder="write your comment ..."/>
+								</form>
+							</div>
+						</div>
+					</div>
 				</div> <!-- cd-timeline-content -->
 			</div> <!-- cd-timeline-block -->
 		</div>

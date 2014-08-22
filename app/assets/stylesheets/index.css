@@ -1,9 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
 
 body {
-    font-family: 'Montserrat';
+    font-family: 'lato';
     font-weight: 400;
-    background: #ECF0F1;
+    background: #E9F0F5;
+    /*background: #ECF0F1;*/
 }
 
 

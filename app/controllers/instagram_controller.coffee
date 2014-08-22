@@ -15,10 +15,16 @@ ApplicationController.controller "InstagramController", ($scope, $location, inst
 #	$('.hyperlink-nav li > a').data('main', $routeParams.category)
 #	$scope.filters = ['Abstract', 'Macro', 'Animals', 'Nature', 'Black & White', 'Celebrities', 'People', 'City & Architecture', 'Performing Arts', 'Commercial', 'Sport', 'Concert', 'Still Life', 'Family', 'Street', 'Fashion', 'Transportation', 'Film', 'Travel', 'Fine Art', 'Underwater', 'Food', 'Urban Exploration', 'Journalism', 'Wedding', 'Landscapes', 'Uncategorized']
 
+	switch $routeParams.filter
+		when 'follows'
+			$scope.service.fetchUsers()
+		when 'followed-by'
+			$scope.service.fetchUsers()
+		else
+			$scope.service.firstPage()
 
-	$scope.service.firstPage()
 
-#
+	#
 #	$scope.selectCategory = ($event) =>
 #		elem = $($event.target)
 #		category = elem.data('category')

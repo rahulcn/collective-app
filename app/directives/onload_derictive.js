@@ -3,10 +3,10 @@ ApplicationDirective.directive('onLoad', function () {
   return {
     link: function (scope, element, attrs) {
       element.bind('load', function (e) {
-        var shot;
-        shot = element.parent().parent().parent();
-        shot.removeClass('shot-cam-loader');
-        $('.spinner', shot).fadeOut();
+        var img;
+        img = $('.shot-cam-loader');
+        img.removeClass('shot-cam-loader');
+        $('.spinner', img).fadeOut();
       });
     }
   };

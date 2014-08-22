@@ -1,0 +1,41 @@
+<div id="instagram" class="cssanimations">
+	<div class="profile row">
+		<div class="cover">
+			<a href="#" class="in-profile-refresh"><i class="fa fa-refresh"></i></a>
+		</div>
+		<div class="in-nav">
+			<ul class="in-filters">
+				<li ng-class="feedActive"><a href="#/instagram/feed">Feed</a></li>
+				<li ng-class="likedActive"><a href="#/instagram/liked">Liked</a></li>
+				<li ng-class="recentActive"><a href="#/instagram/recent">Recent</a></li>
+			</ul>
+			<ul class="in-count">
+				<li><a href="#/instagram/recent">{{service.profile.counts.media}} <span>Posts</span></a></li>
+				<li><a href="#/instagram/self/followed-by">{{service.profile.counts.followed_by}} <span>Followers</span></a></li>
+				<li><a href="#/instagram/self/follows">{{service.profile.counts.follows}} <span>Following</span></a></li>
+			</ul>
+		</div>
+		<img class="pic" src="{{service.profile.profile_picture}}" alt="{{service.profile.username}}"/>
+	</div>
+
+	<div class="row" infi-scroll="service.nextPage()" style="margin-bottom: 50px;">
+		<div id="grids" class="move-up" data-grid="user">
+			<div ng-repeat="user in service.users" class="grid" ng-repeat-end>
+
+				<div class="in-user effect-zoe">
+					<a href="#/instagram/{{user.id}}/users-recent" style="display: block;height: 99%;width: 95%;position: absolute;top: 0;"></a>
+					<div>
+						<div class="in-user-cover"></div>
+						<div style="margin-top: -80px;">
+							<div class="in-user-pic"><img src="{{user.profile_picture}}" alt="{{user.full_name}}" class="img-responsive"/></div>
+							<a class="in-user-name ellipsis" href="#/instagram/{{user.id}}/users-recent">{{user.full_name}}</a>
+						</div>
+						<div class="in-user-bio">{{user.bio}}</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</div>

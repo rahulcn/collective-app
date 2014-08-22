@@ -1,8 +1,8 @@
 ApplicationDirective.directive "onLoad", ->
 	link: (scope, element, attrs) ->
 		element.bind "load", (e) ->
-			shot = element.parent().parent().parent()
-			shot.removeClass('shot-cam-loader')
-			$('.spinner', shot).fadeOut()
+			img = $('.shot-cam-loader')
+			img.removeClass('shot-cam-loader')
+			$('.spinner', img).fadeOut()
 			return
 		return

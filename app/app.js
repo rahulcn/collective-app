@@ -19,7 +19,13 @@ void function () {
         templateUrl: 'templates/settings_view.html',
         controller: 'SettingsController'
       }).when('/instagram/:filter', {
-        templateUrl: 'templates/instagram_view.html',
+        templateUrl: 'templates/instagram_index_view.html',
+        controller: 'InstagramController'
+      }).when('/instagram/self/:filter', {
+        templateUrl: 'templates/instagram_user_view.html',
+        controller: 'InstagramController'
+      }).when('/instagram/:user_id/:filter', {
+        templateUrl: 'templates/instagram_index_view.html',
         controller: 'InstagramController'
       }).otherwise({ redirectTo: '/500px/popular' });
     }

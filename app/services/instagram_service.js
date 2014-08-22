@@ -3,30 +3,61 @@ ApplicationService.factory('instagramAPI', function ($http) {
   var instagramAPI, USER;
   USER = {
     accessId: '255614267',
-    accessToken: '255614267.fadd55a.739ffff76085430bafd6ec58e9cfa063'
+    accessToken: '255614267.fadd55a.739ffff76085430bafd6ec58e9cfa063',
+    clientId: 'fadd55ae5bf148c8b0f36d9f3d824d46'
   };
   instagramAPI = function (options) {
-    var filter;
+    var base_url;
     this.photos = [];
     this.profile = [];
+    this.users = [];
     this.loading = $('<div class="loading"><div></div><div></div><div></div><div></div></div>');
     this.busy = false;
-    if (options.filter === 'feed') {
-      filter = options.filter;
-    } else {
-      filter = 'media/' + options.filter;
+    base_url = 'https://api.instagram.com/v1';
+    switch (options.filter) {
+    case 'feed':
+      this.url = '' + base_url + '/users/self/feed?count=30&access_token=' + USER.accessToken;
+      break;
+    case 'popular':
+      this.url = '' + base_url + '/media/popular?client_id=' + USER.clientId;
+      break;
+    case 'follows':
+      this.url = '' + base_url + '/users/' + USER.accessId + '/follows?access_token=' + USER.accessToken;
+      break;
+    case 'followed-by':
+      this.url = '' + base_url + '/users/' + USER.accessId + '/followed-by?access_token=' + USER.accessToken;
+      break;
+    case 'users-recent':
+      this.url = '' + base_url + '/users/' + options.user_id + '/media/recent?access_token=' + USER.accessToken;
+      break;
+    default:
+      this.url = '' + base_url + '/users/self/media/' + options.filter + '?count=30&access_token=' + USER.accessToken;
     }
-    this.options = '' + filter + '?count=30&access_token=' + USER.accessToken;
   };
-  instagramAPI.prototype.firstPage = function () {
-    var profile_url, url;
+  instagramAPI.prototype.fetchUsers = function () {
+    var profile_url;
     $('#instagram').parent().append(this.loading);
     profile_url = 'https://api.instagram.com/v1/users/255614267?access_token=255614267.fadd55a.739ffff76085430bafd6ec58e9cfa063';
-    url = 'https://api.instagram.com/v1/users/self/' + this.options;
     $http.get(profile_url).success(function (this$) {
       return function (data) {
         this$.profile = data.data;
-        return $http.get(url).success(function (this$1) {
+        return $http.get(this$.url).success(function (this$1) {
+          return function (data) {
+            this$1.users = this$1.users.concat(data.data);
+            $('.loading').remove();
+          };
+        }(this$));
+      };
+    }(this));
+  };
+  instagramAPI.prototype.firstPage = function () {
+    var profile_url;
+    $('#instagram').parent().append(this.loading);
+    profile_url = 'https://api.instagram.com/v1/users/255614267?access_token=255614267.fadd55a.739ffff76085430bafd6ec58e9cfa063';
+    $http.get(profile_url).success(function (this$) {
+      return function (data) {
+        this$.profile = data.data;
+        return $http.get(this$.url).success(function (this$1) {
           return function (data) {
             this$1.next_url = data.pagination.next_url;
             this$1.photos = this$1.photos.concat(data.data);

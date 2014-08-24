@@ -10,6 +10,7 @@ ApplicationController.controller('ApplicationController', function ($scope) {
     $scope.editorsActive = '';
     $scope.fresh_todayActive = '';
     $scope.dribbleActive = '';
+    $scope.instagramActive = '';
     return angular.forEach(options, function (key, value) {
       return $scope[key + 'Active'] = 'btn-active';
     });

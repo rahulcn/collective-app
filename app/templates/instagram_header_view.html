@@ -1,0 +1,23 @@
+<div class="profile row">
+	<div class="cover">
+		<a href="#" class="in-profile-refresh"><i class="fa fa-refresh"></i></a>
+	</div>
+	<div class="in-nav">
+		<ul class="in-filters">
+			<li ng-class="feedActive"><a href="#/instagram/feed/feed/">Feed</a></li>
+			<li ng-class="likedActive"><a href="#/instagram/liked">Liked</a></li>
+			<li ng-class="recentActive"><a href="#/instagram/recent">Recent</a></li>
+		</ul>
+		<ul class="in-count">
+			<li><a href="#/instagram/recent">{{service.profile.counts.media}} <span>Posts</span></a></li>
+			<li><a href="#/instagram/self/followed-by">{{service.profile.counts.followed_by}} <span>Followers</span></a></li>
+			<li><a href="#/instagram/self/follows">{{service.profile.counts.follows}} <span>Following</span></a></li>
+		</ul>
+	</div>
+	<div class="pic shot-cam-loader">
+		<div style="position:relative;">
+			<img src="{{service.profile.profile_picture}}" alt="{{service.profile.username}}" class="img-responsive" style="height: 142px;" on-load/>
+			<div class="spinner"></div>
+		</div>
+	</div>
+</div>

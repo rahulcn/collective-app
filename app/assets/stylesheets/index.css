@@ -48,6 +48,7 @@ a.link-active {
 }
 .btn-active { background-color: #C0C0C0; }
 .btn-active { color: #FFF; }
+.btn-active a { color: #FFF; }
 
 .grid {
     padding: 0px 10px;

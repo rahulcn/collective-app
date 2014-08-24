@@ -1,5 +1,6 @@
 window.Application = angular.module('CollectiveApp', [
 	'ngRoute',
+	'ui.router',
 	'CollectiveApp.directives',
 	'CollectiveApp.services',
 	'CollectiveApp.controllers'

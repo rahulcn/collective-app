@@ -6,6 +6,7 @@ ApplicationController.controller "ApplicationController", ($scope) ->
 		$scope.editorsActive = ''
 		$scope.fresh_todayActive = ''
 		$scope.dribbleActive = ''
+		$scope.instagramActive = ''
 		angular.forEach(options, (key, value) ->
 			$scope[key + 'Active'] = 'btn-active'
 		)
@@ -69,6 +70,7 @@ ApplicationController.controller "ApplicationController", ($scope) ->
 		console.log("Talk to me @ richesrahul@gmail.com")
 		return
 
+	# image lightbox code
 	activityIndicatorOn = ->
 		$("<div id=\"imagelightbox-loading\"><div></div></div>").appendTo "body"
 		return
@@ -104,3 +106,4 @@ ApplicationController.controller "ApplicationController", ($scope) ->
 	captionOff = ->
 		$("#imagelightbox-caption").remove()
 		return
+

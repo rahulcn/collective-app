@@ -2,25 +2,41 @@ ApplicationController.controller "InstagramController", ($scope, $location, inst
 
 	$scope.setActive(['instagram', $routeParams.filter])
 	$scope.service = new instagramAPI($routeParams)
-#	$('.hyperlink-nav li > a').data('main', $routeParams.category)
-#	$scope.filters = ['Abstract', 'Macro', 'Animals', 'Nature', 'Black & White', 'Celebrities', 'People', 'City & Architecture', 'Performing Arts', 'Commercial', 'Sport', 'Concert', 'Still Life', 'Family', 'Street', 'Fashion', 'Transportation', 'Film', 'Travel', 'Fine Art', 'Underwater', 'Food', 'Urban Exploration', 'Journalism', 'Wedding', 'Landscapes', 'Uncategorized']
+	signed_in = !_.isNull(window.localStorage.getItem('in_user'))
 
-	switch $routeParams.filter
-		when 'follows'
-			$scope.service.fetchUsers()
-		when 'followed-by'
-			$scope.service.fetchUsers()
-		else
-			$scope.service.firstPage()
+	if signed_in
+		$location.path('/instagram/feed') if _.isEmpty($routeParams.filter)
+	else
+		$location.path('/instagram')
 
+	if signed_in
+		switch $routeParams.filter
+			when 'follows'
+				$scope.service.fetchUsers()
+			when 'followed-by'
+				$scope.service.fetchUsers()
+			else
+				$scope.service.firstPage()
+
+	$scope.login = ->
+		$scope.service.login()
+
+	$scope.comment = {}
+	$scope.comment.text = "Comment ... "
+	$scope.commentCreate = (event) ->
+		text = $('input', event.currentTarget).val()
+		console.log "--> Submitting form"
+
+		return
 
 	$scope.popHeart = (event) ->
 		@elem = $(event.target)
 		popSize = [ 50, 40 ]
-		teaserSize = [ 24, 24 ]
 		margin = 14 / 2
 		i = 0
 		total = 14 * 2
+
+		@elem.toggleClass('heart-active')
 
 		position = (heart, size) =>
 			w = @elem.parent()
@@ -45,19 +61,10 @@ ApplicationController.controller "InstagramController", ($scope, $location, inst
 				setTimeout create, Math.random() * 250
 			return
 
-		create()
+		if @elem.hasClass('heart-active')
+			create()
+
+		$scope.service.likeToggle({media_id: @elem.parent().parent().data('id'), method: @elem.data('method')})
+
 		return
-	#
-#	$scope.selectCategory = ($event) =>
-#		elem = $($event.target)
-#		category = elem.data('category')
-#		$('.link-active').removeClass('link-active')
-#		elem.addClass('link-active')
-#		$timeout (=>
-#			$scope.$apply =>
-#				$location.path("/500px/#{$('.hyperlink-nav li > a').data('main')}/#{category}").replace()
-#				return
-#		), 1
-#
-#
 	return

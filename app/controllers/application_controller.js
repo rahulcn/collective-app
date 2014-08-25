@@ -11,6 +11,9 @@ ApplicationController.controller('ApplicationController', function ($scope) {
     $scope.fresh_todayActive = '';
     $scope.dribbleActive = '';
     $scope.instagramActive = '';
+    $scope.feedActive = '';
+    $scope.likedActive = '';
+    $scope.recentActive = '';
     return angular.forEach(options, function (key, value) {
       return $scope[key + 'Active'] = 'btn-active';
     });

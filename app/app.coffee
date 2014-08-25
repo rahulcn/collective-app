@@ -20,12 +20,16 @@ Application.config([
 			templateUrl: 'templates/settings_view.html'
 			controller: 'SettingsController'
 		})
+		.when('/instagram', {
+			templateUrl: 'templates/instagram_login_view.html'
+			controller: 'InstagramController'
+		})
 		.when('/instagram/:filter', {
 			templateUrl: 'templates/instagram_index_view.html'
 			controller: 'InstagramController'
 		})
 		.when('/instagram/self/:filter', {
-			templateUrl: 'templates/instagram_user_view.html'
+			templateUrl: 'templates/instagram_friends_view.html'
 			controller: 'InstagramController'
 		})
 		.when('/instagram/:user_id/:filter', {

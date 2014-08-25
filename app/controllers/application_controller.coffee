@@ -7,6 +7,9 @@ ApplicationController.controller "ApplicationController", ($scope) ->
 		$scope.fresh_todayActive = ''
 		$scope.dribbleActive = ''
 		$scope.instagramActive = ''
+		$scope.feedActive = ''
+		$scope.likedActive = ''
+		$scope.recentActive = ''
 		angular.forEach(options, (key, value) ->
 			$scope[key + 'Active'] = 'btn-active'
 		)

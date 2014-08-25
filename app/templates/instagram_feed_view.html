@@ -5,12 +5,12 @@
 				<img src="/assets/images/cd-icon-picture.svg" alt="Picture">
 			</div> <!-- cd-timeline-img -->
 
-			<div class="cd-timeline-content shot-cam-loader">
+			<div class="cd-timeline-content shot-cam-loader" data-id="{{photo.id}}">
 				<div class="spinner"></div>
 				<div class="timeline-img">
 					<img src="{{photo.images.standard_resolution.url}}" alt="{{photo.tags}}" class="img-responsive" on-load />
-					<div ng-if="photo.user_has_liked" class="heart heart-active" ng-click="popHeart($event);"></div>
-					<div ng-if="photo.user_has_liked == false" class="heart" ng-click="popHeart($event);"></div>
+					<div ng-if="photo.user_has_liked" class="heart heart-active" ng-click="popHeart($event);" data-method="delete"></div>
+					<div ng-if="photo.user_has_liked == false" class="heart" ng-click="popHeart($event);" data-method="post"></div>
 				</div>
 				<figcaption class="in-photo-details">
 					<div class="in-user-profile-pic"><img src="{{photo.user.profile_picture}}" alt="{{photo.user.username}}" class="img-responsive"/></div>
@@ -44,7 +44,7 @@
 							</div>
 						</div>
 						<div class="in-new-comment">
-							<form action="">
+							<form name="comment" ng-submit="commentCreate($event);">
 								<input type="text" class="input-comment" placeholder="write your comment ..."/>
 							</form>
 						</div>

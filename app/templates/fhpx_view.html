@@ -1,3 +1,5 @@
+<!--working on IScroll functionality-->
+<!--<div class="scroller">-->
 <div class="row view-head">
 	<ul class="nav">
 		<li ng-class="popularActive"><a href="#/500px/popular">Popular</a></li>
@@ -6,7 +8,7 @@
 		<li ng-class="fresh_todayActive"><a href="#/500px/fresh_today">Fresh Today</a></li>
 	</ul>
 </div>
-<div class="row" infi-scroll="service.nextPage()" style="margin-bottom: 50px;">
+<div class="row grids-wrapper"  infi-scroll="service.nextPage()" style="margin-bottom: 50px;">
 	<div id="grids" class="move-up">
 		<div ng-repeat="photo in service.photos" class="grid" ng-repeat-end>
 
@@ -45,3 +47,6 @@
 		</div>
 	</div>
 </div>
+<div ng-include src="'templates/shared/footer.html'"></div>
+
+<!--</div>-->

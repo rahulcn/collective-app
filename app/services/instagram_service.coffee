@@ -16,24 +16,28 @@ ApplicationService.factory "instagramAPI", ($http, $location) ->
 		console.log(options.filter)
 		switch options.filter
 			when 'feed'
-				@url = "#{base_url}/users/self/feed?count=30&access_token=#{@access_token}"
+				@url = "#{base_url}/users/self/feed?count=10&access_token=#{@access_token}"
 			when 'popular'
 				@url = "#{base_url}/media/popular?client_id=#{USER.clientId}"
 			when 'follows'
-				@url = "#{base_url}/users/#{USER.accessId}/follows?access_token=#{@access_token}"
+				@url = "#{base_url}/users/#{options.user_id}/follows?access_token=#{@access_token}"
 			when 'followed-by'
-				@url = "#{base_url}/users/#{USER.accessId}/followed-by?access_token=#{@access_token}"
-			when 'users-recent'
+				@url = "#{base_url}/users/#{options.user_id}/followed-by?access_token=#{@access_token}"
+			when 'user_id'
 				@url = "#{base_url}/users/#{options.user_id}/media/recent?access_token=#{@access_token}"
-			else
+			when 'recent'
+				@url = "#{base_url}/users/#{options.user_id}/media/#{options.filter}?count=30&access_token=#{@access_token}"
+			when 'liked'
 				@url = "#{base_url}/users/self/media/#{options.filter}?count=30&access_token=#{@access_token}"
+
 
 		return
 
 
-	instagramAPI::fetchUsers = ->
+	instagramAPI::fetchUsers = (params) ->
 		$('#instagram').parent().append(@loading)
-		profile_url = "https://api.instagram.com/v1/users/255614267?access_token=255614267.fadd55a.739ffff76085430bafd6ec58e9cfa063"
+		@loading.css({'margin-top': '50px', 'margin-bottom': '50px'})
+		profile_url = "https://api.instagram.com/v1/users/#{params.user_id}?access_token=#{@access_token}"
 		$http.get(profile_url).success (data) =>
 			@profile = data.data
 			$http.get(@url).success (data) =>
@@ -43,9 +47,9 @@ ApplicationService.factory "instagramAPI", ($http, $location) ->
 		return
 
 
-	instagramAPI::firstPage = ->
+	instagramAPI::firstPage = (params) ->
 		$('#instagram').parent().append(@loading)
-		profile_url = "https://api.instagram.com/v1/users/255614267?access_token=255614267.fadd55a.739ffff76085430bafd6ec58e9cfa063"
+		profile_url = "https://api.instagram.com/v1/users/#{params.user_id}?access_token=#{@access_token}"
 		$http.get(profile_url).success (data) =>
 			@profile = data.data
 			$http.get(@url).success (data) =>
@@ -66,11 +70,13 @@ ApplicationService.factory "instagramAPI", ($http, $location) ->
 
 
 	instagramAPI::comment = (params) ->
-		comment_url = "https://api.instagram.com/v1/media/#{params.media_id}/comments?access_token=#{@access_token}&text=#{params.text}"
+		comment_url = "https://api.instagram.com/v1/media/#{params.media_id}/comments"
+		object = {access_token: @access_token, text: params.text}
 		if params.method == "post"
-			$http.post(comment_url)
+			$["post"](comment_url, object).success (data) ->
+				console.log("Commenting #{data} ...")
 		else
-			$http({url: like_url, method: 'DELETE'})
+			$http({url: comment_url, method: 'DELETE'})
 		return
 
 

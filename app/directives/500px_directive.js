@@ -10,36 +10,20 @@ ApplicationDirective.directive('ngRepeatEnd', function ($timeout) {
     }
   };
 });
-ApplicationDirective.directive('whenScrolled', function ($timeout) {
-  return {
-    restrict: 'A',
-    link: function (scope, element, attr) {
-      $timeout(function () {
-        var raw;
-        raw = element[0];
-        return $(window).bind('scroll', function () {
-          if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
-            scope.$apply(attr.whenScrolled);
-            return;
-          }
-        });
-      }, 300);
-    }
-  };
-});
 ApplicationDirective.directive('infiScroll', function ($timeout) {
   return {
     restrict: 'A',
     link: function (scope, elm, attr) {
       $timeout(function () {
-        var callMore, handler, newHeight;
+        var callMore, handler, newHeight, scroll_container;
+        scroll_container = $(document);
         callMore = true;
         newHeight = void 0;
         handler = function () {
           var docHeight, elmHeight, scrolledHeight, winHeight;
-          docHeight = $(document).height();
+          docHeight = scroll_container.height();
           winHeight = $(window).height() + 1e3;
-          scrolledHeight = $(document).scrollTop();
+          scrolledHeight = scroll_container.scrollTop();
           elmHeight = $(elm).height();
           (function () {
             if (docHeight <= winHeight + scrolledHeight)
@@ -49,15 +33,15 @@ ApplicationDirective.directive('infiScroll', function ($timeout) {
               }
           }());
         };
-        $(document).on('scroll', handler);
-        $(document).on('scroll', function () {
+        scroll_container.on('scroll', handler);
+        scroll_container.on('scroll', function () {
           $('.cd-timeline-block').each(function () {
             if ($(this).offset().top <= $(window).scrollTop() + $(window).height() * .75 && $(this).find('.cd-timeline-img').hasClass('is-hidden'))
               $(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
           });
         });
         scope.$on('$destroy', function () {
-          return $(document).off('scroll', handler);
+          return scroll_container.off('scroll', handler);
         });
       }, 300);
     }

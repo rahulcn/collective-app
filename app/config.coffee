@@ -1,6 +1,7 @@
 window.Application = angular.module('CollectiveApp', [
+#	'ng-iscroll',
 	'ngRoute',
-	'ui.router',
+#	'ui.router',
 	'CollectiveApp.directives',
 	'CollectiveApp.services',
 	'CollectiveApp.controllers'

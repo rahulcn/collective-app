@@ -18,28 +18,35 @@ ApplicationService.factory('instagramAPI', function ($http, $location) {
     console.log(options.filter);
     switch (options.filter) {
     case 'feed':
-      this.url = '' + base_url + '/users/self/feed?count=30&access_token=' + this.access_token;
+      this.url = '' + base_url + '/users/self/feed?count=10&access_token=' + this.access_token;
       break;
     case 'popular':
       this.url = '' + base_url + '/media/popular?client_id=' + USER.clientId;
       break;
     case 'follows':
-      this.url = '' + base_url + '/users/' + USER.accessId + '/follows?access_token=' + this.access_token;
+      this.url = '' + base_url + '/users/' + options.user_id + '/follows?access_token=' + this.access_token;
       break;
     case 'followed-by':
-      this.url = '' + base_url + '/users/' + USER.accessId + '/followed-by?access_token=' + this.access_token;
+      this.url = '' + base_url + '/users/' + options.user_id + '/followed-by?access_token=' + this.access_token;
       break;
-    case 'users-recent':
+    case 'user_id':
       this.url = '' + base_url + '/users/' + options.user_id + '/media/recent?access_token=' + this.access_token;
       break;
-    default:
+    case 'recent':
+      this.url = '' + base_url + '/users/' + options.user_id + '/media/' + options.filter + '?count=30&access_token=' + this.access_token;
+      break;
+    case 'liked':
       this.url = '' + base_url + '/users/self/media/' + options.filter + '?count=30&access_token=' + this.access_token;
     }
   };
-  instagramAPI.prototype.fetchUsers = function () {
+  instagramAPI.prototype.fetchUsers = function (params) {
     var profile_url;
     $('#instagram').parent().append(this.loading);
-    profile_url = 'https://api.instagram.com/v1/users/255614267?access_token=255614267.fadd55a.739ffff76085430bafd6ec58e9cfa063';
+    this.loading.css({
+      'margin-top': '50px',
+      'margin-bottom': '50px'
+    });
+    profile_url = 'https://api.instagram.com/v1/users/' + params.user_id + '?access_token=' + this.access_token;
     $http.get(profile_url).success(function (this$) {
       return function (data) {
         this$.profile = data.data;
@@ -52,10 +59,10 @@ ApplicationService.factory('instagramAPI', function ($http, $location) {
       };
     }(this));
   };
-  instagramAPI.prototype.firstPage = function () {
+  instagramAPI.prototype.firstPage = function (params) {
     var profile_url;
     $('#instagram').parent().append(this.loading);
-    profile_url = 'https://api.instagram.com/v1/users/255614267?access_token=255614267.fadd55a.739ffff76085430bafd6ec58e9cfa063';
+    profile_url = 'https://api.instagram.com/v1/users/' + params.user_id + '?access_token=' + this.access_token;
     $http.get(profile_url).success(function (this$) {
       return function (data) {
         this$.profile = data.data;
@@ -83,13 +90,19 @@ ApplicationService.factory('instagramAPI', function ($http, $location) {
     }
   };
   instagramAPI.prototype.comment = function (params) {
-    var comment_url;
-    comment_url = 'https://api.instagram.com/v1/media/' + params.media_id + '/comments?access_token=' + this.access_token + '&text=' + params.text;
+    var comment_url, object;
+    comment_url = 'https://api.instagram.com/v1/media/' + params.media_id + '/comments';
+    object = {
+      access_token: this.access_token,
+      text: params.text
+    };
     if (params.method === 'post') {
-      $http.post(comment_url);
+      $.post(comment_url, object).success(function (data) {
+        return console.log('Commenting ' + data + ' ...');
+      });
     } else {
       $http({
-        url: like_url,
+        url: comment_url,
         method: 'DELETE'
       });
     }

@@ -5,28 +5,27 @@ ApplicationController.controller "InstagramController", ($scope, $location, inst
 	signed_in = !_.isNull(window.localStorage.getItem('in_user'))
 
 	if signed_in
-		$location.path('/instagram/feed') if _.isEmpty($routeParams.filter)
+		$location.path('/instagram/users/self/feed') if _.isEmpty($routeParams.filter)
 	else
 		$location.path('/instagram')
 
 	if signed_in
 		switch $routeParams.filter
 			when 'follows'
-				$scope.service.fetchUsers()
+				$scope.service.fetchUsers($routeParams)
 			when 'followed-by'
-				$scope.service.fetchUsers()
+				$scope.service.fetchUsers($routeParams)
 			else
-				$scope.service.firstPage()
+				$scope.service.firstPage($routeParams)
 
 	$scope.login = ->
 		$scope.service.login()
 
-	$scope.comment = {}
-	$scope.comment.text = "Comment ... "
 	$scope.commentCreate = (event) ->
 		text = $('input', event.currentTarget).val()
-		console.log "--> Submitting form"
-
+		media_id = $('input', event.currentTarget).parent().data('id')
+		method = $('input', event.currentTarget).parent().data('method')
+		$scope.service.comment({text: text, media_id: media_id, method: method})
 		return
 
 	$scope.popHeart = (event) ->

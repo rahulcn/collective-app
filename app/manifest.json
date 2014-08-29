@@ -10,6 +10,7 @@
     },
     "optional_permissions": [ "https://instagram.com/*" ],
     "permissions": [
+        "storage",
         "identity",
         "bookmarks",
         "idle",
@@ -18,7 +19,9 @@
         "notifications",
         "<all_urls>",
         "chrome://favicon/",
-        "https://api.instagram.com/*"
+        "https://api.instagram.com/*",
+        "http://api.dribbble.com/*",
+        "https://api.500px.com/*"
     ],
     "chrome_url_overrides" : {
         "newtab": "index.html"
@@ -33,7 +36,3 @@
     }
 }
 
-/*
-"https://api.500px.com",
-"http://api.dribbble.com"
-*/

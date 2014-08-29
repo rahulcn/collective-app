@@ -5,6 +5,10 @@ ApplicationController.controller "500pxController", ($scope, $location, fhpxAPI,
 	$scope.categories = ['Abstract', 'Macro', 'Animals', 'Nature', 'Black & White', 'Celebrities', 'People', 'City & Architecture', 'Performing Arts', 'Commercial', 'Sport', 'Concert', 'Still Life', 'Family', 'Street', 'Fashion', 'Transportation', 'Film', 'Travel', 'Fine Art', 'Underwater', 'Food', 'Urban Exploration', 'Journalism', 'Wedding', 'Landscapes', 'Uncategorized']
 
 
+
+
+
+
 	if $routeParams.category is 'popular'
 		if _.isNull(window.localStorage.getItem('ca_photos')) or $routeParams.only
 			$scope.service.firstPage()
@@ -24,5 +28,28 @@ ApplicationController.controller "500pxController", ($scope, $location, fhpxAPI,
 				$location.path("/500px/#{$('.hyperlink-nav li > a').data('main')}/#{category}").replace()
 				return
 		), 1
+
+	# working on IScroll functionality
+	###
+		$scope.$parent.myScrollOptions =
+			wrapper:
+				snap: false
+				mouseWheel: true
+				bounceEasing: 'bounce'
+				on: [
+					{
+						scrollEnd: (e) ->
+							if ($($scope.$parent.myScroll['wrapper'].scroller).offset().top >= -Math.abs($('.grids-wrapper', this.wrapper).height()) + 640)
+								#alert "finished scrolling wrapper"
+								$scope.service.nextPage()
+							return
+					}
+					{
+						scroll: (e) ->
+							console.log "finished scrolling wrapper"
+							return
+					}
+				]
+	###
 
 	return

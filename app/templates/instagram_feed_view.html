@@ -24,7 +24,7 @@
 							<div class="timeline-user-pic"><img src="{{photo.user.profile_picture}}" alt="{{photo.user.username}}" class="img-responsive"/></div>
 							<div class="timeline-user-text">
 								<div>
-									<a href="#/instagram/{{photo.user.id}}/users-recent">{{photo.user.full_name}}</a>
+									<a href="#/instagram/users/{{photo.user.id}}/recent">{{photo.user.full_name}}</a>
 									<span class="timeline-timestamp">{{photo.caption.created_time | fromNow}}</span>
 								</div><br>
 								<div>{{photo.caption.text}}</div>
@@ -36,7 +36,7 @@
 								<div class="timeline-user-pic"><img src="{{comment.from.profile_picture}}" alt="{{comment.from.username}}" class="img-responsive"/></div>
 								<div class="timeline-user-text">
 									<div>
-										<a href="#/instagram/{{comment.from.id}}/users-recent">{{comment.from.full_name}}</a>
+										<a href="#/instagram/users/{{comment.from.id}}/recent">{{comment.from.full_name}}</a>
 										<span class="timeline-timestamp">{{comment.created_time | fromNow}}</span>
 									</div><br>
 									<div>{{comment.text}}</div>
@@ -44,14 +44,14 @@
 							</div>
 						</div>
 						<div class="in-new-comment">
-							<form name="comment" ng-submit="commentCreate($event);">
-								<input type="text" class="input-comment" placeholder="write your comment ..."/>
+							<form name="comment" ng-submit="commentCreate($event);" data-id="{{photo.id}}" data-method="post">
+								<input name="comment" type="text" class="input-comment" placeholder="Commenting is coming soon ..." disabled/>
 							</form>
 						</div>
 					</div>
 				</div>
 			</div> <!-- cd-timeline-content -->
 		</div> <!-- cd-timeline-block -->
-		<div class="empty-object" ng-if="service.photos.length==0">This user is private ...</div>
+		<div class="empty-object" ng-if="service.photos.length==0" on-load>This user is private ...</div>
 	</div>
 </section>

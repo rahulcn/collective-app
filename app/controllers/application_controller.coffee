@@ -1,4 +1,5 @@
 ApplicationController.controller "ApplicationController", ($scope) ->
+	$scope.lightboxActive = false
 	$scope.setActive = (options = []) ->
 		$scope.fhpxActive = ''
 		$scope.popularActive = ''
@@ -19,16 +20,14 @@ ApplicationController.controller "ApplicationController", ($scope) ->
 		$('.container-fluid > .row:first-child').toggleClass('inactive')
 
 	$scope.$on "show", (event) ->
+		current_scope = $scope.$$listeners.show[0].arguments[0].targetScope
+		# working on IScroll functionality
+		#current_scope.$parent.myScroll["wrapper"].refresh()
 
 		#hide timeline blocks which are outside the viewport
 		$(".cd-timeline-block").each ->
 			$(this).find(".cd-timeline-img, .cd-timeline-content").addClass "is-hidden"  if $(this).offset().top > $(window).scrollTop() + $(window).height() * 0.75
 			return
-
-
-
-
-
 
 		$('.loading').remove()
 
@@ -45,28 +44,9 @@ ApplicationController.controller "ApplicationController", ($scope) ->
 
 #		$(".classysocial").ClassySocial()
 
-		currentScope = $scope.$$listeners.show[0].arguments[0].targetScope
-		if currentScope.service.photos.length <= 40
-			console.log 'lightbox loading...'
-			$(".grid a.lightbox").imageLightbox
-				onStart: ->
-					overlayOn()
-					#closeButtonOn this
-					return
-
-				onLoadStart: ->
-					activityIndicatorOn()
-					return
-
-				onLoadEnd: ->
-					activityIndicatorOff()
-					return
-
-				onEnd: ->
-					overlayOff()
-					#closeButtonOff()
-					activityIndicatorOff()
-					return
+		if current_scope.service.photos.length >= 40
+			$scope.lightboxModel.loadImages($(".grid a.lightbox")) if $scope.lightboxActive
+			$scope.lightbox() unless $scope.lightboxActive
 
 		console.log("Hey you! Bamboo seeker!")
 		console.log("I'd like to hear from you :)")
@@ -74,6 +54,30 @@ ApplicationController.controller "ApplicationController", ($scope) ->
 		return
 
 	# image lightbox code
+
+	$scope.lightbox = ->
+		$scope.lightboxActive = true
+		$scope.lightboxModel = $(".grid a.lightbox").imageLightbox
+			onStart: ->
+				overlayOn()
+				#closeButtonOn this
+				return
+
+			onLoadStart: ->
+				activityIndicatorOn()
+				return
+
+			onLoadEnd: ->
+				activityIndicatorOff()
+				return
+
+			onEnd: ->
+				overlayOff()
+				#closeButtonOff()
+				activityIndicatorOff()
+				return
+		return
+
 	activityIndicatorOn = ->
 		$("<div id=\"imagelightbox-loading\"><div></div></div>").appendTo "body"
 		return

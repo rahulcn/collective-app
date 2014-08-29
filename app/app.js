@@ -24,10 +24,10 @@ void function () {
       }).when('/instagram/:filter', {
         templateUrl: 'templates/instagram_index_view.html',
         controller: 'InstagramController'
-      }).when('/instagram/self/:filter', {
+      }).when('/instagram/friends/:user_id/:filter', {
         templateUrl: 'templates/instagram_friends_view.html',
         controller: 'InstagramController'
-      }).when('/instagram/:user_id/:filter', {
+      }).when('/instagram/users/:user_id/:filter', {
         templateUrl: 'templates/instagram_index_view.html',
         controller: 'InstagramController'
       }).otherwise({ redirectTo: '/500px/popular' });

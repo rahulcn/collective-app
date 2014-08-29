@@ -4,7 +4,11 @@ ApplicationDirective.directive('onLoad', function () {
     link: function (scope, element, attrs) {
       element.bind('load', function (e) {
         var img;
-        img = $('.shot-cam-loader');
+        if (element.parent().parent().parent().hasClass('shot-cam-loader')) {
+          img = element.parent().parent().parent();
+        } else {
+          img = element.parent().parent();
+        }
         img.removeClass('shot-cam-loader');
         $('.spinner', img).fadeOut();
       });

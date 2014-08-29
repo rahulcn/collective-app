@@ -81,7 +81,38 @@
                 return $( element ).prop( 'tagName' ).toLowerCase() == 'a' && ( new RegExp( '\.(' + options.allowedTypes + ')$', 'i' ) ).test( $( element ).attr( 'href' ) );
             },
 
-            setImage = function()
+            setImage = function(image1)
+            {
+                if( !image.length ) return true;
+
+                var screenWidth	 = $( window ).width() * 0.8,
+                    screenHeight = $( window ).height() * 0.9,
+                    tmpImage 	 = new Image();
+
+                tmpImage.src	= image.attr( 'src' );
+                tmpImage.onload = function()
+                {
+                    imageWidth	 = tmpImage.width;
+                    imageHeight	 = tmpImage.height;
+
+                    if( imageWidth > screenWidth || imageHeight > screenHeight )
+                    {
+                        var ratio	 = imageWidth / imageHeight > screenWidth / screenHeight ? imageWidth / screenWidth : imageHeight / screenHeight;
+                        imageWidth	/= ratio;
+                        imageHeight	/= ratio;
+                    }
+
+                    image.css(
+                        {
+                            'width':  imageWidth + 'px',
+                            'height': imageHeight + 'px',
+                            'top':    ( $( window ).height() - imageHeight ) / 2 + 'px',
+                            'left':   ( $( window ).width() - imageWidth ) / 2 + 'px'
+                        });
+                };
+            },
+
+            resetImage = function(image)
             {
                 if( !image.length ) return true;
 
@@ -306,6 +337,12 @@
         this.quitImageLightbox = function()
         {
             quitLightbox();
+            return this;
+        };
+
+        this.loadImages = function()
+        {
+            targets = $('.grid a.lightbox');
             return this;
         };
 

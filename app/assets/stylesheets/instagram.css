@@ -497,7 +497,7 @@ Main components
 }
 
 .timeline-img img {
-    background-image: url("/assets/checkered.png" );
+    background-image: url("../images/checkered.png" );
     height: 481px;
 }
 

@@ -9,7 +9,7 @@ ApplicationController.controller('InstagramController', function ($scope, $locat
   signed_in = !_.isNull(window.localStorage.getItem('in_user'));
   if (signed_in) {
     if (_.isEmpty($routeParams.filter)) {
-      $location.path('/instagram/feed');
+      $location.path('/instagram/users/self/feed');
     }
   } else {
     $location.path('/instagram');
@@ -17,23 +17,27 @@ ApplicationController.controller('InstagramController', function ($scope, $locat
   if (signed_in)
     switch ($routeParams.filter) {
     case 'follows':
-      $scope.service.fetchUsers();
+      $scope.service.fetchUsers($routeParams);
       break;
     case 'followed-by':
-      $scope.service.fetchUsers();
+      $scope.service.fetchUsers($routeParams);
       break;
     default:
-      $scope.service.firstPage();
+      $scope.service.firstPage($routeParams);
     }
   $scope.login = function () {
     return $scope.service.login();
   };
-  $scope.comment = {};
-  $scope.comment.text = 'Comment ... ';
   $scope.commentCreate = function (event) {
-    var text;
+    var media_id, method, text;
     text = $('input', event.currentTarget).val();
-    console.log('--> Submitting form');
+    media_id = $('input', event.currentTarget).parent().data('id');
+    method = $('input', event.currentTarget).parent().data('method');
+    $scope.service.comment({
+      text: text,
+      media_id: media_id,
+      method: method
+    });
   };
   $scope.popHeart = function (event) {
     var create, i, margin, popSize, position, total;

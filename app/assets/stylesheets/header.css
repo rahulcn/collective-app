@@ -27,7 +27,7 @@ header {
     padding: 10px 0;
 }
 .nav-right .google-apps {
-    background-image: url("/assets/images/google-apps.svg");
+    background-image: url("../images/google-apps.svg");
     background-repeat: no-repeat;
     background-size: contain;
     width: 20px;
@@ -47,8 +47,5 @@ header {
     text-decoration: none;
     cursor: pointer;
 }
-
-
-
 
 

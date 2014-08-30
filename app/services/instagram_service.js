@@ -11,6 +11,7 @@ ApplicationService.factory('instagramAPI', function ($http, $location) {
       this.access_token = JSON.parse(window.localStorage.getItem('in_user')).access_token;
     this.photos = [];
     this.profile = [];
+    this.relationship = [];
     this.users = [];
     this.loading = $('<div class="loading-heart-container"><div class="loading-heart"></div></div>');
     this.busy = false;
@@ -60,12 +61,19 @@ ApplicationService.factory('instagramAPI', function ($http, $location) {
     }(this));
   };
   instagramAPI.prototype.firstPage = function (params) {
-    var profile_url;
+    var profile_url, relationship_url;
     $('#instagram').parent().append(this.loading);
     profile_url = 'https://api.instagram.com/v1/users/' + params.user_id + '?access_token=' + this.access_token;
+    relationship_url = 'https://api.instagram.com/v1/users/' + params.user_id + '/relationship?access_token=' + this.access_token;
     $http.get(profile_url).success(function (this$) {
       return function (data) {
         this$.profile = data.data;
+        if (params.user_id !== 'self')
+          $http.get(relationship_url).success(function (this$1) {
+            return function (data) {
+              this$1.relationship = data.data;
+            };
+          }(this$));
         return $http.get(this$.url).success(function (this$1) {
           return function (data) {
             this$1.next_url = data.pagination.next_url;
@@ -106,6 +114,17 @@ ApplicationService.factory('instagramAPI', function ($http, $location) {
         method: 'DELETE'
       });
     }
+  };
+  instagramAPI.prototype.follow = function (params) {
+    var object, relationship_url;
+    relationship_url = 'https://api.instagram.com/v1/users/' + params.user_id + '/relationship';
+    object = {
+      access_token: this.access_token,
+      action: params.action
+    };
+    $.post(relationship_url, object).success(function (data) {
+      return console.log('Request sent ' + data + ' ...');
+    });
   };
   instagramAPI.prototype.login = function () {
     var login_url, redirect;

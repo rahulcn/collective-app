@@ -28,6 +28,10 @@ ApplicationController.controller "InstagramController", ($scope, $location, inst
 		$scope.service.comment({text: text, media_id: media_id, method: method})
 		return
 
+	$scope.friendRequest = (params) ->
+		$scope.service.follow(params)
+		return
+
 	$scope.popHeart = (event) ->
 		@elem = $(event.target)
 		popSize = [ 50, 40 ]

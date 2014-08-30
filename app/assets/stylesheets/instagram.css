@@ -32,8 +32,7 @@
 
 
 
-.in-profile-refresh { position: absolute;right: 20px;top: 15px;font-size: 18px;opacity: 0.5; }
-.in-profile-refresh:hover { opacity: 1; }
+
 .in-nav {
     width: 100%;
     height: 50px;
@@ -94,7 +93,7 @@
     font-size: 20px;
     margin-left: 10px;
     display: inline-block;
-    width: 221px;
+    width: 216px;
 }
 .in-user .in-user-bio {
     padding: 0 10px 10px;
@@ -111,6 +110,37 @@
     margin-top: -36px;
     margin-left: -14px;
 }
+
+
+
+/* ... follow button start ... */
+.relationship {
+    position: absolute;
+    right: 18px;
+    bottom: 72px;
+}
+.relationship .btn-follow { cursor: pointer;}
+.relationship .btn-follow, .relationship .btn-not-followed {
+    display: inline-block;
+    border: 2px solid;
+    padding: 5px 27px;
+}
+.relationship .btn-not-followed {
+    border: 2px solid #333;
+    color: #333;
+    margin-right: 12px;
+    pointer-events: none;
+}
+
+
+.btn-follow span.unfollow { font-size: 0;width: 62px; }
+.btn-follow:hover { text-decoration: none; }
+.btn-follow:hover span.follow { font-size: 0; }
+.btn-follow:hover span.unfollow { font-size: 13px;width: 62px;display: inline-block; }
+/* ... follow button end ... */
+
+
+
 /* --------------------------------
 
 Modules - reusable parts of our design
@@ -493,12 +523,16 @@ Main components
     border-radius: 6px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .timeline-img img {
     background-image: url("../images/checkered.png" );
     height: 481px;
+    width: 100%;
+    border-radius: 6px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 
@@ -517,6 +551,8 @@ figcaption.in-photo-details > span:before {vertical-align: -4px;margin-right: 3p
     box-shadow: 0 0px 5px 0 #000;
     margin-top: -40px;
     margin-left: 10px;
+    position: absolute;
+    z-index: 999;
 }
 
 .timeline-details {
@@ -752,3 +788,108 @@ figcaption.in-photo-details > span:before {vertical-align: -4px;margin-right: 3p
 }
 
 /* ... loading heart end ... */
+
+
+
+
+
+
+
+/* ... in-profine cover buttons start... */
+.in-profile-munu {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.in-profile-munu > div { list-style-type: none; margin: 16px 20px 0;width: 30px;height: 30px;
+    position: relative;}
+
+.in-profile-munu > div a {
+    position: absolute;
+    right: 0;
+}
+
+.hi-icon {
+    display: inline-block;
+    font-size: 0px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    color: #2A6496;
+    opacity: 0.5;
+    vertical-align: top;
+}
+
+.hi-icon:after {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    content: '';
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.hi-icon:before {
+    font-family: 'ecoicon';
+    speak: none;
+    font-size: 24px;
+    line-height: 30px;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    display: block;
+    -webkit-font-smoothing: antialiased;
+    width: 30px;
+    float: right;
+}
+
+.hi-icon-refresh:before { content: "\e007"; }
+.hi-icon-contract:before { content: "\e013"; }
+.hi-icon-search:before { font-family: 'FontAwesome';content: "\f002";font-size: 20px; }
+.hi-icon-edit:before { font-family: 'FontAwesome';content: "\f040";font-size: 20px; }
+
+
+.hi-icon-effect-spin .hi-icon {
+    box-shadow: 0 0 0 2px #2A6496;
+    -webkit-transition: background 0.2s, color 0.2s;
+    -moz-transition: background 0.2s, color 0.2s;
+    transition: background 0.2s, color 0.2s;
+}
+
+.no-touch .hi-icon-effect-spin .hi-icon:hover {
+    box-shadow: 0 0 0 2px rgba(255,255,255,1);
+    background: rgba(255,255,255,1);
+    color: #64bb5d;
+    text-decoration: none;
+    opacity: 1;
+}
+
+.no-touch .hi-icon-effect-spin .hi-icon:hover:before {
+    -webkit-animation: spinAround 2s linear infinite;
+    -moz-animation: spinAround 2s linear infinite;
+    animation: spinAround 2s linear infinite;
+}
+
+
+@-webkit-keyframes spinAround {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@-moz-keyframes spinAround {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@keyframes spinAround {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ... in-profine cover buttons end ... */

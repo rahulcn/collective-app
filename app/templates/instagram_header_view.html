@@ -1,6 +1,22 @@
-<div class="profile row">
-	<div class="cover">
-		<a href="#" class="in-profile-refresh"><i class="fa fa-refresh"></i></a>
+<div class="profile row no-touch">
+	<div class="cover hi-icon-effect-spin">
+		<div class="in-profile-munu">
+			<!--<div><a href="#" class="hi-icon hi-icon-refresh">Loading ...</a></div>-->
+			<!--<div><a href="#" class="hi-icon hi-icon-contract">Follow</a></div>-->
+			<!--<div><a href="#" class="hi-icon hi-icon-search">Search</a></div>-->
+			<!--<div><a href="#" class="hi-icon hi-icon-edit">Edit</a></div>-->
+		</div>
+		<div class="relationship">
+			<a href="#" class="btn-not-followed" ng-if="service.relationship.incoming_status == 'none'">Not being followed</a>
+			<a href="#" class="btn-not-followed" ng-if="service.relationship.incoming_status == 'followed_by'">Being followed</a>
+			<a ng-click="friendRequest({event: $event, user_id: service.profile.id, action: 'approve'})" class="btn-follow" ng-if="service.relationship.incoming_status == 'requested_by'">Approve now</a>
+			<a ng-click="friendRequest({event: $event, user_id: service.profile.id, action: 'follow'})" class="btn-follow" ng-if="service.relationship.outgoing_status == 'none'">Follow now</a>
+			<a ng-click="friendRequest({event: $event, user_id: service.profile.id, action: 'unfollow'})" class="btn-follow" ng-if="service.relationship.outgoing_status == 'follows'">
+				<span class="follow">Following</span>
+				<span class="unfollow">Unfollow</span>
+			</a>
+		</div>
+
 	</div>
 	<div class="in-nav">
 		<ul class="in-filters">

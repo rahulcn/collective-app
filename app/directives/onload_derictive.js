@@ -4,8 +4,8 @@ ApplicationDirective.directive('onLoad', function () {
     link: function (scope, element, attrs) {
       element.bind('load', function (e) {
         var img;
-        if (element.parent().parent().parent().hasClass('shot-cam-loader')) {
-          img = element.parent().parent().parent();
+        if (element.parent().parent().parent().parent().hasClass('shot-cam-loader')) {
+          img = element.parent().parent().parent().parent();
         } else {
           img = element.parent().parent();
         }

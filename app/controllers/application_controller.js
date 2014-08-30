@@ -30,6 +30,7 @@ ApplicationController.controller('ApplicationController', function ($scope) {
       if ($(this).offset().top > $(window).scrollTop() + $(window).height() * .75)
         $(this).find('.cd-timeline-img, .cd-timeline-content').addClass('is-hidden');
     });
+    $('.timeline-img a', '#instagram').fluidbox();
     $('.loading').remove();
     if ($(window).width() > 1500) {
       $('.grid').addClass('col-md-2');

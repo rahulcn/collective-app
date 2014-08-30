@@ -29,6 +29,8 @@ ApplicationController.controller "ApplicationController", ($scope) ->
 			$(this).find(".cd-timeline-img, .cd-timeline-content").addClass "is-hidden"  if $(this).offset().top > $(window).scrollTop() + $(window).height() * 0.75
 			return
 
+		$('.timeline-img a', '#instagram').fluidbox()
+
 		$('.loading').remove()
 
 		if ($(window).width() > 1500) then $('.grid').addClass('col-md-2') else $('.grid').addClass('col-md-3')

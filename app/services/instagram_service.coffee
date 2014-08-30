@@ -9,6 +9,7 @@ ApplicationService.factory "instagramAPI", ($http, $location) ->
 		@access_token = JSON.parse(window.localStorage.getItem('in_user')).access_token if !_.isNull(window.localStorage.getItem('in_user'))
 		@photos = []
 		@profile = []
+		@relationship = []
 		@users = []
 		@loading = $('<div class="loading-heart-container"><div class="loading-heart"></div></div>')
 		@busy = false
@@ -50,8 +51,13 @@ ApplicationService.factory "instagramAPI", ($http, $location) ->
 	instagramAPI::firstPage = (params) ->
 		$('#instagram').parent().append(@loading)
 		profile_url = "https://api.instagram.com/v1/users/#{params.user_id}?access_token=#{@access_token}"
+		relationship_url = "https://api.instagram.com/v1/users/#{params.user_id}/relationship?access_token=#{@access_token}"
 		$http.get(profile_url).success (data) =>
 			@profile = data.data
+			if params.user_id isnt 'self'
+				$http.get(relationship_url).success (data) =>
+					@relationship = data.data
+					return
 			$http.get(@url).success (data) =>
 				@next_url = data.pagination.next_url
 				@photos = @photos.concat(data.data)
@@ -77,6 +83,14 @@ ApplicationService.factory "instagramAPI", ($http, $location) ->
 				console.log("Commenting #{data} ...")
 		else
 			$http({url: comment_url, method: 'DELETE'})
+		return
+
+
+	instagramAPI::follow = (params) ->
+		relationship_url = "https://api.instagram.com/v1/users/#{params.user_id}/relationship"
+		object = {access_token: @access_token, action: params.action}
+		$["post"](relationship_url, object).success (data) ->
+			console.log("Request sent #{data} ...")
 		return
 
 

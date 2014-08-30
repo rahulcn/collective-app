@@ -8,13 +8,13 @@
 			<div class="cd-timeline-content shot-cam-loader" data-id="{{photo.id}}">
 				<div class="spinner"></div>
 				<div class="timeline-img">
-					<img src="{{photo.images.standard_resolution.url}}" alt="{{photo.tags}}" class="img-responsive" on-load />
+					<a href="{{photo.images.standard_resolution.url}}"><img bn-lazy-src="{{photo.images.standard_resolution.url}}" alt="{{photo.caption.text}}" class="img-responsive" on-load /></a>
 					<div ng-if="photo.user_has_liked" class="heart heart-active" ng-click="popHeart($event);" data-method="delete"></div>
 					<div ng-if="photo.user_has_liked == false" class="heart" ng-click="popHeart($event);" data-method="post"></div>
 				</div>
 				<figcaption class="in-photo-details">
 					<div class="in-user-profile-pic"><img src="{{photo.user.profile_picture}}" alt="{{photo.user.username}}" class="img-responsive"/></div>
-					<span class="glyphicon glyphicon-comment ng-binding">{{photo.comments.count}}</span>
+					<span class="glyphicon glyphicon-comment ng-binding" style="margin-left: 100px;">{{photo.comments.count}}</span>
 					<!--<span class="glyphicon glyphicon-eye-open">{{photo.votes_count}}</span>-->
 					<span class="glyphicon glyphicon-heart-empty ng-binding">{{photo.likes.count}}</span>
 				</figcaption>

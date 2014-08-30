@@ -39,6 +39,9 @@ ApplicationController.controller('InstagramController', function ($scope, $locat
       method: method
     });
   };
+  $scope.friendRequest = function (params) {
+    $scope.service.follow(params);
+  };
   $scope.popHeart = function (event) {
     var create, i, margin, popSize, position, total;
     this.elem = $(event.target);

@@ -2,12 +2,7 @@ ApplicationController.controller "500pxController", ($scope, $location, fhpxAPI,
 	$scope.setActive(['fhpx', $routeParams.category])
 	$scope.service = new fhpxAPI($routeParams)
 	$('.hyperlink-nav li > a').data('main', $routeParams.category)
-	$scope.categories = ['Abstract', 'Macro', 'Animals', 'Nature', 'Black & White', 'Celebrities', 'People', 'City & Architecture', 'Performing Arts', 'Commercial', 'Sport', 'Concert', 'Still Life', 'Family', 'Street', 'Fashion', 'Transportation', 'Film', 'Travel', 'Fine Art', 'Underwater', 'Food', 'Urban Exploration', 'Journalism', 'Wedding', 'Landscapes', 'Uncategorized']
-
-
-
-
-
+	$scope.categories = ['Abstract', 'Macro', 'Animals', 'Nature', 'Black & White', 'Celebrities', 'People', 'City & Architecture', 'Performing Arts', 'Commercial', 'Sport', 'Concert', 'Still Life', 'Family', 'Street', 'Fashion', 'Transportation', 'Film', 'Travel', 'Fine Art', 'Underwater', 'Food', 'Urban Exploration', 'Journalism', 'Wedding', 'Landscapes', 'Uncategorized', 'Nude']
 
 	if $routeParams.category is 'popular'
 		if _.isNull(window.localStorage.getItem('ca_photos')) or $routeParams.only

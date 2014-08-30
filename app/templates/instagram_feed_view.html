@@ -1,4 +1,4 @@
-<section id="cd-timeline" class="cd-container">
+<section id="cd-timeline" class="cd-timeline cd-container">
 	<div class="row" infi-scroll="service.nextPage()" style="margin-bottom: 50px;">
 		<div ng-repeat="photo in service.photos" class="cd-timeline-block" ng-repeat-end>
 			<div class="cd-timeline-img cd-picture">
@@ -33,7 +33,7 @@
 						<div class="timeline-comments">
 							<div class="empty-object" ng-if="photo.comments.data.length==0">No comments yet, be the first one to comment it ...</div>
 							<div class="comment" ng-repeat="comment in photo.comments.data">
-								<div class="timeline-user-pic"><img src="{{comment.from.profile_picture}}" alt="{{comment.from.username}}" class="img-responsive"/></div>
+								<div class="timeline-user-pic"><img src="{{comment.from.profile_picture}}" alt="{{comment.from.username}}" class="img-responsive" style="height: 46px;width: 46px;"/></div>
 								<div class="timeline-user-text">
 									<div>
 										<a href="#/instagram/users/{{comment.from.id}}/recent">{{comment.from.full_name}}</a>
@@ -52,6 +52,7 @@
 				</div>
 			</div> <!-- cd-timeline-content -->
 		</div> <!-- cd-timeline-block -->
-		<div class="empty-object" ng-if="service.photos.length==0" on-load>This user is private ...</div>
+		<div class="empty-object" ng-if="service.photos.length==0" on-load><span style="margin-left: -30px;">Wait while we load</span><span style="margin-left: 10px;">your photos ...</span></div>
+		<div class="empty-object" ng-if="service.errors.length!=0" on-load><span style="font-size: 20px;margin-left: -30px;"> {{service.errors[0]}} ...</span></div>
 	</div>
 </section>

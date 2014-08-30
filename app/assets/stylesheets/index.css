@@ -447,16 +447,18 @@ body::-webkit-scrollbar-track-piece {
     width: 10px;
 
 }
-
-body::-webkit-scrollbar-thumb:vertical, ::-webkit-scrollbar-thumb:horizontal{
-    height: 5px;
-    background-color:rgba(255, 0, 0, 1);
-}
-
 body::-webkit-scrollbar-thumb:vertical{
-    background:transparent url('../images/scroll.png') no-repeat -7px 0px;
-    background-size:30px 30px;
-    min-height:30px;
+    background:transparent url('../images/blue-water-drop-th.png') no-repeat 0px 40px;
+    background-size:10px 20px;
+    min-height:70px;
     min-width:30px;
     display:block
+}
+
+#scrollUp {
+    background-image: url("../images/top.png");
+    bottom: 20px;
+    right: 20px;
+    width: 38px;    /* Width of image */
+    height: 38px;   /* Height of image */
 }

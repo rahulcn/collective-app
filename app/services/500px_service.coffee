@@ -7,7 +7,7 @@ ApplicationService.factory "fhpxAPI", ($http) ->
 		@busy = false
 		@category = options.category
 		@only = options.only
-		@exclude = 'Nude'
+		@exclude = if options.category != 'Nude' then '' else 'Nude'
 		return
 
 	fhpxAPI::firstPage = ->

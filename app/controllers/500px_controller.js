@@ -33,7 +33,8 @@ ApplicationController.controller('500pxController', function ($scope, $location,
     'Journalism',
     'Wedding',
     'Landscapes',
-    'Uncategorized'
+    'Uncategorized',
+    'Nude'
   ];
   if ($routeParams.category === 'popular') {
     if (_.isNull(window.localStorage.getItem('ca_photos')) || $routeParams.only) {

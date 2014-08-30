@@ -87,3 +87,5 @@ $ ->
 		event.preventDefault()
 		chrome.tabs.update({url: "chrome://apps"})
 	)
+
+	$.scrollUp({ animation: 'fade', scrollImg: true })

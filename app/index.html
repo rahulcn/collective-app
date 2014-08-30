@@ -45,7 +45,7 @@
 					<div id="menu" style="margin-top: 40px;">
 						<ul class="hyperlink-nav" style="left: 0;padding: 0px 5px 0px 20px;">
 							<li ng-class="instagramActive"><a href="#/instagram/users/self/feed">Instagram</a></li>
-							<li ng-class="dribbleActive"><a href="#/dribble/popular">Dribble</a></li>
+							<li ng-class="dribbleActive"><a href="#/dribble/popular">Dribbble</a></li>
 							<li ng-controller="500pxController">
 								<a ng-class="fhpxActive" href="#/500px/popular/" data-main="popular">500px</a>
 								<ul class="categories">
@@ -135,6 +135,10 @@
 			<div ng-controller="SettingsController" class="row">
 				<div ng-include src="'templates/settings_view.html'" id="settings"></div>
 			</div>
+			<div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2">
+				<div ng-include src="'templates/shared/footer.html'"></div>
+			</div>
+
 		</div>
 
 		<script type="text/javascript" src="assets/javascripts/jquery.min.js"></script>
@@ -146,6 +150,7 @@
 		<!--<script type="text/javascript" src="assets/javascripts/angular-ui-router.min.js"></script>-->
 		<script type="text/javascript" src="assets/javascripts/imagelightbox.js"></script>
 		<script type="text/javascript" src="assets/javascripts/jquery.fluidbox.min.js"></script>
+		<script type="text/javascript" src="assets/javascripts/jquery.scrollUp.js"></script>
 		<script type="text/javascript" src="assets/javascripts/classie.js"></script>
 		<script type="text/javascript" src="assets/javascripts/animation-on-scroll.js"></script>
 		<script type="text/javascript" src="assets/javascripts/moment.min.js"></script>

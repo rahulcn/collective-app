@@ -11,6 +11,7 @@ ApplicationService.factory "instagramAPI", ($http, $location) ->
 		@profile = []
 		@relationship = []
 		@users = []
+		@errors= []
 		@loading = $('<div class="loading-heart-container"><div class="loading-heart"></div></div>')
 		@busy = false
 		base_url = "https://api.instagram.com/v1"
@@ -52,18 +53,27 @@ ApplicationService.factory "instagramAPI", ($http, $location) ->
 		$('#instagram').parent().append(@loading)
 		profile_url = "https://api.instagram.com/v1/users/#{params.user_id}?access_token=#{@access_token}"
 		relationship_url = "https://api.instagram.com/v1/users/#{params.user_id}/relationship?access_token=#{@access_token}"
-		$http.get(profile_url).success (data) =>
+		$http.get(profile_url).success( (data) =>
 			@profile = data.data
 			if params.user_id isnt 'self'
 				$http.get(relationship_url).success (data) =>
 					@relationship = data.data
 					return
-			$http.get(@url).success (data) =>
+			$http.get(@url).
+			success( (data) =>
 				@next_url = data.pagination.next_url
 				@photos = @photos.concat(data.data)
 				window.localStorage.setItem('in_photos', JSON.stringify(@photos))
 				$('.loading-heart-container').remove()
 				return
+			)
+		).
+		error( (data) =>
+			@errors = ['This account is private']
+			$('.loading-heart-container').remove()
+			$('#cd-timeline').removeClass('cd-timeline')
+			$('.empty-object:first-child').hide()
+		)
 		return
 
 	instagramAPI::likeToggle = (params) ->

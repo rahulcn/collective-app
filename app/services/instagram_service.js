@@ -13,6 +13,7 @@ ApplicationService.factory('instagramAPI', function ($http, $location) {
     this.profile = [];
     this.relationship = [];
     this.users = [];
+    this.errors = [];
     this.loading = $('<div class="loading-heart-container"><div class="loading-heart"></div></div>');
     this.busy = false;
     base_url = 'https://api.instagram.com/v1';
@@ -82,6 +83,13 @@ ApplicationService.factory('instagramAPI', function ($http, $location) {
             $('.loading-heart-container').remove();
           };
         }(this$));
+      };
+    }(this)).error(function (this$) {
+      return function (data) {
+        this$.errors = ['This account is private'];
+        $('.loading-heart-container').remove();
+        $('#cd-timeline').removeClass('cd-timeline');
+        return $('.empty-object:first-child').hide();
       };
     }(this));
   };

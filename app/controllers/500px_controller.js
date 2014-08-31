@@ -36,6 +36,7 @@ ApplicationController.controller('500pxController', function ($scope, $location,
     'Uncategorized',
     'Nude'
   ];
+  $('[data-category="Nude"]', '.categories').css('opacity', '0');
   if ($routeParams.category === 'popular') {
     if (_.isNull(window.localStorage.getItem('ca_photos')) || $routeParams.only) {
       $scope.service.firstPage();

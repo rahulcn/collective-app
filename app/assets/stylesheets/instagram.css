@@ -25,6 +25,77 @@
     border-radius: 5px;
     margin-bottom: -30px;
 }
+
+.btn-slide {
+    margin: 100px;
+    position: relative;
+    display: inline-block;
+    height: 50px;
+    width: 200px;
+    line-height: 50px;
+    padding: 0 20px;
+    border-radius: 50px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    transition: .5s;
+    -webkit-transition: .5s;
+    border: 2px solid #1275B7;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.btn-slide span.circle {
+    display: block;
+    background-color: #1275B7;
+    position: absolute;
+    float: left;
+    margin: 3px;
+    line-height: 42px;
+    height: 40px;
+    width: 40px;
+    top: 0;
+    left: 0;
+    transition: .5s;
+    -webkit-transition: .5s;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    text-align: center;
+}
+
+.btn-slide span.title, .btn-slide span.title-hover {
+    position: absolute;
+    left: 80px;
+    transition: .5s;
+    -webkit-transition: .5s;
+    top: -4px;
+    color: #FFF;
+}
+
+.btn-slide span.title-hover {
+    left: 80px;
+    opacity: 0;
+}
+
+.btn-slide:hover {
+    background-color: #1275B7;
+}
+
+.btn-slide:hover span.circle {
+    left: 100%;
+    margin-left: -45px;
+    background-color: #36A7F3;
+}
+
+.btn-slide:hover span.title-hover {
+    opacity: 1;
+    left: 40px;
+}
+
+.btn-slide:hover span.title {
+    left: 40px;
+    opacity: 0;
+}
 /* ... login screen end ... */
 
 

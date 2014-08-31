@@ -13,7 +13,7 @@
 					<div ng-if="photo.user_has_liked == false" class="heart" ng-click="popHeart($event);" data-method="post"></div>
 				</div>
 				<figcaption class="in-photo-details">
-					<div class="in-user-profile-pic"><img src="{{photo.user.profile_picture}}" alt="{{photo.user.username}}" class="img-responsive"/></div>
+					<div class="in-user-profile-pic"><img src="{{photo.user.profile_picture}}" alt="{{photo.user.username}}" class="img-responsive" style="height: 56px;width: 56px;"/></div>
 					<span class="glyphicon glyphicon-comment ng-binding" style="margin-left: 100px;">{{photo.comments.count}}</span>
 					<!--<span class="glyphicon glyphicon-eye-open">{{photo.votes_count}}</span>-->
 					<span class="glyphicon glyphicon-heart-empty ng-binding">{{photo.likes.count}}</span>
@@ -21,7 +21,7 @@
 				<div class="timeline-details">
 					<div style="position:relative;max-height: 526px;">
 						<div class="in-photo-status">
-							<div class="timeline-user-pic"><img src="{{photo.user.profile_picture}}" alt="{{photo.user.username}}" class="img-responsive"/></div>
+							<div class="timeline-user-pic"><img src="{{photo.user.profile_picture}}" alt="{{photo.user.username}}" class="img-responsive" style="height: 46px;width: 46px;"/></div>
 							<div class="timeline-user-text">
 								<div>
 									<a href="#/instagram/users/{{photo.user.id}}/recent">{{photo.user.full_name}}</a>

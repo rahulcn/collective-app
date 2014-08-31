@@ -1,4 +1,4 @@
-ApplicationService.factory "instagramAPI", ($http, $location) ->
+ApplicationService.factory "instagramAPI", ($http, $location, $route) ->
 
 	USER = {
 		accessId: "255614267",
@@ -108,10 +108,11 @@ ApplicationService.factory "instagramAPI", ($http, $location) ->
 		redirect = 'https://nfcimppfkbpdohcgpdifipajpbahncnc.chromiumapp.org/provider_cb'
 		login_url = "https://api.instagram.com/oauth/authorize/?client_id=#{USER.clientId}&redirect_uri=#{redirect}&response_type=token&scope=likes+comments+relationships"
 
-		chrome.identity.launchWebAuthFlow({'url': login_url, 'interactive': true}, (responseUrl) ->
-			console.log(responseUrl)
+		chrome.identity.launchWebAuthFlow({'url': login_url, 'interactive': true}, (responseUrl) =>
 			window.localStorage.setItem('in_user', JSON.stringify({access_token: responseUrl.split('#access_token=')[1]}))
-			$location.path('/instagram/feed')
+			$location.path('/instagram/users/self/feed')
+			$route.reload()
+			return
 		)
 		return
 

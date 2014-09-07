@@ -8,7 +8,7 @@ ApplicationService.factory('fhpxAPI', function ($http) {
     this.busy = false;
     this.category = options.category;
     this.only = options.only;
-    this.exclude = options.category !== 'Nude' ? '' : 'Nude';
+    this.exclude = options.only !== 'Nude' ? 'Nude' : '';
   };
   fhpxAPI.prototype.firstPage = function () {
     var url;

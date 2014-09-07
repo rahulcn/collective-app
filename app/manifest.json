@@ -3,7 +3,7 @@
     "name": "CollectiveApp",
     "description": "Gathering best pictures from the web.",
     "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoiphHbZszUHaMCVNQYCRrcV5EEE8d9C3/k7gR6NXcQhxzIbKkNGUSwuj+QVOJHgq92OZt0rwrECF/s/3yd4cnZVfr2A/mCdxGd7tNGuoUrN04ye2ZDetOs1GPpL4D/vhoAB8RXsqcZGmDrQvkN1a3hoHbiBytsTJ33xYslXgfoZhWUZl80s+3UWgbgkX59PVO1h+IZ7GJyX/T9uf4H7ZB7wjXMcLN3ykCdBNp68bKqtxfQaiwS9xAf0REsZBNodOcwAx4jz0vxlYtg+xb6hzx9k5mOF0EToNeoQzwdTTtzdw6oELwxnlOJL+jBGK/RbBExMp6ZcKnJvmViRSfPoiRQIDAQAB",
-    "version": "0.1",
+    "version": "0.7",
     //"options_page": "options.html",
     "background": {
         "scripts": ["background.js"]
@@ -17,6 +17,7 @@
         "tabs",
         "contextMenus",
         "notifications",
+        "chrome://favicon/",
         "<all_urls>",
         "chrome://favicon/",
         "https://api.instagram.com/*",
@@ -26,8 +27,7 @@
     "chrome_url_overrides" : {
         "newtab": "index.html"
     },
-    //"content_security_policy": "script-src 'self' 'unsafe-eval' https://api.instagram.com; object-src 'self'",
-    "content_security_policy": "script-src 'self' https://api.instagram.com https://ssl.google-analytics.com https://s3.amazonaws.com https://cdn.taboola.com https://web.localytics.com https://webanalytics.localytics.com; object-src 'self'",
+    "content_security_policy": "script-src 'self' 'unsafe-eval' https://api.instagram.com https://api.dribbble.com; object-src 'self'",
 
     "minimum_chrome_version": "9",
     "default_locale": "en",
@@ -35,4 +35,3 @@
         "keyword" : "*"
     }
 }
-

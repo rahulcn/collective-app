@@ -33,8 +33,7 @@ ApplicationController.controller('500pxController', function ($scope, $location,
     'Journalism',
     'Wedding',
     'Landscapes',
-    'Uncategorized',
-    'Nude'
+    'Uncategorized'
   ];
   $('[data-category="Nude"]', '.categories').css('opacity', '0');
   if ($routeParams.category === 'popular') {
